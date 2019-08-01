@@ -154,260 +154,6 @@ F 3 "" H 900 7400 50  0001 C CNN
 	1    900  7400
 	1    0    0    -1  
 $EndComp
-Wire Bus Line
-	4650 2750 10150 2750
-Wire Wire Line
-	9800 3050 10100 3050
-Wire Wire Line
-	9800 2950 9800 3050
-Wire Wire Line
-	9650 2950 9800 2950
-Wire Wire Line
-	9650 3050 9650 2950
-Wire Wire Line
-	8750 3050 9650 3050
-Wire Wire Line
-	8750 2950 8750 3050
-Wire Wire Line
-	7550 2950 8750 2950
-Wire Wire Line
-	7550 3050 7550 2950
-Wire Wire Line
-	6650 3050 7550 3050
-Wire Wire Line
-	6650 2950 6650 3050
-Wire Wire Line
-	5600 2950 5600 3050
-Wire Wire Line
-	7250 2800 7850 2800
-Wire Wire Line
-	9950 2900 10100 2900
-Wire Wire Line
-	9950 2800 9950 2900
-Wire Wire Line
-	9350 2800 9950 2800
-Wire Wire Line
-	9350 2900 9350 2800
-Wire Wire Line
-	7850 2900 9350 2900
-Wire Wire Line
-	7850 2800 7850 2900
-Wire Wire Line
-	8300 2700 8300 2600
-Text Notes 5000 2900 2    50   ~ 0
-nRAS
-Text Notes 5000 3050 2    50   ~ 0
-nCAS
-Wire Wire Line
-	5750 2800 5750 2900
-Wire Wire Line
-	7250 2900 7250 2800
-Wire Wire Line
-	6350 2900 7250 2900
-Wire Wire Line
-	6350 2800 6350 2900
-Wire Wire Line
-	6050 2800 6350 2800
-Wire Wire Line
-	6050 2900 6050 2800
-Wire Wire Line
-	5750 2900 6050 2900
-Wire Wire Line
-	9650 2550 6050 2550
-Wire Wire Line
-	9650 2550 9650 2450
-Wire Wire Line
-	8600 2700 10100 2700
-Wire Wire Line
-	8600 2600 8600 2700
-Wire Wire Line
-	8300 2600 8600 2600
-Wire Wire Line
-	8300 2700 6500 2700
-Wire Notes Line
-	6950 2250 9350 2250
-Wire Wire Line
-	6350 2250 6950 2250
-Text Notes 5000 2700 2    50   ~ 0
-HoldRow
-Wire Wire Line
-	5050 2700 6200 2700
-Wire Wire Line
-	6200 2600 6200 2700
-Wire Wire Line
-	6500 2600 6200 2600
-Wire Wire Line
-	6500 2600 6500 2700
-Wire Wire Line
-	9650 2450 10100 2450
-Wire Wire Line
-	9950 2250 10100 2250
-Wire Wire Line
-	9800 2400 10100 2400
-Wire Wire Line
-	9800 2300 9800 2400
-Wire Notes Line
-	8700 2300 8700 2400
-Wire Notes Line
-	9450 2300 9450 2400
-Wire Notes Line
-	9400 2300 9400 2400
-Wire Notes Line
-	9350 2300 9350 2400
-Wire Notes Line
-	9300 2300 9300 2400
-Wire Notes Line
-	9250 2300 9250 2400
-Wire Notes Line
-	9200 2300 9200 2400
-Wire Notes Line
-	9150 2300 9150 2400
-Wire Notes Line
-	9100 2300 9100 2400
-Wire Notes Line
-	9050 2300 9050 2400
-Wire Notes Line
-	9000 2300 9000 2400
-Wire Notes Line
-	8950 2300 8950 2400
-Wire Notes Line
-	8900 2300 8900 2400
-Wire Notes Line
-	8850 2300 8850 2400
-Wire Notes Line
-	8800 2300 8800 2400
-Wire Notes Line
-	8750 2300 8750 2400
-Wire Notes Line
-	6800 2350 9500 2350
-Wire Notes Line
-	6800 2400 9500 2400
-Wire Notes Line
-	9500 2300 9500 2400
-Wire Notes Line
-	6800 2300 9500 2300
-Wire Notes Line
-	7900 2300 7900 2400
-Wire Notes Line
-	7600 2300 7600 2400
-Wire Notes Line
-	7650 2300 7650 2400
-Wire Notes Line
-	7700 2300 7700 2400
-Wire Notes Line
-	7750 2300 7750 2400
-Wire Notes Line
-	7800 2300 7800 2400
-Wire Notes Line
-	7850 2300 7850 2400
-Wire Notes Line
-	8400 2300 8400 2400
-Wire Notes Line
-	8350 2300 8350 2400
-Wire Notes Line
-	8300 2300 8300 2400
-Wire Notes Line
-	8250 2300 8250 2400
-Wire Notes Line
-	8200 2300 8200 2400
-Wire Notes Line
-	8150 2300 8150 2400
-Wire Notes Line
-	8100 2300 8100 2400
-Wire Notes Line
-	8050 2300 8050 2400
-Wire Notes Line
-	8000 2300 8000 2400
-Wire Notes Line
-	7950 2300 7950 2400
-Wire Notes Line
-	8650 2300 8650 2400
-Wire Notes Line
-	8600 2300 8600 2400
-Wire Notes Line
-	8550 2300 8550 2400
-Wire Notes Line
-	8500 2300 8500 2400
-Wire Notes Line
-	8450 2300 8450 2400
-Wire Wire Line
-	9500 2300 9800 2300
-Wire Notes Line
-	5100 2400 5100 2300
-Wire Notes Line
-	5150 2300 5150 2400
-Wire Notes Line
-	5200 2400 5200 2300
-Wire Notes Line
-	5250 2300 5250 2400
-Wire Notes Line
-	5050 2350 5300 2350
-Wire Notes Line
-	5050 2400 5050 2300
-Wire Notes Line
-	5300 2400 5050 2400
-Wire Notes Line
-	5300 2300 5300 2400
-Wire Notes Line
-	5050 2300 5300 2300
-Wire Notes Line
-	5150 2250 5050 2250
-Wire Notes Line
-	7500 2300 7500 2400
-Wire Notes Line
-	7450 2300 7450 2400
-Wire Notes Line
-	7400 2300 7400 2400
-Wire Notes Line
-	7350 2300 7350 2400
-Wire Notes Line
-	7300 2300 7300 2400
-Wire Notes Line
-	7250 2300 7250 2400
-Wire Notes Line
-	7200 2300 7200 2400
-Wire Notes Line
-	7150 2300 7150 2400
-Wire Notes Line
-	7100 2300 7100 2400
-Wire Notes Line
-	7050 2300 7050 2400
-Wire Notes Line
-	7000 2300 7000 2400
-Wire Notes Line
-	6950 2300 6950 2400
-Wire Notes Line
-	6900 2300 6900 2400
-Wire Notes Line
-	6850 2300 6850 2400
-Wire Notes Line
-	6800 2300 6800 2400
-Wire Wire Line
-	6050 2450 6050 2550
-Wire Wire Line
-	5450 2450 6050 2450
-Wire Wire Line
-	5450 2550 5450 2450
-Wire Wire Line
-	5050 2550 5450 2550
-Text Notes 5000 2550 2    50   ~ 0
-GateWE
-Wire Wire Line
-	6200 2300 6800 2300
-Wire Wire Line
-	5300 2300 5600 2300
-Wire Wire Line
-	5600 2300 5600 2400
-Wire Wire Line
-	5750 2250 6050 2250
-Wire Wire Line
-	6200 2400 6200 2300
-Wire Wire Line
-	5600 2400 6200 2400
-Text Notes 5000 2400 2    50   ~ 0
-nRefCAS
-Text Notes 8050 4100 0    50   ~ 0
-nRAS <= GateCRAS ? nRefRAS : nPRAS\nnCAS <= GateCRAS ? nRefCAS : Q3\nnRWE <= GateWE | RW80\nRA[7:0] <= HoldRow ? RowAddr[7:0] : MA[7:0]\nRA[10:8] <= PHI1 ? 0 : HoldRow ? BA[5:3] : BA[2:0]\nRA[11] <= PHI1 ? 0 : BA[5]\n\nVDR[7:0] <= RD[7:0] @ PHI0\nVD[7:0] <= PHI1 ? 8’bZ : VDR[7:0]\nD[7:0] <= (EN80 & R~W~80) ? RD[7:0] : 8’bZ\nRD[7:0] <= (EN80 & ~R~W80) ? D[7:0] : 8’bZ
 $Comp
 L Device:C_Small C1
 U 1 1 5D136B08
@@ -419,8 +165,6 @@ F 3 "~" H 900 7500 50  0001 C CNN
 	1    900  7500
 	1    0    0    -1  
 $EndComp
-Text Notes 4700 3950 0    50   ~ 0
-State = { PHI0, C7M, nPRAS, nPCAS, Q3 }\nGateCRAS <= state == 10100 | 01111 | 00011 | 01011 @ C14M↑\nnRefRAS <= ~state == 01111 | 01011 | 00001~ @ C14M↑\nnRefCAS <= ~state == 01111 | 00011~ @ C14M↓\nGateWE <= state == 10100 | 00011 @ C14M↑\nHoldRow <= state == 01011 | 10011 @ C14M↓\n\nRowAddr[7:0] <= MA[7:0] @ nPRAS↓\nBA[5:0] <= (state==10100 & RowAddr==73 & C07X) ? D[5:0] : BA[5:0] @ C14M↑
 Text Label 4700 5700 2    50   ~ 0
 RA5
 Text Label 4700 5800 2    50   ~ 0
@@ -502,22 +246,6 @@ F 3 "" H 5500 5300 50  0001 C CNN
 	1    5500 5300
 	1    0    0    -1  
 $EndComp
-Wire Notes Line
-	5000 4100 5000 4200
-Wire Notes Line
-	5000 4200 5200 4200
-Wire Notes Line
-	5200 4200 5200 4100
-Wire Notes Line
-	5100 4100 5100 4200
-Wire Notes Line
-	5000 4100 5200 4100
-Wire Notes Line
-	5050 4100 5050 4200
-Wire Notes Line
-	5000 4150 5200 4150
-Wire Notes Line
-	5150 4100 5150 4200
 Wire Wire Line
 	5800 7350 5800 7650
 Text Label 5800 7650 0    50   ~ 0
@@ -968,8 +696,6 @@ NoConn ~ 4000 3300
 NoConn ~ 4000 4100
 NoConn ~ 2500 6000
 NoConn ~ 2500 5200
-Text Notes 5250 4200 0    50   ~ 0
-= don’t care
 Text Notes 4950 1600 2    50   ~ 0
 nPRAS
 Wire Wire Line
@@ -1024,138 +750,6 @@ Wire Wire Line
 	7250 1600 7250 1500
 Wire Wire Line
 	5750 1500 5750 1600
-Text Notes 5000 2100 2    50   ~ 0
-GateCRAS
-Wire Wire Line
-	6650 2000 6650 2100
-Wire Wire Line
-	6350 2150 6350 2250
-Wire Wire Line
-	6050 2150 6350 2150
-Wire Wire Line
-	6050 2250 6050 2150
-Wire Wire Line
-	5750 2150 5750 2250
-Wire Wire Line
-	5450 2000 5450 2100
-Wire Notes Line
-	6950 2150 6950 2250
-Wire Notes Line
-	7000 2150 7000 2250
-Wire Notes Line
-	7050 2150 7050 2250
-Wire Notes Line
-	7100 2150 7100 2250
-Wire Notes Line
-	7150 2150 7150 2250
-Wire Notes Line
-	7200 2150 7200 2250
-Wire Notes Line
-	7250 2150 7250 2250
-Wire Notes Line
-	7300 2150 7300 2250
-Wire Notes Line
-	7350 2150 7350 2250
-Wire Notes Line
-	7400 2150 7400 2250
-Wire Notes Line
-	7450 2150 7450 2250
-Wire Notes Line
-	7500 2150 7500 2250
-Wire Wire Line
-	5450 2100 5050 2100
-Wire Notes Line
-	5050 2150 5150 2150
-Wire Notes Line
-	5150 2150 5150 2250
-Wire Notes Line
-	5050 2250 5050 2150
-Wire Notes Line
-	5050 2200 5150 2200
-Wire Notes Line
-	5100 2150 5100 2250
-Wire Wire Line
-	9950 2150 9350 2150
-Wire Notes Line
-	8450 2150 8450 2250
-Wire Notes Line
-	8500 2150 8500 2250
-Wire Notes Line
-	8550 2150 8550 2250
-Wire Notes Line
-	8600 2150 8600 2250
-Wire Notes Line
-	8650 2150 8650 2250
-Wire Notes Line
-	8700 2150 8700 2250
-Wire Notes Line
-	8750 2150 8750 2250
-Wire Notes Line
-	8800 2150 8800 2250
-Wire Notes Line
-	8850 2150 8850 2250
-Wire Notes Line
-	8900 2150 8900 2250
-Wire Notes Line
-	8950 2150 8950 2250
-Wire Notes Line
-	9000 2150 9000 2250
-Wire Notes Line
-	9050 2150 9050 2250
-Wire Notes Line
-	9100 2150 9100 2250
-Wire Notes Line
-	9150 2150 9150 2250
-Wire Notes Line
-	9200 2150 9200 2250
-Wire Notes Line
-	9250 2150 9250 2250
-Wire Notes Line
-	9300 2150 9300 2250
-Wire Notes Line
-	9350 2250 9350 2150
-Wire Notes Line
-	7950 2150 7950 2250
-Wire Notes Line
-	8000 2150 8000 2250
-Wire Notes Line
-	8050 2150 8050 2250
-Wire Notes Line
-	8100 2150 8100 2250
-Wire Notes Line
-	8150 2150 8150 2250
-Wire Notes Line
-	8200 2150 8200 2250
-Wire Notes Line
-	8250 2150 8250 2250
-Wire Notes Line
-	8300 2150 8300 2250
-Wire Notes Line
-	8350 2150 8350 2250
-Wire Notes Line
-	8400 2150 8400 2250
-Wire Notes Line
-	7850 2150 7850 2250
-Wire Notes Line
-	7800 2150 7800 2250
-Wire Notes Line
-	7750 2150 7750 2250
-Wire Notes Line
-	7700 2150 7700 2250
-Wire Notes Line
-	7650 2150 7650 2250
-Wire Notes Line
-	7600 2150 7600 2250
-Wire Notes Line
-	7900 2150 7900 2250
-Wire Wire Line
-	9950 2150 9950 2250
-Wire Wire Line
-	9650 2100 9650 2000
-Wire Wire Line
-	9650 2000 10100 2000
-Text Notes 5000 2250 2    50   ~ 0
-nRefRAS
 Wire Wire Line
 	5050 1500 5750 1500
 Wire Wire Line
@@ -1170,22 +764,6 @@ Wire Wire Line
 	5450 1800 5450 1900
 Wire Wire Line
 	5450 1900 5050 1900
-Wire Wire Line
-	5450 2000 6650 2000
-Wire Wire Line
-	6650 2100 9650 2100
-Wire Notes Line
-	9350 2200 6950 2200
-Wire Notes Line
-	6950 2150 9350 2150
-Wire Wire Line
-	5750 2150 5150 2150
-Wire Bus Line
-	5450 1000 5450 3100
-Wire Bus Line
-	7550 1000 7550 3100
-Wire Bus Line
-	9650 1000 9650 3100
 Wire Bus Line
 	10150 1950 4650 1950
 Text Notes 5950 950  0    104  ~ 0
@@ -1363,8 +941,6 @@ Wire Wire Line
 Wire Wire Line
 	8250 1150 8400 1150
 Wire Wire Line
-	8400 1150 8400 1050
-Wire Wire Line
 	8250 1050 8250 1150
 Wire Wire Line
 	8550 1150 8700 1150
@@ -1380,8 +956,6 @@ Wire Wire Line
 	8100 1050 8250 1050
 Wire Wire Line
 	7950 1050 7950 1150
-Wire Wire Line
-	8100 1150 8100 1050
 Wire Wire Line
 	7950 1150 8100 1150
 Wire Wire Line
@@ -1453,18 +1027,6 @@ Wire Wire Line
 Wire Wire Line
 	5400 1150 5400 1050
 Wire Wire Line
-	5600 2950 5450 2950
-Wire Wire Line
-	5450 2950 5450 3050
-Wire Wire Line
-	5450 3050 5050 3050
-Wire Wire Line
-	5150 2800 5150 2900
-Wire Wire Line
-	5150 2900 5050 2900
-Wire Wire Line
-	5150 2800 5750 2800
-Wire Wire Line
 	4050 2650 4050 3200
 Wire Wire Line
 	4050 3500 4050 3400
@@ -1492,7 +1054,7 @@ L Device:R_Small R1
 U 1 1 5E545933
 P 2150 3100
 F 0 "R1" H 2100 3150 50  0000 R CNN
-F 1 "820" H 2100 3050 50  0000 R CNN
+F 1 "1k2" H 2100 3050 50  0000 R CNN
 F 2 "stdpads:R_0805" H 2150 3100 50  0001 C CNN
 F 3 "~" H 2150 3100 50  0001 C CNN
 	1    2150 3100
@@ -1529,12 +1091,6 @@ F 3 "https://www.alliancememory.com/wp-content/uploads/pdf/AS6C8008.pdf" H 5100 
 	1    5100 5900
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5600 3050 5900 3050
-Wire Wire Line
-	5900 3050 5900 2950
-Wire Wire Line
-	5900 2950 6650 2950
 $Comp
 L Device:C_Small C10
 U 1 1 5D463FD5
@@ -1564,4 +1120,118 @@ F 3 "~" H 2150 3300 50  0001 C CNN
 	1    2150 3300
 	-1   0    0    -1  
 $EndComp
+Wire Wire Line
+	5600 2100 5600 2000
+Wire Wire Line
+	5600 2000 5900 2000
+Wire Wire Line
+	5900 2000 5900 2100
+Wire Wire Line
+	5600 2100 5050 2100
+Wire Wire Line
+	5900 2100 10100 2100
+Wire Wire Line
+	6500 2250 8000 2250
+Wire Wire Line
+	8300 2250 10100 2250
+Wire Bus Line
+	9650 700  9650 2800
+Wire Bus Line
+	7550 700  7550 2800
+Wire Bus Line
+	5450 700  5450 2800
+Wire Wire Line
+	5050 2250 6200 2250
+Wire Wire Line
+	6950 2450 6950 2350
+Wire Wire Line
+	9950 2450 10100 2450
+Wire Wire Line
+	9950 2350 9950 2450
+Wire Wire Line
+	5050 2350 5750 2350
+Wire Wire Line
+	9050 2350 9950 2350
+Wire Wire Line
+	9050 2450 9050 2350
+Wire Wire Line
+	8000 2150 8300 2150
+Wire Wire Line
+	8300 2150 8300 2250
+Wire Wire Line
+	6200 2150 6500 2150
+Wire Wire Line
+	6200 2250 6200 2150
+Wire Wire Line
+	6350 2450 6950 2450
+Wire Wire Line
+	5900 2500 6650 2500
+Wire Wire Line
+	5900 2600 5900 2500
+Wire Wire Line
+	5600 2600 5900 2600
+Wire Wire Line
+	5450 2600 5050 2600
+Wire Wire Line
+	5450 2500 5450 2600
+Wire Wire Line
+	5600 2500 5450 2500
+Wire Wire Line
+	5750 2350 5750 2450
+Wire Wire Line
+	6050 2450 6050 2350
+Wire Wire Line
+	6050 2350 6350 2350
+Wire Wire Line
+	6350 2350 6350 2450
+Wire Wire Line
+	5750 2450 6050 2450
+Wire Wire Line
+	6500 2150 6500 2250
+Text Notes 5000 2250 2    50   ~ 0
+HoldRow
+Text Notes 5000 2600 2    50   ~ 0
+nCAS
+Text Notes 5000 2450 2    50   ~ 0
+nRAS
+Wire Wire Line
+	8000 2250 8000 2150
+Wire Wire Line
+	5600 2500 5600 2600
+Wire Wire Line
+	6650 2500 6650 2600
+Wire Wire Line
+	6650 2600 7550 2600
+Wire Wire Line
+	7550 2600 7550 2500
+Wire Wire Line
+	7550 2500 8750 2500
+Wire Wire Line
+	8750 2500 8750 2600
+Wire Wire Line
+	8750 2600 9650 2600
+Wire Wire Line
+	9650 2600 9650 2500
+Wire Wire Line
+	9650 2500 9800 2500
+Wire Wire Line
+	9800 2500 9800 2600
+Wire Wire Line
+	9800 2600 10100 2600
+Wire Bus Line
+	4650 2300 10150 2300
+Text Notes 5750 4600 0    50   ~ 0
+State = { PHI0, C7M, nPRAS, nPCAS, Q3 }\n\nGateCASWE <= state == 01111 @ C14M↓\nHoldRow <= state == 01011 | 11011 @ C14M↓\n\nnRAS <= ~state == 01111 | 01011 | 00001 | 11011 | 10011~ @ C14M↑\nnCAS <= Q3 & ~GateCASWE~\nnRWE <= GateCASWE | RW80\n\nRowAddr[7:0] <= (state == 01111 | 10111) ? MA[7:0] : RowAddr[7:0] @ C14M↑\nBA[5:0] <= (state==10100 & RowAddr==73 & C07X) ? D[5:0] : BA[5:0] @ C14M↑\n\nRA[7:0] <= HoldRow ? RowAddr[7:0] : MA[7:0]\nRA[10:8] <= PHI1 ? 0 : HoldRow ? BA[5:3] : BA[2:0]\nRA[11] <= PHI1 ? 0 : BA[5]\n\nVDR[7:0] <= RD[7:0] @ PHI0\nVD[7:0] <= PHI1 ? 8’bZ : VDR[7:0]\nMD[7:0] <= (EN80 & R~W~80) ? RD[7:0] : 8’bZ\nRD[7:0] <= (EN80 & ~R~W80) ? MD[7:0] : 8’bZ
+Text Notes 5000 2100 2    50   ~ 0
+GateCASWE
+Wire Wire Line
+	8100 1150 8100 1050
+Wire Wire Line
+	8400 1150 8400 1050
+Wire Wire Line
+	8450 2350 8450 2450
+Wire Wire Line
+	8450 2450 9050 2450
+Wire Wire Line
+	6950 2350 8450 2350
 $EndSCHEMATC
