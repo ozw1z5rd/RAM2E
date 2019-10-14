@@ -15,6 +15,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	// Delay
 	input [3:0] DelayIn; output [3:0] DelayOut;
 	assign DelayOut[3:0] = 0; // Delay not used now
+	// Delay0 is RC, Delay3:1 are direct external feedback
 	// TODO: delay DOE
 
 	// State
