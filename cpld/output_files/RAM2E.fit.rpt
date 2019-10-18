@@ -1,5 +1,5 @@
 Fitter report for RAM2E
-Sun Oct 13 20:03:23 2019
+Fri Oct 18 15:17:20 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -53,7 +53,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Fitter Summary                                                              ;
 +---------------------------+-------------------------------------------------+
-; Fitter Status             ; Successful - Sun Oct 13 20:03:23 2019           ;
+; Fitter Status             ; Successful - Fri Oct 18 15:17:20 2019           ;
 ; Quartus II 32-bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name             ; RAM2E                                           ;
 ; Top-level Entity Name     ; RAM2E                                           ;
@@ -98,7 +98,7 @@ The pin-out file can be found in /Repos/RAM2E/cpld/output_files/RAM2E.pin.
 +------------------------------+-------------------+
 ; Logic cells                  ; 47 / 128 ( 37 % ) ;
 ; Registers                    ; 32 / 128 ( 25 % ) ;
-; Number of pterms used        ; 88                ;
+; Number of pterms used        ; 91                ;
 ; I/O pins                     ; 68 / 68 ( 100 % ) ;
 ;     -- Clock pins            ; 2 / 2 ( 100 % )   ;
 ;     -- Dedicated input pins  ; 2 / 2 ( 100 % )   ;
@@ -109,8 +109,8 @@ The pin-out file can be found in /Repos/RAM2E/cpld/output_files/RAM2E.pin.
 ; Cells using turbo bit        ; 0 / 128 ( 0 % )   ;
 ; Maximum fan-out              ; 32                ;
 ; Highest non-global fan-out   ; 32                ;
-; Total fan-out                ; 339               ;
-; Average fan-out              ; 2.95              ;
+; Total fan-out                ; 342               ;
+; Average fan-out              ; 2.97              ;
 +------------------------------+-------------------+
 
 
@@ -124,9 +124,9 @@ The pin-out file can be found in /Repos/RAM2E/cpld/output_files/RAM2E.pin.
 ; C14M_2     ; 84    ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; C3M58      ; 10    ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; C7M        ; 9     ; --       ; 1   ; 32                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
-; DelayIn[0] ; 11    ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
-; DelayIn[1] ; 15    ; --       ; 2   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
-; DelayIn[2] ; 17    ; --       ; 2   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; DelayIn[0] ; 11    ; --       ; 1   ; 2                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; DelayIn[1] ; 15    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; DelayIn[2] ; 17    ; --       ; 2   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; DelayIn[3] ; 20    ; --       ; 2   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; MA[0]      ; 45    ; --       ; 5   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; MA[1]      ; 46    ; --       ; 5   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
@@ -142,7 +142,7 @@ The pin-out file can be found in /Repos/RAM2E/cpld/output_files/RAM2E.pin.
 ; Q3_2       ; 1     ; --       ; --  ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; nC07X      ; 6     ; --       ; 1   ; 5                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; nCASEN     ; 77    ; --       ; 8   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
-; nEN80      ; 76    ; --       ; 8   ; 2                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
+; nEN80      ; 76    ; --       ; 8   ; 1                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; nPCAS      ; 81    ; --       ; 8   ; 32                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; nPRAS      ; 8     ; --       ; 1   ; 32                    ; 0                  ; no     ; no             ; TTL          ; User                 ;
 ; nWE        ; 5     ; --       ; 1   ; 7                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
@@ -398,10 +398,12 @@ Note: User assignments will override these defaults. The user specified values a
 ; MD[2]~2                       ; 2       ;
 ; MD[1]~1                       ; 2       ;
 ; MD[0]~0                       ; 2       ;
-; nEN80                         ; 2       ;
+; DelayIn[0]                    ; 2       ;
 ; MD[7]~7                       ; 1       ;
 ; MD[6]~6                       ; 1       ;
 ; MD[5]~5                       ; 1       ;
+; DelayIn[2]                    ; 1       ;
+; DelayIn[1]                    ; 1       ;
 ; MA[7]                         ; 1       ;
 ; MA[6]                         ; 1       ;
 ; MA[5]                         ; 1       ;
@@ -410,9 +412,7 @@ Note: User assignments will override these defaults. The user specified values a
 ; MA[2]                         ; 1       ;
 ; MA[1]                         ; 1       ;
 ; MA[0]                         ; 1       ;
-; ~GND~4                        ; 1       ;
-; ~GND~3                        ; 1       ;
-; ~GND~2                        ; 1       ;
+; nEN80                         ; 1       ;
 ; ~GND~1                        ; 1       ;
 ; ~GND~0                        ; 1       ;
 ; nCAS~reg0                     ; 1       ;
@@ -425,9 +425,9 @@ Note: User assignments will override these defaults. The user specified values a
 ; RA[10]~reg0                   ; 1       ;
 ; BA[4]                         ; 1       ;
 ; BA[3]                         ; 1       ;
-; BA[2]                         ; 1       ;
 ; BA[0]                         ; 1       ;
 ; BA[1]                         ; 1       ;
+; BA[2]                         ; 1       ;
 ; nRWE~reg0                     ; 1       ;
 ; MDR[0]                        ; 1       ;
 ; MDR[1]                        ; 1       ;
@@ -442,6 +442,9 @@ Note: User assignments will override these defaults. The user specified values a
 ; MDR[5]                        ; 1       ;
 ; MDR[6]                        ; 1       ;
 ; MDR[7]                        ; 1       ;
+; DelayIn[2]~4                  ; 1       ;
+; DelayIn[1]~2                  ; 1       ;
+; nEN80~1                       ; 1       ;
 ; MD[7]~38                      ; 1       ;
 ; MD[6]~36                      ; 1       ;
 ; MD[5]~34                      ; 1       ;
@@ -459,29 +462,29 @@ Note: User assignments will override these defaults. The user specified values a
 ; Other Routing Resource Type ; Usage             ;
 +-----------------------------+-------------------+
 ; Output enables              ; 3 / 6 ( 50 % )    ;
-; PIA buffers                 ; 70 / 288 ( 24 % ) ;
-; PIAs                        ; 79 / 288 ( 27 % ) ;
+; PIA buffers                 ; 72 / 288 ( 25 % ) ;
+; PIAs                        ; 82 / 288 ( 28 % ) ;
 +-----------------------------+-------------------+
 
 
-+----------------------------------------------------------------------------+
-; LAB External Interconnect                                                  ;
-+----------------------------------------------+-----------------------------+
-; LAB External Interconnects  (Average = 9.88) ; Number of LABs  (Total = 7) ;
-+----------------------------------------------+-----------------------------+
-; 0 - 1                                        ; 1                           ;
-; 2 - 3                                        ; 1                           ;
-; 4 - 5                                        ; 0                           ;
-; 6 - 7                                        ; 1                           ;
-; 8 - 9                                        ; 2                           ;
-; 10 - 11                                      ; 0                           ;
-; 12 - 13                                      ; 1                           ;
-; 14 - 15                                      ; 0                           ;
-; 16 - 17                                      ; 0                           ;
-; 18 - 19                                      ; 1                           ;
-; 20 - 21                                      ; 0                           ;
-; 22 - 23                                      ; 1                           ;
-+----------------------------------------------+-----------------------------+
++-----------------------------------------------------------------------------+
+; LAB External Interconnect                                                   ;
++-----------------------------------------------+-----------------------------+
+; LAB External Interconnects  (Average = 10.25) ; Number of LABs  (Total = 7) ;
++-----------------------------------------------+-----------------------------+
+; 0 - 1                                         ; 1                           ;
+; 2 - 3                                         ; 1                           ;
+; 4 - 5                                         ; 0                           ;
+; 6 - 7                                         ; 1                           ;
+; 8 - 9                                         ; 2                           ;
+; 10 - 11                                       ; 0                           ;
+; 12 - 13                                       ; 0                           ;
+; 14 - 15                                       ; 0                           ;
+; 16 - 17                                       ; 1                           ;
+; 18 - 19                                       ; 1                           ;
+; 20 - 21                                       ; 0                           ;
+; 22 - 23                                       ; 1                           ;
++-----------------------------------------------+-----------------------------+
 
 
 +----------------------------------------------------------------------+
@@ -514,50 +517,50 @@ Note: User assignments will override these defaults. The user specified values a
 +-----+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 ; LAB ; Logic Cell ; Input                                                                                                                                                                ; Output                                                                                                                                           ;
 +-----+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-;  A  ; LC5        ; nWE, nEN80                                                                                                                                                           ; MD[0], MD[1], MD[2], MD[3], MD[4], MD[5], MD[6], MD[7]                                                                                           ;
-;  A  ; LC11       ; nWE, nEN80                                                                                                                                                           ; RD[0], RD[1], RD[2], RD[3], RD[4], RD[5], RD[6], RD[7]                                                                                           ;
+;  A  ; LC11       ; nWE, DelayIn[0]                                                                                                                                                      ; MD[0], MD[1], MD[2], MD[3], MD[4], MD[5], MD[6], MD[7]                                                                                           ;
+;  A  ; LC5        ; nWE, DelayIn[0]                                                                                                                                                      ; RD[0], RD[1], RD[2], RD[3], RD[4], RD[5], RD[6], RD[7]                                                                                           ;
 ;  A  ; LC3        ;                                                                                                                                                                      ; DelayOut[0]                                                                                                                                      ;
-;  B  ; LC17       ; C14M, MA[0], MA[1], MA[2], MA[3], MA[4], MA[5], MA[6], MA[7], PHI0, Q3, nPCAS, C7M, nPRAS                                                                            ; XX73SEL, BA[1], BA[0], BA[2], BA[3], BA[4]                                                                                                       ;
-;  B  ; LC19       ;                                                                                                                                                                      ; DelayOut[3]                                                                                                                                      ;
-;  B  ; LC27       ;                                                                                                                                                                      ; DelayOut[1]                                                                                                                                      ;
-;  B  ; LC24       ;                                                                                                                                                                      ; DelayOut[2]                                                                                                                                      ;
-;  C  ; LC44       ; C14M, MD[2], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[8]~reg0                                                                                                                                       ;
-;  C  ; LC48       ; C14M, MD[1], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[9]~reg0                                                                                                                                       ;
-;  C  ; LC33       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0                                ;
-;  C  ; LC43       ; C14M, nWE80, C7M, PHI0, nPRAS, Q3, nPCAS, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0] ; nCAS                                                                                                                                             ;
+;  B  ; LC24       ; DelayIn[1]                                                                                                                                                           ; DelayOut[2]                                                                                                                                      ;
+;  B  ; LC19       ; DelayIn[2]                                                                                                                                                           ; DelayOut[3]                                                                                                                                      ;
+;  B  ; LC27       ; nEN80                                                                                                                                                                ; DelayOut[1]                                                                                                                                      ;
+;  B  ; LC17       ; C14M, MA[0], MA[1], MA[2], MA[3], MA[4], MA[5], MA[6], MA[7], PHI0, Q3, nPCAS, C7M, nPRAS                                                                            ; XX73SEL, BA[2], BA[1], BA[0], BA[3], BA[4]                                                                                                       ;
+;  C  ; LC41       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
+;  C  ; LC36       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0                                ;
+;  C  ; LC39       ; C14M, MD[2], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[8]~reg0                                                                                                                                       ;
 ;  C  ; LC40       ; MD[4]                                                                                                                                                                ; RD[4]                                                                                                                                            ;
 ;  C  ; LC38       ; MD[5]                                                                                                                                                                ; RD[5]                                                                                                                                            ;
 ;  C  ; LC37       ; MD[6]                                                                                                                                                                ; RD[6]                                                                                                                                            ;
 ;  C  ; LC35       ; MD[7]                                                                                                                                                                ; RD[7]                                                                                                                                            ;
-;  C  ; LC45       ;                                                                                                                                                                      ; RA[11]                                                                                                                                           ;
-;  C  ; LC36       ; C14M, lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
-;  C  ; LC41       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
-;  C  ; LC34       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[0], PHI0, Q3, nPCAS, C7M, nPRAS                                       ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
-;  C  ; LC46       ; C14M, BA[4], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; RA[10]                                                                                                                                           ;
-;  C  ; LC39       ; C14M, MD[4], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[10]~reg0                                                                                                                                      ;
+;  C  ; LC48       ; C14M, MD[1], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[9]~reg0                                                                                                                                       ;
 ;  C  ; LC47       ; C14M, MD[0], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[8]~reg0                                                                                                                                       ;
-;  C  ; LC42       ; C14M, MD[3], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[9]~reg0                                                                                                                                       ;
-;  D  ; LC57       ; MD[3]                                                                                                                                                                ; RD[3]                                                                                                                                            ;
-;  D  ; LC56       ; C14M, C7M, nPCAS, nWE80, Q3, PHI0, nPRAS                                                                                                                             ; nRWE                                                                                                                                             ;
-;  D  ; LC49       ; C14M, BA[0], Q3, PHI0, nPRAS, nPCAS, BA[2], C7M                                                                                                                      ; RA[8]                                                                                                                                            ;
-;  D  ; LC53       ; C14M, Q3, nPCAS, nPRAS, C7M, PHI0, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], nWE80 ; nRAS                                                                                                                                             ;
+;  C  ; LC44       ; C14M, MD[3], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[9]~reg0                                                                                                                                       ;
+;  C  ; LC42       ; C14M, MD[4], XX73SEL~reg0, Q3, PHI0, nWE, nC07X, nPCAS, C7M, nPRAS                                                                                                   ; RA[10]~reg0                                                                                                                                      ;
+;  C  ; LC33       ; C14M, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[0], PHI0, Q3, nPCAS, C7M, nPRAS                                       ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
+;  C  ; LC46       ; C14M, BA[4], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; RA[10]                                                                                                                                           ;
+;  C  ; LC34       ; C14M, lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], PHI0, Q3, nPCAS, C7M, nPRAS        ; lpm_counter:Ref_rtl_0|dffs[0], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[3], nRAS~reg0, nCAS~reg0 ;
+;  C  ; LC43       ; C14M, nWE80, C7M, PHI0, nPRAS, Q3, nPCAS, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0] ; nCAS                                                                                                                                             ;
+;  C  ; LC45       ;                                                                                                                                                                      ; RA[11]                                                                                                                                           ;
 ;  D  ; LC64       ; MD[0]                                                                                                                                                                ; RD[0]                                                                                                                                            ;
 ;  D  ; LC61       ; MD[1]                                                                                                                                                                ; RD[1]                                                                                                                                            ;
 ;  D  ; LC59       ; MD[2]                                                                                                                                                                ; RD[2]                                                                                                                                            ;
+;  D  ; LC57       ; MD[3]                                                                                                                                                                ; RD[3]                                                                                                                                            ;
+;  D  ; LC56       ; C14M, C7M, nPCAS, nWE80, Q3, PHI0, nPRAS                                                                                                                             ; nRWE                                                                                                                                             ;
 ;  D  ; LC51       ; C14M, BA[1], Q3, PHI0, nPRAS, nPCAS, BA[3], C7M                                                                                                                      ; RA[9]                                                                                                                                            ;
-;  F  ; LC83       ; C14M, RD[7], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[7]                                                                                                                                            ;
-;  F  ; LC93       ; C14M, RD[6], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[6]                                                                                                                                            ;
-;  F  ; LC88       ; C14M, RD[0], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[0]                                                                                                                                            ;
-;  F  ; LC91       ; C14M, RD[6], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[6]                                                                                                                                            ;
-;  F  ; LC94       ; C14M, RD[1], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[1]                                                                                                                                            ;
+;  D  ; LC49       ; C14M, BA[0], Q3, PHI0, nPRAS, nPCAS, BA[2], C7M                                                                                                                      ; RA[8]                                                                                                                                            ;
+;  D  ; LC53       ; C14M, Q3, nPCAS, nPRAS, C7M, PHI0, lpm_counter:Ref_rtl_0|dffs[3], lpm_counter:Ref_rtl_0|dffs[2], lpm_counter:Ref_rtl_0|dffs[1], lpm_counter:Ref_rtl_0|dffs[0], nWE80 ; nRAS                                                                                                                                             ;
 ;  F  ; LC85       ; C14M, RD[7], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[7]                                                                                                                                            ;
+;  F  ; LC91       ; C14M, RD[6], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[6]                                                                                                                                            ;
 ;  F  ; LC86       ; C14M, RD[0], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[0]                                                                                                                                            ;
+;  F  ; LC93       ; C14M, RD[6], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[6]                                                                                                                                            ;
+;  F  ; LC94       ; C14M, RD[1], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[1]                                                                                                                                            ;
+;  F  ; LC88       ; C14M, RD[0], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[0]                                                                                                                                            ;
+;  F  ; LC83       ; C14M, RD[7], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[7]                                                                                                                                            ;
+;  G  ; LC101      ; C14M, RD[5], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[5]                                                                                                                                            ;
 ;  G  ; LC104      ; C14M, RD[2], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[2]                                                                                                                                            ;
+;  G  ; LC97       ; C14M, RD[1], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[1]                                                                                                                                            ;
+;  G  ; LC105      ; C14M, RD[2], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[2]                                                                                                                                            ;
 ;  G  ; LC99       ; C14M, RD[5], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[5]                                                                                                                                            ;
 ;  G  ; LC109      ; C14M, RD[4], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[4]                                                                                                                                            ;
-;  G  ; LC101      ; C14M, RD[5], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[5]                                                                                                                                            ;
-;  G  ; LC105      ; C14M, RD[2], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[2]                                                                                                                                            ;
-;  G  ; LC97       ; C14M, RD[1], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[1]                                                                                                                                            ;
 ;  G  ; LC107      ; C14M, RD[4], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[4]                                                                                                                                            ;
 ;  H  ; LC117      ; C14M, RD[3], Q3, PHI0, nPCAS, C7M, nPRAS                                                                                                                             ; VD[3]                                                                                                                                            ;
 ;  H  ; LC115      ; C14M, RD[3], Q3, PHI0, nPRAS, C7M, nPCAS                                                                                                                             ; MD[3]                                                                                                                                            ;
@@ -586,7 +589,7 @@ Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (119006): Selected device EPM7128SLC84-15 for design "RAM2E"
 Info: Quartus II 32-bit Fitter was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 290 megabytes
-    Info: Processing ended: Sun Oct 13 20:03:23 2019
+    Info: Processing ended: Fri Oct 18 15:17:20 2019
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

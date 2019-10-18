@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for RAM2E
-Sun Oct 13 20:03:30 2019
+Fri Oct 18 15:17:27 2019
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -143,9 +143,9 @@ No paths to report.
 ; -25.000 ; lpm_counter:Ref_rtl_0|dffs[3] ; lpm_counter:Ref_rtl_0|dffs[0] ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; lpm_counter:Ref_rtl_0|dffs[2] ; lpm_counter:Ref_rtl_0|dffs[0] ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; lpm_counter:Ref_rtl_0|dffs[0] ; lpm_counter:Ref_rtl_0|dffs[0] ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
+; -25.000 ; XX73SEL~reg0                  ; BA[2]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; XX73SEL~reg0                  ; BA[1]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; XX73SEL~reg0                  ; BA[0]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
-; -25.000 ; XX73SEL~reg0                  ; BA[2]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; XX73SEL~reg0                  ; BA[3]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; XX73SEL~reg0                  ; BA[4]                         ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
 ; -25.000 ; BA[4]                         ; RA[10]~reg0                   ; C14M         ; C14M        ; 1.000        ; 0.000      ; 22.000     ;
@@ -184,9 +184,9 @@ No paths to report.
 ; 18.000 ; lpm_counter:Ref_rtl_0|dffs[3] ; lpm_counter:Ref_rtl_0|dffs[3] ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; lpm_counter:Ref_rtl_0|dffs[3] ; lpm_counter:Ref_rtl_0|dffs[0] ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; lpm_counter:Ref_rtl_0|dffs[2] ; lpm_counter:Ref_rtl_0|dffs[0] ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
+; 18.000 ; XX73SEL~reg0                  ; BA[2]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; XX73SEL~reg0                  ; BA[1]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; XX73SEL~reg0                  ; BA[0]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
-; 18.000 ; XX73SEL~reg0                  ; BA[2]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; XX73SEL~reg0                  ; BA[3]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; XX73SEL~reg0                  ; BA[4]                         ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
 ; 18.000 ; BA[4]                         ; RA[10]~reg0                   ; C14M         ; C14M        ; 0.000        ; 0.000      ; 22.000     ;
@@ -466,6 +466,24 @@ No paths to report.
 +------------+-------------+--------+--------+--------+--------+
 ; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
 +------------+-------------+--------+--------+--------+--------+
+; DelayIn[0] ; MD[0]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[1]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[2]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[3]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[4]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[5]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[6]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[0]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[1]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[2]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[3]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[4]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[5]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[6]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[1] ; DelayOut[2] ; 32.000 ;        ;        ; 32.000 ;
+; DelayIn[2] ; DelayOut[3] ; 32.000 ;        ;        ; 32.000 ;
 ; MD[0]      ; RD[0]       ; 32.000 ;        ;        ; 32.000 ;
 ; MD[1]      ; RD[1]       ; 32.000 ;        ;        ; 32.000 ;
 ; MD[2]      ; RD[2]       ; 32.000 ;        ;        ; 32.000 ;
@@ -482,22 +500,7 @@ No paths to report.
 ; PHI1       ; VD[5]       ; 17.000 ;        ;        ; 17.000 ;
 ; PHI1       ; VD[6]       ; 17.000 ;        ;        ; 17.000 ;
 ; PHI1       ; VD[7]       ; 17.000 ;        ;        ; 17.000 ;
-; nEN80      ; MD[0]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[1]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[2]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[3]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[4]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[5]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[6]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[7]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[0]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[1]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[2]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[3]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[4]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[5]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[6]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; nEN80      ; DelayOut[1] ; 32.000 ;        ;        ; 32.000 ;
 ; nWE        ; MD[0]       ; 39.000 ;        ;        ; 39.000 ;
 ; nWE        ; MD[1]       ; 39.000 ;        ;        ; 39.000 ;
 ; nWE        ; MD[2]       ; 39.000 ;        ;        ; 39.000 ;
@@ -522,6 +525,24 @@ No paths to report.
 +------------+-------------+--------+--------+--------+--------+
 ; Input Port ; Output Port ; RR     ; RF     ; FR     ; FF     ;
 +------------+-------------+--------+--------+--------+--------+
+; DelayIn[0] ; MD[0]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[1]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[2]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[3]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[4]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[5]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[6]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; MD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[0]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[1]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[2]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[3]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[4]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[5]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[6]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[0] ; RD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; DelayIn[1] ; DelayOut[2] ; 32.000 ;        ;        ; 32.000 ;
+; DelayIn[2] ; DelayOut[3] ; 32.000 ;        ;        ; 32.000 ;
 ; MD[0]      ; RD[0]       ; 32.000 ;        ;        ; 32.000 ;
 ; MD[1]      ; RD[1]       ; 32.000 ;        ;        ; 32.000 ;
 ; MD[2]      ; RD[2]       ; 32.000 ;        ;        ; 32.000 ;
@@ -538,22 +559,7 @@ No paths to report.
 ; PHI1       ; VD[5]       ; 17.000 ;        ;        ; 17.000 ;
 ; PHI1       ; VD[6]       ; 17.000 ;        ;        ; 17.000 ;
 ; PHI1       ; VD[7]       ; 17.000 ;        ;        ; 17.000 ;
-; nEN80      ; MD[0]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[1]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[2]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[3]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[4]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[5]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[6]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; MD[7]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[0]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[1]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[2]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[3]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[4]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[5]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[6]       ;        ; 39.000 ; 39.000 ;        ;
-; nEN80      ; RD[7]       ;        ; 39.000 ; 39.000 ;        ;
+; nEN80      ; DelayOut[1] ; 32.000 ;        ;        ; 32.000 ;
 ; nWE        ; MD[0]       ; 39.000 ;        ;        ; 39.000 ;
 ; nWE        ; MD[1]       ; 39.000 ;        ;        ; 39.000 ;
 ; nWE        ; MD[2]       ; 39.000 ;        ;        ; 39.000 ;
@@ -612,10 +618,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 34    ; 34   ;
-; Unconstrained Input Port Paths  ; 250   ; 250  ;
-; Unconstrained Output Ports      ; 31    ; 31   ;
-; Unconstrained Output Port Paths ; 71    ; 71   ;
+; Unconstrained Input Ports       ; 37    ; 37   ;
+; Unconstrained Input Port Paths  ; 253   ; 253  ;
+; Unconstrained Output Ports      ; 34    ; 34   ;
+; Unconstrained Output Port Paths ; 74    ; 74   ;
 +---------------------------------+-------+------+
 
 
@@ -625,7 +631,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Oct 13 20:03:27 2019
+    Info: Processing started: Fri Oct 18 15:17:25 2019
 Info: Command: quartus_sta RAM2E -c RAM2E
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -657,8 +663,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 262 megabytes
-    Info: Processing ended: Sun Oct 13 20:03:30 2019
-    Info: Elapsed time: 00:00:03
+    Info: Processing ended: Fri Oct 18 15:17:27 2019
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 

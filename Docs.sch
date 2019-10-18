@@ -426,7 +426,7 @@ Text Notes 7150 1800 0    40   ~ 0
 11001
 Wire Wire Line
 	7500 1400 7500 1500
-Text Notes 3650 3900 0    200  ~ 0
+Text Notes 3650 4000 0    200  ~ 0
 Information may be out of date,\nsuperseded by ./cpld/RAM2E.v
 Wire Wire Line
 	3900 2900 3700 2900
@@ -514,4 +514,6 @@ Wire Wire Line
 	7400 2800 8750 2800
 Wire Wire Line
 	7350 2900 7400 2800
+Text Notes 5600 3300 0    50   ~ 0
+State = { PHI0, C7M, nPRAS, nPCAS, Q3 }
 $EndSCHEMATC

@@ -14,10 +14,12 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 
 	// Delay
 	input [3:0] DelayIn; output [3:0] DelayOut;
-	assign DelayOut[3:0] = 0; // Delay not used now
-	// Delay0 is RC, Delay3:1 are direct external feedback
-	// TODO: delay DOE
-
+	assign DelayOut[0] = 0; // Not depending on mounting RC delay
+	assign DelayOut[1] = nEN80;
+	assign DelayOut[2] = DelayIn[1];
+	assign DelayOut[3] = DelayIn[2];
+	wire EN80 = ~DelayIn;
+	
 	// State
 	wire [4:0] S = { PHI0, C7M, nPRAS, nPCAS, Q3 }; // State vector
 	reg [3:0] Ref = 0; // Refresh counter
@@ -35,9 +37,9 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	reg [7:0] VDR, MDR; // Registered video and memory data
 	wire VDOE = ~PHI1;
 	inout [7:0] VD = VDOE ? VDR[7:0] : 8'bZ; // Video data
-	wire MDOE = ~nEN80 & nWE;
+	wire MDOE = EN80 & nWE;
 	inout [7:0] MD = MDOE ? MDR[7:0] : 8'bZ; // DRAM read data
-	wire RDOE = ~nEN80 & ~nWE;
+	wire RDOE = EN80 & ~nWE;
 	inout [7:0] RD = RDOE ? MD[7:0] : 8'bZ; // DRAM write data
 
 	always @(posedge C14M) begin
