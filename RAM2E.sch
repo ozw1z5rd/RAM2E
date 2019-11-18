@@ -1175,26 +1175,6 @@ Connection ~ 5600 1350
 Wire Wire Line
 	5600 1350 5700 1350
 Wire Bus Line
-	3150 5550 3150 6250
-Wire Bus Line
-	8200 2950 8200 4350
-Wire Bus Line
-	6600 2450 6600 4050
-Wire Bus Line
-	6400 2850 6400 3650
-Wire Bus Line
-	3750 3550 3750 4250
-Wire Bus Line
-	3150 4550 3150 5250
-Wire Bus Line
-	3150 3550 3150 4250
-Wire Bus Line
-	8000 2450 8000 4050
-Wire Bus Line
-	3750 4550 3750 5250
-Wire Bus Line
-	6400 4350 6400 6250
-Wire Bus Line
 	6400 4350 8200 4350
 Entry Wire Line
 	6300 4250 6400 4350
@@ -1236,4 +1216,24 @@ Text Notes 6200 2150 0    50   ~ 0
 DelayIn/Out[2]
 Text Notes 6200 2350 0    50   ~ 0
 DelayIn/Out[3]
+Wire Bus Line
+	6600 2450 6600 4050
+Wire Bus Line
+	8000 2450 8000 4050
+Wire Bus Line
+	3750 4550 3750 5250
+Wire Bus Line
+	3150 3550 3150 4250
+Wire Bus Line
+	3150 4550 3150 5250
+Wire Bus Line
+	3750 3550 3750 4250
+Wire Bus Line
+	6400 2850 6400 3650
+Wire Bus Line
+	3150 5550 3150 6250
+Wire Bus Line
+	8200 2950 8200 4350
+Wire Bus Line
+	6400 4350 6400 6250
 $EndSCHEMATC

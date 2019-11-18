@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:RAM2E-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -76,8 +76,8 @@ Text Notes 4600 1300 0    104  ~ 0
 Video Access
 Text Notes 6600 1300 0    100  ~ 0
 6502 CPU Access
-Text Notes 8350 1800 0    40   ~ 0
-01111
+Text Notes 8400 1800 0    40   ~ 0
+0
 Text Notes 3850 1800 0    40   ~ 0
 10100
 Wire Wire Line
@@ -96,12 +96,12 @@ Wire Wire Line
 	3750 1400 3750 1500
 Wire Wire Line
 	3750 1500 3700 1500
-Text Notes 8050 1800 0    40   ~ 0
-10100
-Text Notes 7750 1800 0    40   ~ 0
-11000
-Text Notes 7450 1800 0    40   ~ 0
-10000
+Text Notes 8100 1800 0    40   ~ 0
+D
+Text Notes 7800 1800 0    40   ~ 0
+C
+Text Notes 7500 1800 0    40   ~ 0
+B
 Wire Wire Line
 	5550 1700 5600 1800
 Text Notes 3600 1800 2    50   ~ 0
@@ -168,24 +168,22 @@ Wire Wire Line
 	8550 1700 8600 1800
 Wire Wire Line
 	8600 1800 8750 1800
-Text Notes 5950 1800 0    40   ~ 0
-01100
-Text Notes 5650 1800 0    40   ~ 0
-00000
-Text Notes 5350 1800 0    40   ~ 0
-01000
-Text Notes 5050 1800 0    40   ~ 0
-00001
-Text Notes 4750 1800 0    40   ~ 0
-01011
-Text Notes 4450 1800 0    40   ~ 0
-00011
-Text Notes 4150 1800 0    40   ~ 0
-01111
-Text Notes 6250 1800 0    40   ~ 0
-10111
-Text Notes 6550 1800 0    40   ~ 0
-11011
+Text Notes 6000 1800 0    40   ~ 0
+6
+Text Notes 5700 1800 0    40   ~ 0
+5
+Text Notes 5400 1800 0    40   ~ 0
+4
+Text Notes 5100 1800 0    40   ~ 0
+3
+Text Notes 4800 1800 0    40   ~ 0
+2
+Text Notes 4200 1800 0    40   ~ 0
+0
+Text Notes 6300 1800 0    40   ~ 0
+7
+Text Notes 6600 1800 0    40   ~ 0
+8
 Wire Wire Line
 	8300 1650 8750 1650
 Wire Wire Line
@@ -414,10 +412,10 @@ Wire Wire Line
 	3800 1850 3700 1850
 Wire Wire Line
 	3800 1950 3700 1950
-Text Notes 6850 1800 0    40   ~ 0
-10011
-Text Notes 7150 1800 0    40   ~ 0
-11001
+Text Notes 6900 1800 0    40   ~ 0
+9
+Text Notes 7200 1800 0    40   ~ 0
+A
 Wire Wire Line
 	7500 1400 7500 1500
 Text Notes 3650 4000 0    200  ~ 0
@@ -498,4 +496,6 @@ Wire Bus Line
 	8300 1350 8300 2950
 Wire Wire Line
 	7400 2900 8250 2900
+Text Notes 4500 1800 0    40   ~ 0
+1
 $EndSCHEMATC
