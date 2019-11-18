@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:RAM2E-cache
-EELAYER 29 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -324,8 +324,6 @@ Text Notes 3650 2750 2    50   ~ 0
 nRAS
 Text Notes 3650 2900 2    50   ~ 0
 nCAS
-Wire Bus Line
-	8300 1350 8300 3050
 Wire Wire Line
 	3950 2800 3900 2900
 Text Notes 3600 1950 2    50   ~ 0
@@ -383,15 +381,13 @@ Wire Wire Line
 Wire Wire Line
 	8600 2250 8750 2250
 Wire Wire Line
-	6750 2950 6800 3050
-Wire Wire Line
 	6450 2150 6500 2250
 Wire Wire Line
 	6500 2250 7950 2250
 Wire Wire Line
 	4050 2550 3700 2550
 Wire Bus Line
-	4100 1350 4100 3050
+	4100 1350 4100 2950
 Text Notes 3600 2100 2    50   ~ 0
 RA[11:8]
 Wire Wire Line
@@ -404,8 +400,6 @@ Wire Wire Line
 	6750 2100 6800 2000
 Wire Wire Line
 	7350 2000 7400 2100
-Text Notes 3650 3050 2    50   ~ 0
-nRWE
 Wire Wire Line
 	8250 1550 8300 1650
 Wire Wire Line
@@ -449,7 +443,7 @@ Wire Wire Line
 Wire Wire Line
 	6450 2650 6500 2750
 Wire Wire Line
-	7650 2900 7700 2800
+	8250 2900 8300 2800
 Wire Wire Line
 	7350 2800 7400 2900
 Wire Wire Line
@@ -461,7 +455,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 2900 5250 2900
 Wire Bus Line
-	6200 1350 6200 3050
+	6200 1350 6200 2950
 Wire Wire Line
 	6550 1950 8000 1950
 Wire Wire Line
@@ -472,8 +466,6 @@ Wire Wire Line
 	6500 2750 7650 2750
 Wire Wire Line
 	3700 2100 6750 2100
-Wire Wire Line
-	7650 3050 7700 2950
 Wire Wire Line
 	5900 2750 6150 2750
 Wire Wire Line
@@ -487,33 +479,23 @@ Wire Wire Line
 Wire Wire Line
 	5600 2900 5550 2800
 Wire Wire Line
-	7350 2750 7400 2650
-Wire Wire Line
-	7400 2650 8750 2650
-Wire Wire Line
-	6800 3050 7650 3050
+	7700 2650 8750 2650
 Wire Wire Line
 	6200 1550 8250 1550
 Wire Wire Line
 	7050 1500 7050 1400
 Wire Wire Line
-	3700 2950 8750 2950
-Wire Wire Line
 	6800 2000 7350 2000
 Wire Wire Line
 	6800 2100 8750 2100
 Wire Wire Line
-	7050 2800 7100 2900
-Wire Wire Line
-	7400 2900 7650 2900
-Wire Wire Line
 	6200 2800 7350 2800
-Wire Wire Line
-	7350 2900 7100 2900
-Wire Wire Line
-	7400 2800 8750 2800
-Wire Wire Line
-	7350 2900 7400 2800
 Text Notes 5600 3300 0    50   ~ 0
 State = { PHI0, C7M, nPRAS, nPCAS, Q3 }
+Wire Wire Line
+	8300 2800 8750 2800
+Wire Bus Line
+	8300 1350 8300 2950
+Wire Wire Line
+	7400 2900 8250 2900
 $EndSCHEMATC
