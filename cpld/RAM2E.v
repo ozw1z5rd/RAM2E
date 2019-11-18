@@ -2,7 +2,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 			 nPRAS, nPCAS, nWE, nWE80, nEN80,
 			 nRAS, nCAS, nRWE,
 			 VD, MD, RD, nC07X, MA, RA,
-			 Q3_2, C3M58, AN3, nCASEN, XX73SEL,
+			 Q3_2, C3M58, AN3, nCASEN, C073SEL,
 			 DelayIn, DelayOut);
 
 	// Control inputs
@@ -18,15 +18,21 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	assign DelayOut[1] = nEN80;
 	assign DelayOut[2] = DelayIn[1];
 	assign DelayOut[3] = DelayIn[2];
-	wire EN80 = ~DelayIn;
+	//wire EN80 = ~DelayIn;
+	wire EN80 = ~nEN80;
 
 	// DRAM control
-	output reg nRAS, nCAS, nRWE;
+	output reg nRAS = 1;
+	output reg nCAS = 1;
+	output nRWE = nWE80;
 
 	// Address bus and bank address registers
-	reg [4:0] BA = 0; // Bank address
-	output reg [11:8] RA = 0; // High-order multiplexed DRAM address (output)
 	input [7:0] MA; // Low-order multiplexed DRAM address (input, output by Apple II)
+	output [11:8] RA = // High-order multiplexed DRAM address (output)
+		(PHI0 & nPCAS) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
+		(PHI0 & ~nPCAS) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
+	reg [5:0] BA = 0; // Bank address
+	wire [4:0] BAS = {BA[4], BA[4] ? BA[5] : BA[3], BA[2:0]};
 	output reg C073SEL = 0; // Bank register select
 
 	// Data bus routing
@@ -36,7 +42,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	wire MDOE = EN80 & nWE;
 	inout [7:0] MD = MDOE ? RD[7:0] : 8'bZ; // 6502 data bus
 	wire RDOE = EN80 & ~nWE;
-	inout [7:0] RD = RDOE ? MD[7:0] : 8'bZ; // DRAM  data bus
+	inout [7:0] RD = RDOE ? MD[7:0] : 8'bZ; // DRAM data bus
 
 	/* State Counters */
 	reg PHI1reg = 0; // Saved PHI1 at last rising clock edge
@@ -46,35 +52,31 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 
 	always @(posedge C14M) begin
 		// Refresh counter allows DRAM refresh once every 13 cycles
-		if (S==5'b10111) Ref <= (Ref[3:2]==2'b11) ? 4'h0 : Ref+1;
+		if (S==4'h1) Ref <= (Ref[3:2]==2'b11) ? 4'h0 : Ref+1;
 	
 		// Synchronize state counter to S1 when just entering PHI1
 		PHI1reg <= PHI1; // Save old PHI1
 		if (~PHI1) PHI0seen <= 1; // PHI0seen set in PHI0
 		S <= (PHI1 & ~PHI1reg & PHI0seen) ? 4'h1 : 
-			S==0 ? 3'h0 :
-			S==7 ? 3'h7 : S+1;
+			S==4'h0 ? 4'h0 :
+			S==4'hF ? 4'hF : S+1;
 
-		nRAS <= ~(S==5'b01111 | S==5'b00011 | S==5'b01011 | 
-				  (Ref==0 & S==5'b00000) |
-				  S==5'b10111 | S==5'b11011 | S==5'b10011 | 
-				  S==5'b11001 & ~nWE80); // write: hold RAS for late CAS
+		// DRAM RAS
+		nRAS <= ~((PHI1 & ~PHI1reg & PHI0seen) | S==4'h1 | S==4'h2 |
+			S==4'h5 |
+			S==4'h7 | S==4'h8 | S==4'h9 | S==4'hA);
+			
+		// DRAM CAS
+		if (S==4'h2 | S==4'h4 | S==4'hA) nCAS <= 0;
+		if (S==4'h0 | S==4'h3 | nPRAS) nCAS <= 1;
 
-		nCAS <= ~(S==5'b01011 | 
-				  (Ref==0 & (S==5'b01000 | S==5'b00000)) | 
-				  (S==5'b10011 & nWE80) | // read: early CAS
-				  (S==5'b11001 & ~nWE80)); // write: late CAS
-
-		nRWE <= (S==5'b11011 | S==5'b10011 | S==5'b11001) ? nWE80 : 1'b1;
-
-		if (S==5'b10111) XX73SEL <= MA[7:0] == 8'h73;
-		if (S==5'b10000 & XX73SEL & ~nC07X & ~nWE) BA[4:0] <= MD[4:0];
-
-		RA[11:8] <= (S==5'b11011 | S==5'b10011) ?
-						{1'b0, 1'b0, BA[1], BA[0]} : // col
-					(S==5'b01100 | S==5'b10111) ?
-						{1'b0, BA[4], BA[3], BA[2]} : 4'b0; // row
+		// Latch bank select at end of S7
+		if (S==4'h7) C073SEL <= ~nC07X & MA[3:0]==4'h3 & ~nWE;
 		
-		if (S==5'b00001) VDR[7:0] <= RD[7:0];
+		// Set bank register at end of S13
+		if (S==4'hD & C073SEL) BA[5:0] <= MD[5:0];
+		
+		// Latch 80-column video data at end of S3
+		if (S==4'h3) VDR[7:0] <= RD[7:0];
 	end
 endmodule
