@@ -117,7 +117,6 @@ set_location_assignment PIN_17 -to DelayIn[2]
 set_location_assignment PIN_18 -to DelayOut[2]
 set_location_assignment PIN_20 -to DelayIn[3]
 set_location_assignment PIN_21 -to DelayOut[3]
-set_location_assignment PIN_22 -to XX73SEL
 set_global_assignment -name MAX7000S_JTAG_USER_CODE 7A2E
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
@@ -139,3 +138,4 @@ set_global_assignment -name SLOW_SLEW_RATE ON
 set_global_assignment -name ALM_REGISTER_PACKING_EFFORT HIGH
 set_global_assignment -name POWER_USE_PVA OFF
 set_global_assignment -name AUTO_TURBO_BIT OFF
+set_location_assignment PIN_22 -to C073SEL
