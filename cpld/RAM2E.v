@@ -12,13 +12,13 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	// Unused inputs
 	input C14M_2, Q3_2, C3M58, AN3, nCASEN;
 
-	// Delay
-	input [3:0] DelayIn; output [3:0] DelayOut;
-	assign DelayOut[0] = 0; // Not depending on mounting RC delay
-	assign DelayOut[1] = nEN80;
-	assign DelayOut[2] = DelayIn[1];
-	assign DelayOut[3] = DelayIn[2];
-	//wire EN80 = ~DelayIn;
+	// Delay (unused)
+	input [3:0] DelayIn;
+	output [3:0] DelayOut;
+	assign DelayOut[0] = 0; // RC delay
+	assign DelayOut[1] = 0;
+	assign DelayOut[2] = 0;
+	assign DelayOut[3] = 0;
 	wire EN80 = ~nEN80;
 
 	// DRAM control
@@ -28,9 +28,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 
 	// Address bus and bank address registers
 	input [7:0] MA; // Low-order multiplexed DRAM address (input, output by Apple II)
-	output [11:8] RA = // High-order multiplexed DRAM address (output)
-		(PHI0 & nPCAS) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
-		(PHI0 & ~nPCAS) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
+	output reg [11:8] RA = 4'h0;
 	reg [5:0] BA = 0; // Bank address
 	wire [4:0] BAS = {BA[4], BA[4] ? BA[5] : BA[3], BA[2:0]};
 	output reg C073SEL = 0; // Bank register select
@@ -65,6 +63,11 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 		nRAS <= ~((PHI1 & ~PHI1reg & PHI0seen) | S==4'h1 | S==4'h2 |
 			S==4'h5 |
 			S==4'h7 | S==4'h8 | S==4'h9 | S==4'hA);
+
+		// DRAM address multiplexing
+		RA[11:8] =
+			(S==4'h6 | S==4'h7 | S==4'h8) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
+			(S==4'h9 | S==4'hA) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
 			
 		// DRAM CAS
 		if (S==4'h2 | S==4'h4 | S==4'hA) nCAS <= 0;
