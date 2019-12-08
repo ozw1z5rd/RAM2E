@@ -16,10 +16,10 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	input [3:0] DelayIn;
 	output [3:0] DelayOut;
 	assign DelayOut[0] = 0; // RC delay
-	assign DelayOut[1] = 0;
-	assign DelayOut[2] = 0;
-	assign DelayOut[3] = 0;
-	wire EN80 = ~nEN80;
+	assign DelayOut[1] = ~nEN80;
+	assign DelayOut[2] = DelayIn[1];
+	assign DelayOut[3] = DelayIn[2];
+	wire EN80 = DelayIn[3]; //~nEN80;
 
 	// DRAM control
 	output reg nRAS = 1;
@@ -62,15 +62,15 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 		// DRAM RAS
 		nRAS <= ~((PHI1 & ~PHI1reg & PHI0seen) | S==4'h1 | S==4'h2 |
 			S==4'h5 |
-			S==4'h7 | S==4'h8 | S==4'h9 | S==4'hA);
+			S==4'h7 | S==4'h8 | S==4'h9 | S==4'hA | S==4'hB);
 
 		// DRAM address multiplexing
 		RA[11:8] =
-			(S==4'h6 | S==4'h7 | S==4'h8) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
-			(S==4'h9 | S==4'hA) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
+			(S==4'h6 | S==4'h7) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
+			(S==4'h8 | S==4'h9 | S==4'hA | S==4'hB) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
 			
 		// DRAM CAS
-		if (S==4'h2 | S==4'h4 | S==4'hA) nCAS <= 0;
+		if (S==4'h2 | S==4'h4 | (S==4'h9 & nWE80) | (S==4'hB & ~nWE80)) nCAS <= 0;
 		if (S==4'h0 | S==4'h3 | nPRAS) nCAS <= 1;
 
 		// Latch bank select at end of S7

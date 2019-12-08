@@ -1,6 +1,6 @@
 Flow report for RAM2E
-Fri Oct 18 15:17:29 2019
-Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Thu Nov 21 16:34:24 2019
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -40,14 +40,14 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Flow Summary                                                                ;
 +---------------------------+-------------------------------------------------+
-; Flow Status               ; Successful - Fri Oct 18 15:17:29 2019           ;
-; Quartus II 32-bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Flow Status               ; Successful - Thu Nov 21 16:34:24 2019           ;
+; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name             ; RAM2E                                           ;
 ; Top-level Entity Name     ; RAM2E                                           ;
 ; Family                    ; MAX7000S                                        ;
 ; Device                    ; EPM7128SLC84-15                                 ;
 ; Timing Models             ; Final                                           ;
-; Total macrocells          ; 47 / 128 ( 37 % )                               ;
+; Total macrocells          ; 50 / 128 ( 39 % )                               ;
 ; Total pins                ; 68 / 68 ( 100 % )                               ;
 +---------------------------+-------------------------------------------------+
 
@@ -57,40 +57,40 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/18/2019 15:17:15 ;
+; Start date & time ; 11/21/2019 16:34:19 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RAM2E               ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                        ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
-; Assignment Name                            ; Value                       ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
-; ALM_REGISTER_PACKING_EFFORT                ; High                        ; Medium        ; --          ; --             ;
-; AUTO_LCELL_INSERTION                       ; Off                         ; On            ; --          ; --             ;
-; AUTO_PARALLEL_EXPANDERS                    ; Off                         ; On            ; --          ; --             ;
-; AUTO_TURBO_BIT                             ; Off                         ; On            ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                      ; 52238299365.157142623401032 ; --            ; --          ; --             ;
-; ECO_OPTIMIZE_TIMING                        ; On                          ; Off           ; --          ; --             ;
-; ECO_REGENERATE_REPORT                      ; On                          ; Off           ; --          ; --             ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST            ; On                          ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT                     ; Verilog Hdl                 ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                        ; ModelSim-Altera (Verilog)   ; <None>        ; --          ; --             ;
-; EDA_TIME_SCALE                             ; 1 ps                        ; --            ; --          ; eda_simulation ;
-; FITTER_EFFORT                              ; Standard Fit                ; Auto Fit      ; --          ; --             ;
-; MAX7000_IGNORE_LCELL_BUFFERS               ; Off                         ; Auto          ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP                     ; 85                          ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP                     ; 0                           ; --            ; --          ; --             ;
-; OPTIMIZE_HOLD_TIMING                       ; Off                         ; --            ; --          ; --             ;
-; OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING ; Pack All IO Registers       ; Normal        ; --          ; --             ;
-; POWER_USE_PVA                              ; Off                         ; On            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY                   ; output_files                ; --            ; --          ; --             ;
-; SLOW_SLEW_RATE                             ; On                          ; Off           ; --          ; --             ;
-; SYNTH_MESSAGE_LEVEL                        ; High                        ; Medium        ; --          ; --             ;
-; SYNTH_TIMING_DRIVEN_SYNTHESIS              ; Off                         ; --            ; --          ; --             ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                            ;
++--------------------------------------------+---------------------------------+---------------+-------------+----------------+
+; Assignment Name                            ; Value                           ; Default Value ; Entity Name ; Section Id     ;
++--------------------------------------------+---------------------------------+---------------+-------------+----------------+
+; ALM_REGISTER_PACKING_EFFORT                ; High                            ; Medium        ; --          ; --             ;
+; AUTO_LCELL_INSERTION                       ; Off                             ; On            ; --          ; --             ;
+; AUTO_PARALLEL_EXPANDERS                    ; Off                             ; On            ; --          ; --             ;
+; AUTO_TURBO_BIT                             ; Auto                            ; On            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                      ; 207120313862967.157437205919740 ; --            ; --          ; --             ;
+; ECO_OPTIMIZE_TIMING                        ; On                              ; Off           ; --          ; --             ;
+; ECO_REGENERATE_REPORT                      ; On                              ; Off           ; --          ; --             ;
+; EDA_GENERATE_FUNCTIONAL_NETLIST            ; On                              ; --            ; --          ; eda_simulation ;
+; EDA_OUTPUT_DATA_FORMAT                     ; Verilog Hdl                     ; --            ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                        ; ModelSim-Altera (Verilog)       ; <None>        ; --          ; --             ;
+; EDA_TIME_SCALE                             ; 1 ps                            ; --            ; --          ; eda_simulation ;
+; FITTER_EFFORT                              ; Standard Fit                    ; Auto Fit      ; --          ; --             ;
+; MAX7000_IGNORE_LCELL_BUFFERS               ; Off                             ; Auto          ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP                     ; 85                              ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP                     ; 0                               ; --            ; --          ; --             ;
+; OPTIMIZE_HOLD_TIMING                       ; Off                             ; --            ; --          ; --             ;
+; OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING ; Pack All IO Registers           ; Normal        ; --          ; --             ;
+; POWER_USE_PVA                              ; Off                             ; On            ; --          ; --             ;
+; PROJECT_OUTPUT_DIRECTORY                   ; output_files                    ; --            ; --          ; --             ;
+; SLOW_SLEW_RATE                             ; On                              ; Off           ; --          ; --             ;
+; SYNTH_MESSAGE_LEVEL                        ; High                            ; Medium        ; --          ; --             ;
+; SYNTH_TIMING_DRIVEN_SYNTHESIS              ; Off                             ; --            ; --          ; --             ;
++--------------------------------------------+---------------------------------+---------------+-------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -98,26 +98,26 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 307 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:02     ; 1.0                     ; 289 MB              ; 00:00:02                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 277 MB              ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 262 MB              ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 251 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:10     ; --                      ; --                  ; 00:00:10                           ;
+; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 4584 MB             ; 00:00:00                           ;
+; Fitter                    ; 00:00:00     ; 1.0                     ; 4699 MB             ; 00:00:00                           ;
+; Assembler                 ; 00:00:00     ; 1.0                     ; 4522 MB             ; 00:00:00                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4526 MB             ; 00:00:00                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4493 MB             ; 00:00:00                           ;
+; Total                     ; 00:00:03     ; --                      ; --                  ; 00:00:00                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                         ;
-+---------------------------+------------------+------------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; zane-f8c4ec68a5  ; Windows XP ; 5.1        ; i686           ;
-; Fitter                    ; zane-f8c4ec68a5  ; Windows XP ; 5.1        ; i686           ;
-; Assembler                 ; zane-f8c4ec68a5  ; Windows XP ; 5.1        ; i686           ;
-; TimeQuest Timing Analyzer ; zane-f8c4ec68a5  ; Windows XP ; 5.1        ; i686           ;
-; EDA Netlist Writer        ; zane-f8c4ec68a5  ; Windows XP ; 5.1        ; i686           ;
-+---------------------------+------------------+------------+------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; DESKTOP-G62HNQS  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; DESKTOP-G62HNQS  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; DESKTOP-G62HNQS  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DESKTOP-G62HNQS  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-G62HNQS  ; Windows 7 ; 6.2        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
 
 
 ------------
