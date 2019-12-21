@@ -15,11 +15,11 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	// Delay (unused)
 	input [3:0] DelayIn;
 	output [3:0] DelayOut;
-	assign DelayOut[0] = 0; // RC delay
-	assign DelayOut[1] = 0;
-	assign DelayOut[2] = 0;
-	assign DelayOut[3] = 0;
-	wire EN80 = ~nEN80;
+	assign DelayOut[0] = 0; // = DelayIn[0] // RC delay unused
+	assign DelayOut[1] = ~nEN80; // = DelayIn[1]
+	assign DelayOut[2] = DelayIn[1]; // = DelayIn[2]
+	assign DelayOut[3] = DelayOut[3]; // = DelayIn[3]
+	wire EN80 = DelayIn[2]; // 2 * 15 ns delay max
 
 	// DRAM control
 	output reg nRAS = 1;
