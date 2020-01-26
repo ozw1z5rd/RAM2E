@@ -56,7 +56,7 @@
  -- Pin directions (input, output or bidir) are based on device operating in user mode.
  ---------------------------------------------------------------------------------
 
-Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 CHIP  "RAM2E"  ASSIGNED TO AN: EPM7128SLC84-15
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
@@ -82,7 +82,7 @@ DelayOut[2]                  : 18        : output : TTL               :         
 GND                          : 19        : gnd    :                   :         :           :                
 DelayIn[3]                   : 20        : input  : TTL               :         :           : Y              
 DelayOut[3]                  : 21        : output : TTL               :         :           : Y              
-XX73SEL                      : 22        : output : TTL               :         :           : Y              
+C073SEL                      : 22        : output : TTL               :         :           : Y              
 TMS                          : 23        : input  : TTL               :         :           : N              
 RA[10]                       : 24        : output : TTL               :         :           : Y              
 RA[11]                       : 25        : output : TTL               :         :           : Y              
