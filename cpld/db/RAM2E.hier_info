@@ -11,8 +11,6 @@ C14M => BA[0].CLK
 C14M => BA[1].CLK
 C14M => BA[2].CLK
 C14M => BA[3].CLK
-C14M => BA[4].CLK
-C14M => BA[5].CLK
 C14M => C073SEL~reg0.CLK
 C14M => nCAS~reg0.CLK
 C14M => RA[8]~reg0.CLK
@@ -89,12 +87,12 @@ nCASEN => ~NO_FANOUT~
 C073SEL <= C073SEL~reg0.DB_MAX_OUTPUT_PORT_TYPE
 DelayIn[0] => ~NO_FANOUT~
 DelayIn[1] => DelayOut[2].DATAIN
-DelayIn[2] => DelayOut[3].DATAIN
-DelayIn[3] => MDOE.IN1
-DelayIn[3] => RDOE.IN1
+DelayIn[2] => MDOE.IN1
+DelayIn[2] => RDOE.IN1
+DelayIn[3] => ~NO_FANOUT~
 DelayOut[0] <= <GND>
 DelayOut[1] <= DelayOut.DB_MAX_OUTPUT_PORT_TYPE
 DelayOut[2] <= DelayIn[1].DB_MAX_OUTPUT_PORT_TYPE
-DelayOut[3] <= DelayIn[2].DB_MAX_OUTPUT_PORT_TYPE
+DelayOut[3] <= <GND>
 
 
