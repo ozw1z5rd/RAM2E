@@ -15,10 +15,10 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	// Delay (unused)
 	input [3:0] DelayIn;
 	output [3:0] DelayOut;
-	assign DelayOut[0] = 0; // = DelayIn[0] // RC delay unused
-	assign DelayOut[1] = ~nEN80; // = DelayIn[1]
-	assign DelayOut[2] = DelayIn[1]; // = DelayIn[2]
-	assign DelayOut[3] = DelayOut[3]; // = DelayIn[3]
+	assign DelayOut[0] = 0; // RC delay unused
+	assign DelayOut[1] = ~nEN80;
+	assign DelayOut[2] = DelayIn[1];
+	assign DelayOut[3] = 0; // 3rd delay unused
 	wire EN80 = DelayIn[2]; // 2 * 15 ns delay max
 
 	// DRAM control
@@ -30,7 +30,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	input [7:0] MA; // Low-order multiplexed DRAM address (input, output by Apple II)
 	output reg [11:8] RA = 4'h0;
 	reg [5:0] BA = 0; // Bank address
-	wire [4:0] BAS = {BA[4], BA[4] ? BA[5] : BA[3], BA[2:0]};
+	wire [4:0] BAS = {1'b0, BA[3], BA[2:0]};
 	output reg C073SEL = 0; // Bank register select
 
 	// Data bus routing
