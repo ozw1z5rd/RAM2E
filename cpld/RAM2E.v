@@ -30,7 +30,7 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 	input [7:0] MA; // Low-order multiplexed DRAM address (input, output by Apple II)
 	output reg [11:8] RA = 4'h0;
 	reg [5:0] BA = 0; // Bank address
-	wire [4:0] BAS = {1'b0, BA[3], BA[2:0]};
+	wire [4:0] BAS = {BA[4], BA[4] ? BA[5] : BA[3], BA[2:0]};
 	output reg C073SEL = 0; // Bank register select
 
 	// Data bus routing
@@ -73,8 +73,10 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 		if (S==4'h2 | S==4'h4 | (S==4'h9 & nWE80) | (S==4'hB & ~nWE80)) nCAS <= 0;
 		if (S==4'h0 | S==4'h3 | nPRAS) nCAS <= 1;
 
-		// Latch bank select at end of S7
-		if (S==4'h7) C073SEL <= ~nC07X & MA[3:0]==4'h3 & ~nWE;
+		// Latch bank select at end of S7 and S8
+		if (S==4'h0 | S==4'h1) C073SEL <= 0;
+		if (S==4'h7) C073SEL <= (MA[3:0]==4'h1 | MA[3:0]==4'h3 | MA[3:0]==4'h5 | MA[3:0]==4'h7);
+		if (S==4'h8) C073SEL <= C073SEL & ~nC07X & ~nWE;
 		
 		// Set bank register at end of S13
 		if (S==4'hD & C073SEL) BA[5:0] <= MD[5:0];
