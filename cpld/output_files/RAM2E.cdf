@@ -3,8 +3,8 @@ JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
-	P ActionCode(Vfy)
-		Device PartName(EPM7128SL84) Path("C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/") File("RAM2E.pof") MfrSpec(OpMask(2));
+	P ActionCode(Cfg)
+		Device PartName(EPM7128SL84) Path("C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/") File("RAM2E.pof") MfrSpec(OpMask(3));
 
 ChainEnd;
 

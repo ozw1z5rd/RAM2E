@@ -145,3 +145,4 @@ set_instance_assignment -name MAX7000_INDIVIDUAL_TURBO_BIT ON -to DelayIn[2]
 set_instance_assignment -name MAX7000_INDIVIDUAL_TURBO_BIT ON -to DelayIn[3]
 set_instance_assignment -name MAX7000_INDIVIDUAL_TURBO_BIT ON -to DelayIn[1]
 set_instance_assignment -name MAX7000_INDIVIDUAL_TURBO_BIT ON -to DelayOut[3]
+set_instance_assignment -name MAX7000_INDIVIDUAL_TURBO_BIT ON -to MDBEN
