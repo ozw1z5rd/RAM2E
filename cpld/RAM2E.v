@@ -80,8 +80,8 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 		nCAS <= ~(S==4'h2 | S==4'h3 | (S==4'h4 & Ref==0) |
 			S==4'hA | S==4'hB);
 			
-		// Memory data bus gating
-		MDBEN <= S==4'hA | S==4'hB | S==4'hC | S==4'hD | S==4'hE | S==4'hF;
+		// Memory data bus gating (only active from S11-S15)
+		MDBEN <= S==4'hB | S==4'hC | S==4'hD | S==4'hE | S==4'hF;
 		
 		// Latch 80-column video data at end of S3
 		if (S==4'h3) VDR[7:0] <= RD[7:0];
@@ -91,8 +91,8 @@ module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
 		if (S==4'h7) C073SEL <= (MA[3:0]==4'h1 | MA[3:0]==4'h3 | MA[3:0]==4'h5 | MA[3:0]==4'h7);
 		if (S==4'h8) C073SEL <= C073SEL & ~nC07X & ~nWE;
 		
-		// Set bank register at end of S10
-		if (S==4'hA & C073SEL) BA[5:0] <= MD[5:0];
+		// Set bank register at end of S11
+		if (S==4'hB & C073SEL) BA[5:0] <= MD[5:0];
 		
 		// Latch DRAM read data at end of S11
 		if (S==4'hB) MDR[7:0] <= RD[7:0];

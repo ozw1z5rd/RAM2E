@@ -1,5 +1,5 @@
 Flow report for RAM2E
-Sun Feb 16 21:59:05 2020
+Sun Feb 16 22:32:27 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Flow Summary                                                                ;
 +---------------------------+-------------------------------------------------+
-; Flow Status               ; Successful - Sun Feb 16 21:59:05 2020           ;
+; Flow Status               ; Successful - Sun Feb 16 22:32:27 2020           ;
 ; Quartus II 64-Bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name             ; RAM2E                                           ;
 ; Top-level Entity Name     ; RAM2E                                           ;
@@ -57,7 +57,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/16/2020 21:59:00 ;
+; Start date & time ; 02/16/2020 22:32:22 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RAM2E               ;
 +-------------------+---------------------+
@@ -72,7 +72,7 @@ applicable agreement for further details.
 ; AUTO_LCELL_INSERTION                       ; Off                             ; On            ; --          ; --             ;
 ; AUTO_PARALLEL_EXPANDERS                    ; Off                             ; On            ; --          ; --             ;
 ; AUTO_TURBO_BIT                             ; Off                             ; On            ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                      ; 207120313862967.158190834029472 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                      ; 207120313862967.158191034233144 ; --            ; --          ; --             ;
 ; ECO_OPTIMIZE_TIMING                        ; On                              ; Off           ; --          ; --             ;
 ; ECO_REGENERATE_REPORT                      ; On                              ; Off           ; --          ; --             ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST            ; On                              ; --            ; --          ; eda_simulation ;
@@ -98,12 +98,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:00     ; 1.0                     ; 4586 MB             ; 00:00:01                           ;
+; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 4586 MB             ; 00:00:01                           ;
 ; Fitter                    ; 00:00:00     ; 1.0                     ; 4697 MB             ; 00:00:00                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 4522 MB             ; 00:00:00                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4526 MB             ; 00:00:01                           ;
+; Assembler                 ; 00:00:00     ; 1.0                     ; 4522 MB             ; 00:00:00                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4525 MB             ; 00:00:00                           ;
 ; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 4493 MB             ; 00:00:00                           ;
-; Total                     ; 00:00:02     ; --                      ; --                  ; 00:00:02                           ;
+; Total                     ; 00:00:02     ; --                      ; --                  ; 00:00:01                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
