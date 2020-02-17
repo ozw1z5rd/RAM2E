@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM2E
-Wed Feb 12 20:19:53 2020
+Sun Feb 16 21:59:00 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -14,8 +14,9 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
-  9. Analysis & Synthesis Messages
- 10. Analysis & Synthesis Suppressed Messages
+  9. Parameter Settings for Inferred Entity Instance: lpm_counter:Ref_rtl_0
+ 10. Analysis & Synthesis Messages
+ 11. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -41,12 +42,12 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Feb 12 20:19:53 2020           ;
+; Analysis & Synthesis Status ; Successful - Sun Feb 16 21:59:00 2020           ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; RAM2E                                           ;
 ; Top-level Entity Name       ; RAM2E                                           ;
 ; Family                      ; MAX7000S                                        ;
-; Total macrocells            ; 50                                              ;
+; Total macrocells            ; 55                                              ;
 ; Total pins                  ; 64                                              ;
 +-----------------------------+-------------------------------------------------+
 
@@ -126,13 +127,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                    ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                      ; Library ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
-; RAM2E.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Zane/Documents/GitHub/RAM2E/cpld/RAM2E.v ;         ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
+; RAM2E.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Zane/Documents/GitHub/RAM2E/cpld/RAM2E.v                         ;         ;
+; lpm_counter.tdf                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_counter.tdf         ;         ;
+; lpm_constant.inc                 ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_constant.inc        ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc         ;         ;
+; cmpconst.inc                     ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/cmpconst.inc            ;         ;
+; lpm_compare.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_compare.inc         ;         ;
+; lpm_counter.inc                  ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_counter.inc         ;         ;
+; dffeea.inc                       ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/dffeea.inc              ;         ;
+; alt_counter_stratix.inc          ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/alt_counter_stratix.inc ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc          ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------+
@@ -140,24 +151,25 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------+----------------------+
 ; Resource             ; Usage                ;
 +----------------------+----------------------+
-; Logic cells          ; 50                   ;
-; Total registers      ; 26                   ;
+; Logic cells          ; 55                   ;
+; Total registers      ; 39                   ;
 ; I/O pins             ; 64                   ;
-; Shareable expanders  ; 6                    ;
-; Maximum fan-out node ; S[1]                 ;
-; Maximum fan-out      ; 28                   ;
-; Total fan-out        ; 279                  ;
-; Average fan-out      ; 2.33                 ;
+; Shareable expanders  ; 2                    ;
+; Maximum fan-out node ; C14M                 ;
+; Maximum fan-out      ; 39                   ;
+; Total fan-out        ; 345                  ;
+; Average fan-out      ; 2.85                 ;
 +----------------------+----------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                 ;
-+----------------------------+------------+------+---------------------+--------------+
-; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+------------+------+---------------------+--------------+
-; |RAM2E                     ; 50         ; 64   ; |RAM2E              ; work         ;
-+----------------------------+------------+------+---------------------+--------------+
++----------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                          ;
++----------------------------+------------+------+------------------------------+--------------+
+; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name          ; Library Name ;
++----------------------------+------------+------+------------------------------+--------------+
+; |RAM2E                     ; 55         ; 64   ; |RAM2E                       ; work         ;
+;    |lpm_counter:Ref_rtl_0| ; 4          ; 0    ; |RAM2E|lpm_counter:Ref_rtl_0 ; work         ;
++----------------------------+------------+------+------------------------------+--------------+
 
 
 +--------------------------------------------------------------------------------+
@@ -170,32 +182,67 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------+----------------------------------------+
 
 
++------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_counter:Ref_rtl_0 ;
++------------------------+-------------------+---------------------------+
+; Parameter Name         ; Value             ; Type                      ;
++------------------------+-------------------+---------------------------+
+; AUTO_CARRY_CHAINS      ; ON                ; AUTO_CARRY                ;
+; IGNORE_CARRY_BUFFERS   ; OFF               ; IGNORE_CARRY              ;
+; AUTO_CASCADE_CHAINS    ; ON                ; AUTO_CASCADE              ;
+; IGNORE_CASCADE_BUFFERS ; OFF               ; IGNORE_CASCADE            ;
+; LPM_WIDTH              ; 4                 ; Untyped                   ;
+; LPM_DIRECTION          ; UP                ; Untyped                   ;
+; LPM_MODULUS            ; 0                 ; Untyped                   ;
+; LPM_AVALUE             ; UNUSED            ; Untyped                   ;
+; LPM_SVALUE             ; UNUSED            ; Untyped                   ;
+; LPM_PORT_UPDOWN        ; PORT_CONNECTIVITY ; Untyped                   ;
+; DEVICE_FAMILY          ; MAX7000S          ; Untyped                   ;
+; CARRY_CHAIN            ; MANUAL            ; Untyped                   ;
+; CARRY_CHAIN_LENGTH     ; 48                ; CARRY_CHAIN_LENGTH        ;
+; NOT_GATE_PUSH_BACK     ; ON                ; NOT_GATE_PUSH_BACK        ;
+; CARRY_CNT_EN           ; SMART             ; Untyped                   ;
+; LABWIDE_SCLR           ; ON                ; Untyped                   ;
+; USE_NEW_VERSION        ; TRUE              ; Untyped                   ;
+; CBXI_PARAMETER         ; NOTHING           ; Untyped                   ;
++------------------------+-------------------+---------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Feb 12 20:19:52 2020
+    Info: Processing started: Sun Feb 16 21:59:00 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file ram2e.v
     Info (12023): Found entity 1: RAM2E
 Info (12127): Elaborating entity "RAM2E" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(53): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(58): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(60): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(65): truncated value with size 32 to match size of target (4)
 Warning (14130): Reduced register "RA[11]~reg0" with stuck data_in port to stuck value GND
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (19001): Inferred lpm_counter megafunction (LPM_WIDTH=4) from the following logic: "Ref_rtl_0"
+Info (12130): Elaborated megafunction instantiation "lpm_counter:Ref_rtl_0"
+Info (12133): Instantiated megafunction "lpm_counter:Ref_rtl_0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTH" = "4"
+    Info (12134): Parameter "LPM_DIRECTION" = "UP"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_COUNTER"
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "RA[11]" is stuck at GND
     Warning (13410): Pin "DelayOut[0]" is stuck at GND
     Warning (13410): Pin "DelayOut[3]" is stuck at GND
 Info (280013): Promoted pin-driven signal(s) to global signal
     Info (280014): Promoted clock signal driven by pin "C14M" to global clock signal
-Warning (21074): Design contains 17 input pin(s) that do not drive logic
+Warning (21074): Design contains 18 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "C14M_2"
     Warning (15610): No output dependent on input pin "C7M"
     Warning (15610): No output dependent on input pin "Q3"
     Warning (15610): No output dependent on input pin "PHI0"
+    Warning (15610): No output dependent on input pin "nPRAS"
     Warning (15610): No output dependent on input pin "nPCAS"
     Warning (15610): No output dependent on input pin "MA[1]"
     Warning (15610): No output dependent on input pin "MA[2]"
@@ -209,17 +256,17 @@ Warning (21074): Design contains 17 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "nCASEN"
     Warning (15610): No output dependent on input pin "DelayIn[0]"
     Warning (15610): No output dependent on input pin "DelayIn[3]"
-Info (21057): Implemented 120 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 121 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 28 input pins
     Info (21059): Implemented 12 output pins
     Info (21060): Implemented 24 bidirectional pins
-    Info (21063): Implemented 50 macrocells
-    Info (21073): Implemented 6 shareable expanders
+    Info (21063): Implemented 55 macrocells
+    Info (21073): Implemented 2 shareable expanders
 Info (144001): Generated suppressed messages file C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.map.smsg
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 4584 megabytes
-    Info: Processing ended: Wed Feb 12 20:19:53 2020
-    Info: Elapsed time: 00:00:01
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 4586 megabytes
+    Info: Processing ended: Sun Feb 16 21:59:00 2020
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 

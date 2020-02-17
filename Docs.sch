@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:RAM2E-cache
-EELAYER 29 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -77,9 +77,9 @@ Video Access
 Text Notes 6600 1300 0    100  ~ 0
 6502 CPU Access
 Text Notes 8400 1800 0    40   ~ 0
-0
+E
 Text Notes 3850 1800 0    40   ~ 0
-10100
+D/F
 Wire Wire Line
 	3800 1800 4050 1800
 Wire Wire Line
@@ -179,7 +179,7 @@ Text Notes 5100 1800 0    40   ~ 0
 Text Notes 4800 1800 0    40   ~ 0
 2
 Text Notes 4200 1800 0    40   ~ 0
-0
+E/F
 Text Notes 6300 1800 0    40   ~ 0
 7
 Text Notes 6600 1800 0    40   ~ 0
@@ -286,8 +286,6 @@ Wire Wire Line
 	5100 1400 5100 1500
 Wire Wire Line
 	5250 1500 5250 1400
-Wire Wire Line
-	5100 1500 5250 1500
 Wire Wire Line
 	4500 1500 4650 1500
 Wire Wire Line
@@ -435,23 +433,17 @@ Wire Wire Line
 Wire Wire Line
 	5250 2750 5300 2650
 Wire Wire Line
-	6450 2650 6200 2650
-Wire Wire Line
-	6200 2650 6150 2750
+	5900 2650 5850 2750
 Wire Wire Line
 	6450 2650 6500 2750
 Wire Wire Line
-	8250 2900 8300 2800
+	7950 2900 8000 2800
 Wire Wire Line
 	7350 2800 7400 2900
 Wire Wire Line
-	6200 2800 6150 2900
-Wire Wire Line
-	5250 2900 5300 2800
+	5900 2800 5850 2900
 Wire Wire Line
 	4950 2800 5000 2900
-Wire Wire Line
-	5000 2900 5250 2900
 Wire Bus Line
 	6200 1350 6200 2950
 Wire Wire Line
@@ -465,17 +457,9 @@ Wire Wire Line
 Wire Wire Line
 	3700 2100 6750 2100
 Wire Wire Line
-	5900 2750 6150 2750
+	5600 2750 5850 2750
 Wire Wire Line
-	5300 2650 5850 2650
-Wire Wire Line
-	5900 2750 5850 2650
-Wire Wire Line
-	5600 2900 6150 2900
-Wire Wire Line
-	5300 2800 5550 2800
-Wire Wire Line
-	5600 2900 5550 2800
+	5600 2750 5550 2650
 Wire Wire Line
 	7700 2650 8750 2650
 Wire Wire Line
@@ -486,16 +470,24 @@ Wire Wire Line
 	6800 2000 7350 2000
 Wire Wire Line
 	6800 2100 8750 2100
-Wire Wire Line
-	6200 2800 7350 2800
 Text Notes 5600 3300 0    50   ~ 0
 State = { PHI0, C7M, nPRAS, nPCAS, Q3 }
-Wire Wire Line
-	8300 2800 8750 2800
 Wire Bus Line
 	8300 1350 8300 2950
-Wire Wire Line
-	7400 2900 8250 2900
 Text Notes 4500 1800 0    40   ~ 0
 1
+Wire Wire Line
+	5900 2650 6450 2650
+Wire Wire Line
+	5000 2900 5850 2900
+Wire Wire Line
+	5300 2650 5550 2650
+Wire Wire Line
+	5900 2800 7350 2800
+Wire Wire Line
+	5100 1500 5250 1500
+Wire Wire Line
+	7400 2900 7950 2900
+Wire Wire Line
+	8000 2800 8750 2800
 $EndSCHEMATC
