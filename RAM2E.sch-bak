@@ -1477,12 +1477,12 @@ $EndComp
 $Comp
 L Device:C_Small C31
 U 1 1 5E597D43
-P 8600 4250
-F 0 "C31" H 8650 4300 50  0000 L CNN
-F 1 "10p" H 8650 4200 50  0000 L CNN
-F 2 "stdpads:C_0805" H 8600 4250 50  0001 C CNN
-F 3 "~" H 8600 4250 50  0001 C CNN
-	1    8600 4250
+P 8600 3850
+F 0 "C31" H 8650 3900 50  0000 L CNN
+F 1 "10p" H 8650 3800 50  0000 L CNN
+F 2 "stdpads:C_0805" H 8600 3850 50  0001 C CNN
+F 3 "~" H 8600 3850 50  0001 C CNN
+	1    8600 3850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1692,36 +1692,38 @@ Wire Wire Line
 Connection ~ 13000 3350
 Connection ~ 13000 3750
 Wire Wire Line
-	8600 4050 8600 4150
+	8600 3650 8600 3750
 $Comp
 L power:GND #PWR?
 U 1 1 600208DB
-P 8600 4350
-F 0 "#PWR?" H 8600 4100 50  0001 C CNN
-F 1 "GND" H 8600 4200 50  0000 C CNN
-F 2 "" H 8600 4350 50  0001 C CNN
-F 3 "" H 8600 4350 50  0001 C CNN
-	1    8600 4350
+P 8600 3950
+F 0 "#PWR?" H 8600 3700 50  0001 C CNN
+F 1 "GND" H 8600 3800 50  0000 C CNN
+F 2 "" H 8600 3950 50  0001 C CNN
+F 3 "" H 8600 3950 50  0001 C CNN
+	1    8600 3950
 	1    0    0    -1  
 $EndComp
 NoConn ~ 8300 3850
 NoConn ~ 8300 3950
+NoConn ~ 8300 4050
+NoConn ~ 8300 4150
 Wire Wire Line
-	8300 4150 8350 4150
+	8300 3750 8350 3750
 Wire Wire Line
-	8600 4150 8550 4150
-Connection ~ 8600 4150
+	8600 3750 8550 3750
+Connection ~ 8600 3750
 Wire Wire Line
-	8300 4050 8600 4050
+	8300 3650 8600 3650
 $Comp
 L Device:R_Small R5
 U 1 1 5FFE21C8
-P 8450 4150
-F 0 "R5" V 8500 4150 50  0000 C TNN
-F 1 "1k2" V 8600 4150 50  0000 C CNN
-F 2 "" H 8450 4150 50  0001 C CNN
-F 3 "~" H 8450 4150 50  0001 C CNN
-	1    8450 4150
+P 8450 3750
+F 0 "R5" V 8500 3750 50  0000 C TNN
+F 1 "1k2" V 8600 3750 50  0000 C CNN
+F 2 "" H 8450 3750 50  0001 C CNN
+F 3 "~" H 8450 3750 50  0001 C CNN
+	1    8450 3750
 	0    1    1    0   
 $EndComp
 Text Label 8300 5450 0    50   ~ 0
@@ -1760,6 +1762,8 @@ NoConn ~ 8300 5050
 NoConn ~ 8300 4650
 NoConn ~ 8300 4550
 NoConn ~ 8300 4450
+NoConn ~ 8300 4350
+NoConn ~ 8300 4250
 Entry Wire Line
 	8500 4750 8600 4850
 Entry Wire Line
@@ -2002,6 +2006,10 @@ Text Label 6300 2350 2    50   ~ 0
 BA1
 Text Label 6300 2250 2    50   ~ 0
 CLK
+Wire Bus Line
+	8600 4850 8600 5750
+Wire Bus Line
+	8850 3050 8850 4150
 Text Label 5200 3150 0    50   ~ 0
 CLK
 Text Label 6300 2450 2    50   ~ 0
@@ -2018,26 +2026,12 @@ Text Label 6300 2950 2    50   ~ 0
 RA1
 Text Label 6300 3050 2    50   ~ 0
 RA6
-Text Label 6300 3550 2    50   ~ 0
-RA2
-Text Label 6300 3450 2    50   ~ 0
-RA5
-Text Label 6300 3250 2    50   ~ 0
-RA3
 Text Label 6300 3150 2    50   ~ 0
-RA4
+RA2
+Text Label 6300 3250 2    50   ~ 0
+RA5
 Text Label 6300 3350 2    50   ~ 0
-~EN80~in
-Text Label 6300 3650 2    50   ~ 0
-R~W~80in
-Text Label 6300 4050 2    50   ~ 0
-PHI1in
-Wire Bus Line
-	8600 4850 8600 5750
-Wire Bus Line
-	8850 3050 8850 4150
-Text Label 6300 3750 2    50   ~ 0
-Ain5
-Text Label 6300 4250 2    50   ~ 0
-Ain6
+RA3
+Text Label 6300 3450 2    50   ~ 0
+RA4
 $EndSCHEMATC
