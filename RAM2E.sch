@@ -1487,8 +1487,6 @@ Wire Wire Line
 Text Label 7700 5550 2    50   ~ 0
 RD3
 NoConn ~ 6600 5050
-NoConn ~ 6600 4950
-NoConn ~ 6600 4850
 $Comp
 L power:GND #PWR0108
 U 1 1 603045A0
@@ -2402,6 +2400,47 @@ F 3 "https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/
 	1    5600 4050
 	1    0    0    -1  
 $EndComp
+Text Label 6600 4850 0    50   ~ 0
+CFG1
+Text Label 6600 4950 0    50   ~ 0
+CFG0
+$Comp
+L Connector_Generic:Conn_02x02_Odd_Even J3
+U 1 1 5EA8BDCC
+P 7500 3950
+F 0 "J3" H 7550 4050 50  0000 C CNN
+F 1 "Config" H 7550 3750 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical_SMD" H 7500 3950 50  0001 C CNN
+F 3 "~" H 7500 3950 50  0001 C CNN
+	1    7500 3950
+	1    0    0    -1  
+$EndComp
+Text Label 7300 3950 2    50   ~ 0
+CFG0
+Text Label 7800 4050 0    50   ~ 0
+CFG1
 Wire Bus Line
 	8200 4250 8200 5350
+$Comp
+L power:GND #PWR0146
+U 1 1 5EAAE8A3
+P 7300 4050
+F 0 "#PWR0146" H 7300 3800 50  0001 C CNN
+F 1 "GND" H 7300 3900 50  0000 C CNN
+F 2 "" H 7300 4050 50  0001 C CNN
+F 3 "" H 7300 4050 50  0001 C CNN
+	1    7300 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0147
+U 1 1 5EAAEC35
+P 7800 3950
+F 0 "#PWR0147" H 7800 3700 50  0001 C CNN
+F 1 "GND" H 7800 3800 50  0000 C CNN
+F 2 "" H 7800 3950 50  0001 C CNN
+F 3 "" H 7800 3950 50  0001 C CNN
+	1    7800 3950
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
