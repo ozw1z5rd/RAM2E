@@ -1,100 +1,375 @@
-module RAM2E(C14M, C14M_2, C7M, Q3, PHI0, PHI1,
-			 nPRAS, nPCAS, nWE, nWE80, nEN80,
-			 nRAS, nCAS, nRWE,
-			 VD, MD, RD, nC07X, MA, RA,
-			 Q3_2, C3M58, AN3, nCASEN, C073SEL,
-			 DelayIn, DelayOut);
+module RAM2E(C14M, PHI1, 
+			 nWE, nWE80, nEN80, nC07X,
+			 Ain, Din, Dout, nDOE, Vout, nVOE,
+			 CKE, nCS, nRAS, nCAS, nRWE,
+			 BA, RA, RD, DQML, DQMH,
+			 DelayOut, DelayIn);
 
-	// Control inputs
-	input C14M, PHI1, C7M;
+	/* Clocks */
+	input C14M, PHI1;
+	
+	/* Control inputs */
 	input nWE, nWE80, nEN80, nC07X;
-
-	// Unused inputs
-	input C14M_2, Q3_2, C3M58, Q3, PHI0;
-	input nPRAS, nPCAS, nCASEN, AN3;
-
-	// Delay
-	input [3:0] DelayIn;
-	output [3:0] DelayOut;
-	assign DelayOut[0] = 0; // RC delay unused
-	assign DelayOut[1] = ~nEN80;
-	assign DelayOut[2] = DelayIn[1];
-	assign DelayOut[3] = 0; // 3rd delay unused
-	wire EN80 = DelayIn[2]; // 2 * 15 ns delay max
-	reg MDBEN = 0;
-
-	// DRAM control
-	output reg nRAS = 1;
-	output reg nCAS = 1;
-	output nRWE = nWE80;
-
-	// Address bus and bank address registers
-	input [7:0] MA; // Low-order multiplexed DRAM address (input, output by Apple II)
-	output reg [11:8] RA = 4'h0;
-	reg [5:0] BA = 0; // Bank address
-	wire [4:0] BAS = {BA[4], BA[4] ? BA[5] : BA[3], BA[2:0]};
-	output reg C073SEL = 0; // Bank register select
-
-	// Video data bus
-	inout [7:0] VD = VDOE ? VDR[7:0] : 8'bZ;
-	reg [7:0] VDR; // Registered video data
-	wire VDOE = ~PHI1;
 	
-	// 6502 data bus
-	inout [7:0] MD = MDOE ? MDR[7:0] : 8'bZ;
-	reg [7:0] MDR; // Registered DRAM read data
-	wire MDOE = EN80 & nWE & MDBEN;
+	/* Delay */
+	output DelayOut = ~nEN80;
+	input DelayIn;
+	wire EN80 = DelayIn;
 	
-	// DRAM data bus
-	inout [7:0] RD = RDOE ? MD[7:0] : 8'bZ;
-	wire RDOE = EN80 & ~nWE;
+	/* Multiplexed Address Input */
+	input [7:0] Ain;
+	reg [7:0] RowA;
+	
+	/* 6502 Data Bus */
+	input [7:0] Din;
+	output nDOE = ~(EN80 & nWE);
+	output reg [7:0] Dout;
+	
+	/* Video Data Bus */
+	output nVOE = PHI1;
+	output reg [7:0] Vout;
+	
+	/* RAMWorks Bank Register */
+	reg [6:0] RWBank = 0;
+	
+	/* SDRAM */
+	output reg CKE = 1;
+	output reg nCS = 1, nRAS = 1, nCAS = 1, nRWE = 1;
+	output reg [1:0] BA;
+	reg RATransp = 0;
+	output [11:0] RA;
+	reg [11:8] RAH = 0;
+	assign RA[11:8] = RAH;
+	assign RA[7:0] = RATransp ? Ain[7:0] : RowA[7:0];
+	output reg DQML = 1, DQMH = 1;
+	wire RDOE = EN80 & ~nWE80;
+	inout [7:0] RD = RDOE ? Din[7:0] : 8'bZ;
 
 	/* State Counters */
 	reg PHI1reg = 0; // Saved PHI1 at last rising clock edge
+	reg PHI1seen = 0; // Have we seen PHI1 since reset?
 	reg PHI0seen = 0; // Have we seen PHI0 since reset?
+	reg [1:0] InitS = 0;
 	reg [3:0] S = 0; // State counter
-	reg [3:0] Ref = 0; // Refresh skip counter
+	reg [2:0] Ref = 0; // Refresh skip counter
 
 	always @(posedge C14M) begin
-		// Refresh counter allows DRAM refresh once every 13 cycles
-		if (S==4'h1) Ref <= (Ref[3:2]==2'b11) ? 4'h0 : Ref+1;
-	
 		// Synchronize state counter to S1 when just entering PHI1
 		PHI1reg <= PHI1; // Save old PHI1
+		if (PHI1) PHI1seen <= 1; // PHI1seen set in PHI1
 		if (~PHI1) PHI0seen <= 1; // PHI0seen set in PHI0
-		S <= (PHI1 & ~PHI1reg & PHI0seen) ? 4'h1 : 
+		S <= (PHI1 & ~PHI1reg & PHI0seen & PHI1seen) ? 4'h1 : 
 			S==4'h0 ? 4'h0 :
 			S==4'hF ? 4'hF : S+1;
-
-		// DRAM RAS
-		nRAS <= ~((PHI1 & ~PHI1reg & PHI0seen) | S==4'h1 | S==4'h2 |
-			(S==4'h4 & Ref==0) |
-			 S==4'h7 | S==4'h8 | S==4'h9 | S==4'hA);
-
-		// DRAM address multiplexing
-		RA[11:8] <=
-			(S==4'h6 | S==4'h7) ? {1'b0, BAS[4], BAS[3], BAS[2]} :
-			(S==4'h8 | S==4'h9 | S==4'hA | S==4'hB) ? {1'b0, 1'b0, BAS[1], BAS[0]} : 4'b0;
 			
-		// DRAM CAS
-		nCAS <= ~(S==4'h2 | S==4'h3 | (S==4'h4 & Ref==0) |
-			S==4'hA | S==4'hB);
-			
-		// Memory data bus gating (only active from S11-S15)
-		MDBEN <= S==4'hB | S==4'hC | S==4'hD | S==4'hE | S==4'hF;
-		
-		// Latch 80-column video data at end of S3
-		if (S==4'h3) VDR[7:0] <= RD[7:0];
+		// Refresh counter allows DRAM refresh once every 8 cycles
+		if (S==4'h1) Ref <= Ref+1;
+	end
 
-		// Latch bank select at end of S7 and S8
-		if (S==4'h0 | S==4'h1) C073SEL <= 0;
-		if (S==4'h7) C073SEL <= (MA[3:0]==4'h1 | MA[3:0]==4'h3 | MA[3:0]==4'h5 | MA[3:0]==4'h7);
-		if (S==4'h8) C073SEL <= C073SEL & ~nC07X & ~nWE;
-		
-		// Set bank register at end of S11
-		if (S==4'hB & C073SEL) BA[5:0] <= MD[5:0];
-		
-		// Latch DRAM read data at end of S11
-		if (S==4'hB) MDR[7:0] <= RD[7:0];
+	always @(posedge C14M) begin
+		CKE <= 1'b1;
+		if (S==4'h0) begin
+			if (InitS != 2'b11) InitS <= InitS+1;
+			
+			if (InitS == 2'h0) begin
+				// NOP
+				nCS <= 1'b1;
+				nRAS <= 1'bX;
+				nCAS <= 1'bX;
+				nRWE <= 1'bX;
+			end else if (InitS == 2'h1) begin
+				// Set Mode Register
+				nCS <= 1'b0;
+				nRAS <= 1'b0;
+				nCAS <= 1'b0;
+				nRWE <= 1'b0;
+			end else if (InitS == 2'h2) begin
+				// NOP
+				nCS <= 1'b1;
+				nRAS <= 1'bX;
+				nCAS <= 1'bX;
+				nRWE <= 1'bX;
+			end else if (InitS == 2'h3) begin
+				// NOP
+				nCS <= 1'b1;
+				nRAS <= 1'bX;
+				nCAS <= 1'bX;
+				nRWE <= 1'bX;
+			end
+
+			// Mode register contents
+			BA[1:0] <= 2'b00;			// Reserved
+			RAH[11:10] <= 2'b00;		// Reserved
+			RAH[9] <= 1'b1;			// "1" for single write mode
+			RAH[8] <= 1'b0;			// Reserved
+			RowA[7] <= 1'b0;			// "0" for not test mode
+			RowA[6:4] <= 3'b010;		// "2" for CAS latency 2
+			RowA[3] <= 1'b0;			// "0" for sequential burst (not used)
+			RowA[2:0] <= 3'b000;		// "0" for burst length 1 (no burst)
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'h1) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'h2) begin
+			// Activate
+			nCS <= 1'b0;
+			nRAS <= 1'b0;
+			nCAS <= 1'b1;
+			nRWE <= 1'b1;
+
+			// SDRAM bank 0, don't care RAH
+			BA <= 2'b00;
+			RAH[11:8] <= 4'b0000;
+			// Make RA[7:0] transparent (show async. column)
+			RATransp <= 1'b1;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'h3) begin
+			// Read
+			nCS <= 1'b0;
+			nRAS <= 1'b1;
+			nCAS <= 1'b0;
+			nRWE <= 1'b1;
+
+			// SDRAM bank 0, RAH 0
+			BA <= 2'b00;
+			RAH[11:8] <= 4'b0100; // (A10 set to auto-precharge)
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Read low byte (high byte +4MB in ramworks)
+			DQML <= 1'b0;
+			DQMH <= 1'b1;
+		end else if (S==4'h4) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Read low byte (high byte +4MB in ramworks)
+			DQML <= 1'b0;
+			DQMH <= 1'b1;
+		end else if (S==4'h5) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Read low byte (high byte +4MB in ramworks)
+			DQML <= 1'b0;
+			DQMH <= 1'b1;
+
+			// Latch video data
+			Vout[7:0] <= RD[7:0];
+		end else if (S==4'h6) begin
+			// Auto-refresh
+			nCS <= 1'b0;
+			nRAS <= 1'b0;
+			nCAS <= 1'b0;
+			nRWE <= 1'b1;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'h7) begin
+			// Activate
+			nCS <= 1'b0;
+			nRAS <= 1'b0;
+			nCAS <= 1'b1;
+			nRWE <= 1'b1;
+
+			// SDRAM bank, RAH determine by RamWorks bank
+			BA <= RWBank[5:4];
+			RAH[11:8] <= RWBank[3:0];
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+
+			// Latch row address for next CPU access
+			RowA <= Ain;
+		end else if (S==4'h8) begin
+			// Read/Write
+			nCS <= 1'b0;
+			nRAS <= 1'b1;
+			nCAS <= 1'b0;
+			nRWE <= nWE80;
+
+			// SDRAM bank still determined by RamWorks, RAH 0
+			BA <= RWBank[5:4];
+			RAH[11:8] <= 4'b0100; // (A10 set to auto-precharge)
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask according to RAMWorks bank (high byte is +4MB)
+			DQML <= RWBank[6];
+			DQMH <= ~RWBank[6];
+		end else if (S==4'h9) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask according to RAMWorks bank (high byte is +4MB)
+			DQML <= RWBank[6];
+			DQMH <= ~RWBank[6];
+		end else if (S==4'hA) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask according to RAMWorks bank (high byte is +4MB)
+			DQML <= RWBank[6];
+			DQMH <= ~RWBank[6];
+
+			// Latch read data 
+			Dout[7:0] <= RD[7:0];
+
+			// Latch RAMWorks bank if accessed
+			if (~nC07X & ~nWE & RowA[0] & ~RowA[3]) RWBank <= Din;
+		end else if (S==4'hB) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'hC) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'hD) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+		end else if (S==4'hE) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+			
+			// Latch row address for next video read
+			RowA <= Ain;
+		end else if (S==4'hF) begin
+			// NOP
+			nCS <= 1'b1;
+			nRAS <= 1'bX;
+			nCAS <= 1'bX;
+			nRWE <= 1'bX;
+
+			// Don't care bank, RAH
+			BA <= 2'bXX;
+			RAH[11:8] <= 4'bXXXX;
+			// Make RA[7:0] nontransparent (show reg. row)
+			RATransp <= 1'b0;
+
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
+			
+			// Latch row address for next video read
+			RowA <= Ain;
+		end 
 	end
 endmodule

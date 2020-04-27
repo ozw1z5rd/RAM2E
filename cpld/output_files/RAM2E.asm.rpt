@@ -1,6 +1,6 @@
 Assembler report for RAM2E
-Sun Feb 16 22:32:24 2020
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Tue Apr 14 19:51:26 2020
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -10,7 +10,7 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.pof
+  5. Assembler Device Options: Z:/Repos/RAM2E/cpld/output_files/RAM2E.pof
   6. Assembler Messages
 
 
@@ -37,75 +37,78 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Feb 16 22:32:24 2020 ;
+; Assembler Status      ; Successful - Tue Apr 14 19:51:26 2020 ;
 ; Revision Name         ; RAM2E                                 ;
 ; Top-level Entity Name ; RAM2E                                 ;
-; Family                ; MAX7000S                              ;
-; Device                ; EPM7128SLC84-15                       ;
+; Family                ; MAX V                                 ;
+; Device                ; 5M240ZT100C5                          ;
 +-----------------------+---------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Assembler Settings                                                                                     ;
-+-----------------------------------------------------------------------------+----------+---------------+
-; Option                                                                      ; Setting  ; Default Value ;
-+-----------------------------------------------------------------------------+----------+---------------+
-; Use smart compilation                                                       ; Off      ; Off           ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation  ; On       ; On            ;
-; Enable compact report table                                                 ; Off      ; Off           ;
-; Compression mode                                                            ; Off      ; Off           ;
-; Clock source for configuration device                                       ; Internal ; Internal      ;
-; Clock frequency of the configuration device                                 ; 10 MHZ   ; 10 MHz        ;
-; Divide clock frequency by                                                   ; 1        ; 1             ;
-; Auto user code                                                              ; Off      ; Off           ;
-; Security bit                                                                ; Off      ; Off           ;
-; Use configuration device                                                    ; On       ; On            ;
-; Configuration device auto user code                                         ; Off      ; Off           ;
-; Generate Tabular Text File (.ttf) For Target Device                         ; Off      ; Off           ;
-; Generate Raw Binary File (.rbf) For Target Device                           ; Off      ; Off           ;
-; Generate Hexadecimal (Intel-Format) Output File (.hexout) for Target Device ; Off      ; Off           ;
-; Hexadecimal Output File start address                                       ; 0        ; 0             ;
-; Hexadecimal Output File count direction                                     ; Up       ; Up            ;
-; Generate Serial Vector Format File (.svf) for Target Device                 ; Off      ; Off           ;
-; Generate a JEDEC STAPL Format File (.jam) for Target Device                 ; Off      ; Off           ;
-; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; Off      ; Off           ;
-; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; On       ; On            ;
-+-----------------------------------------------------------------------------+----------+---------------+
++---------------------------------------------------------------------------------------------------------+
+; Assembler Settings                                                                                      ;
++-----------------------------------------------------------------------------+-----------+---------------+
+; Option                                                                      ; Setting   ; Default Value ;
++-----------------------------------------------------------------------------+-----------+---------------+
+; Use smart compilation                                                       ; Off       ; Off           ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation  ; On        ; On            ;
+; Enable compact report table                                                 ; Off       ; Off           ;
+; Compression mode                                                            ; Off       ; Off           ;
+; Clock source for configuration device                                       ; Internal  ; Internal      ;
+; Clock frequency of the configuration device                                 ; 10 MHZ    ; 10 MHz        ;
+; Divide clock frequency by                                                   ; 1         ; 1             ;
+; Auto user code                                                              ; On        ; On            ;
+; Security bit                                                                ; Off       ; Off           ;
+; Use configuration device                                                    ; On        ; On            ;
+; Configuration device                                                        ; Auto      ; Auto          ;
+; Configuration device auto user code                                         ; Off       ; Off           ;
+; Generate Tabular Text File (.ttf) For Target Device                         ; Off       ; Off           ;
+; Generate Raw Binary File (.rbf) For Target Device                           ; Off       ; Off           ;
+; Generate Hexadecimal (Intel-Format) Output File (.hexout) for Target Device ; Off       ; Off           ;
+; Hexadecimal Output File start address                                       ; 0         ; 0             ;
+; Hexadecimal Output File count direction                                     ; Up        ; Up            ;
+; Generate Serial Vector Format File (.svf) for Target Device                 ; Off       ; Off           ;
+; Generate a JEDEC STAPL Format File (.jam) for Target Device                 ; Off       ; Off           ;
+; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; Off       ; Off           ;
+; Generate a compressed Jam STAPL Byte Code 2.0 File (.jbc) for Target Device ; On        ; On            ;
+; In-System Programming Default Clamp State                                   ; Tri-state ; Tri-state     ;
++-----------------------------------------------------------------------------+-----------+---------------+
 
 
-+------------------------------------------------------------------+
-; Assembler Generated Files                                        ;
-+------------------------------------------------------------------+
-; File Name                                                        ;
-+------------------------------------------------------------------+
-; C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.pof ;
-+------------------------------------------------------------------+
++--------------------------------------------+
+; Assembler Generated Files                  ;
++--------------------------------------------+
+; File Name                                  ;
++--------------------------------------------+
+; Z:/Repos/RAM2E/cpld/output_files/RAM2E.pof ;
++--------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.pof ;
-+----------------+---------------------------------------------------------------------------+
-; Option         ; Setting                                                                   ;
-+----------------+---------------------------------------------------------------------------+
-; Device         ; EPM7128SLC84-15                                                           ;
-; JTAG usercode  ; 0x00000000                                                                ;
-; Checksum       ; 0x0019C601                                                                ;
-+----------------+---------------------------------------------------------------------------+
++----------------------------------------------------------------------+
+; Assembler Device Options: Z:/Repos/RAM2E/cpld/output_files/RAM2E.pof ;
++----------------+-----------------------------------------------------+
+; Option         ; Setting                                             ;
++----------------+-----------------------------------------------------+
+; Device         ; 5M240ZT100C5                                        ;
+; JTAG usercode  ; 0x001833AC                                          ;
+; Checksum       ; 0x001836B4                                          ;
++----------------+-----------------------------------------------------+
 
 
 +--------------------+
 ; Assembler Messages ;
 +--------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Assembler
+Info: Running Quartus II 32-bit Assembler
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Feb 16 22:32:24 2020
+    Info: Processing started: Tue Apr 14 19:50:47 2020
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off RAM2E -c RAM2E
+Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
-Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4522 megabytes
-    Info: Processing ended: Sun Feb 16 22:32:24 2020
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:00
+Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 293 megabytes
+    Info: Processing ended: Tue Apr 14 19:51:26 2020
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:03
 
 
