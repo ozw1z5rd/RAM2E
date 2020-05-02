@@ -11,7 +11,7 @@ module RAM2E(C14M, PHI1,
 	/* Control inputs */
 	input nWE, nWE80, nEN80, nC07X;
 	
-	/* Delay */
+ 	/* Delay */
 	output DelayOut = ~nEN80;
 	input DelayIn;
 	wire EN80 = DelayIn;
@@ -69,33 +69,20 @@ module RAM2E(C14M, PHI1,
 	always @(posedge C14M) begin
 		CKE <= 1'b1;
 		if (S==4'h0) begin
-			if (InitS != 2'b11) InitS <= InitS+1;
-			
-			if (InitS == 2'h0) begin
-				// NOP
-				nCS <= 1'b1;
-				nRAS <= 1'bX;
-				nCAS <= 1'bX;
-				nRWE <= 1'bX;
-			end else if (InitS == 2'h1) begin
+			if (InitS == 2'h1) begin
 				// Set Mode Register
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
 				nCAS <= 1'b0;
 				nRWE <= 1'b0;
-			end else if (InitS == 2'h2) begin
-				// NOP
-				nCS <= 1'b1;
-				nRAS <= 1'bX;
-				nCAS <= 1'bX;
-				nRWE <= 1'bX;
-			end else if (InitS == 2'h3) begin
+			end else begin
 				// NOP
 				nCS <= 1'b1;
 				nRAS <= 1'bX;
 				nCAS <= 1'bX;
 				nRWE <= 1'bX;
 			end
+			InitS <= InitS==2'h3 ? 2'h3 : InitS+1;
 
 			// Mode register contents
 			BA[1:0] <= 2'b00;			// Reserved
@@ -157,7 +144,7 @@ module RAM2E(C14M, PHI1,
 			// Make RA[7:0] nontransparent (show reg. row)
 			RATransp <= 1'b0;
 
-			// Read low byte (high byte +4MB in ramworks)
+			// Read low byte (high byte is +4MB in ramworks)
 			DQML <= 1'b0;
 			DQMH <= 1'b1;
 		end else if (S==4'h4) begin
@@ -192,9 +179,6 @@ module RAM2E(C14M, PHI1,
 			// Read low byte (high byte +4MB in ramworks)
 			DQML <= 1'b0;
 			DQMH <= 1'b1;
-
-			// Latch video data
-			Vout[7:0] <= RD[7:0];
 		end else if (S==4'h6) begin
 			// Auto-refresh
 			nCS <= 1'b0;
@@ -211,6 +195,9 @@ module RAM2E(C14M, PHI1,
 			// Mask everything
 			DQML <= 1'b1;
 			DQMH <= 1'b1;
+
+			// Latch video data
+			Vout[7:0] <= RD[7:0];
 		end else if (S==4'h7) begin
 			// Activate
 			nCS <= 1'b0;
@@ -279,9 +266,6 @@ module RAM2E(C14M, PHI1,
 			DQML <= RWBank[6];
 			DQMH <= ~RWBank[6];
 
-			// Latch read data 
-			Dout[7:0] <= RD[7:0];
-
 			// Latch RAMWorks bank if accessed
 			if (~nC07X & ~nWE & RowA[0] & ~RowA[3]) RWBank <= Din;
 		end else if (S==4'hB) begin
@@ -300,6 +284,9 @@ module RAM2E(C14M, PHI1,
 			// Mask everything
 			DQML <= 1'b1;
 			DQMH <= 1'b1;
+
+			// Latch read data 
+			Dout[7:0] <= RD[7:0];
 		end else if (S==4'hC) begin
 			// NOP
 			nCS <= 1'b1;
