@@ -49,19 +49,19 @@ set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 100
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 5
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
-set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
+set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 2.5V
 set_instance_assignment -name SLOW_SLEW_RATE OFF -to nVOE
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to nVOE
 set_instance_assignment -name SLOW_SLEW_RATE OFF -to Vout
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to Vout
-set_instance_assignment -name SLOW_SLEW_RATE ON -to nDOE
+set_instance_assignment -name SLOW_SLEW_RATE OFF -to nDOE
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to nDOE
-set_instance_assignment -name SLOW_SLEW_RATE ON -to Dout
+set_instance_assignment -name SLOW_SLEW_RATE OFF -to Dout
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to Dout
 set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to Din
 set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to Ain
-set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to PHI1
-set_instance_assignment -name PAD_TO_CORE_DELAY 1 -to nEN80
+set_instance_assignment -name PAD_TO_CORE_DELAY 1 -to PHI1
+set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to nEN80
 set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to nWE80
 set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to nC07X
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to C14M
@@ -102,7 +102,7 @@ set_instance_assignment -name SLOW_SLEW_RATE ON -to DQML
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to DQML
 set_instance_assignment -name SLOW_SLEW_RATE ON -to RD
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to RD
-set_instance_assignment -name PAD_TO_CORE_DELAY 1 -to RD
+set_instance_assignment -name PAD_TO_CORE_DELAY 0 -to RD
 set_location_assignment PIN_51 -to nWE
 set_location_assignment PIN_52 -to nC07X
 set_location_assignment PIN_16 -to RA[10]
@@ -177,3 +177,10 @@ set_location_assignment PIN_4 -to CKE
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name VERILOG_FILE RAM2E.v
 set_global_assignment -name SDC_FILE constraints.sdc
+set_instance_assignment -name IO_STANDARD "3.3V SCHMITT TRIGGER INPUT" -to DelayIn
+set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to DelayOut
+set_instance_assignment -name SLOW_SLEW_RATE OFF -to DelayOut
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS OFF
+set_global_assignment -name OPTIMIZE_HOLD_TIMING "IO PATHS AND MINIMUM TPD PATHS"
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"

@@ -2495,8 +2495,8 @@ Wire Wire Line
 	950  1900 950  1800
 Wire Wire Line
 	950  1800 1050 1800
-Wire Bus Line
-	8200 4250 8200 5350
 Text Label 1050 1800 0    50   ~ 0
 TCK
+Wire Bus Line
+	8200 4250 8200 5350
 $EndSCHEMATC
