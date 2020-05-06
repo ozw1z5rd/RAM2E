@@ -127,7 +127,7 @@ Vout[3]                      : 62        : output : 3.3-V LVCMOS      :         
 VCCINT                       : 63        : power  :                   : 2.5V/3.3V :           :                
 GND*                         : 64        :        :                   :         : 2         :                
 GNDINT                       : 65        : gnd    :                   :         :           :                
-GND*                         : 66        :        :                   :         : 2         :                
+n8MEGEN                      : 66        : input  : 3.3-V LVTTL       :         : 2         : N              
 Vout[1]                      : 67        : output : 3.3-V LVCMOS      :         : 2         : Y              
 Vout[5]                      : 68        : output : 3.3-V LVCMOS      :         : 2         : Y              
 Vout[2]                      : 69        : output : 3.3-V LVCMOS      :         : 2         : Y              
@@ -149,7 +149,7 @@ Dout[6]                      : 84        : output : 3.3-V LVCMOS      :         
 Dout[7]                      : 85        : output : 3.3-V LVCMOS      :         : 2         : Y              
 GND*                         : 86        :        :                   :         : 2         :                
 GND*                         : 87        :        :                   :         : 2         :                
-GND*                         : 88        :        :                   :         : 2         :                
+nRWKSEN                      : 88        : input  : 3.3-V LVTTL       :         : 2         : N              
 RD[3]                        : 89        : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
 RD[1]                        : 90        : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
 RD[4]                        : 91        : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
