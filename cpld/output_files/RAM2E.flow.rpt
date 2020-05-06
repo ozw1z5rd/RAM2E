@@ -1,5 +1,5 @@
 Flow report for RAM2E
-Fri May 01 23:55:32 2020
+Wed May 06 00:33:40 2020
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,15 +40,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Flow Summary                                                                ;
 +---------------------------+-------------------------------------------------+
-; Flow Status               ; Successful - Fri May 01 23:55:32 2020           ;
+; Flow Status               ; Successful - Wed May 06 00:33:34 2020           ;
 ; Quartus II 32-bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name             ; RAM2E                                           ;
 ; Top-level Entity Name     ; RAM2E                                           ;
 ; Family                    ; MAX II                                          ;
 ; Device                    ; EPM240T100C5                                    ;
 ; Timing Models             ; Final                                           ;
-; Total logic elements      ; 78 / 240 ( 33 % )                               ;
-; Total pins                ; 71 / 80 ( 89 % )                                ;
+; Total logic elements      ; 100 / 240 ( 42 % )                              ;
+; Total pins                ; 73 / 80 ( 91 % )                                ;
 ; Total virtual pins        ; 0                                               ;
 ; UFM blocks                ; 0 / 1 ( 0 % )                                   ;
 +---------------------------+-------------------------------------------------+
@@ -59,49 +59,23 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/01/2020 23:55:08 ;
+; Start date & time ; 05/06/2020 00:33:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RAM2E               ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                        ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
-; Assignment Name                            ; Value                       ; Default Value ; Entity Name ; Section Id     ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
-; ALLOW_POWER_UP_DONT_CARE                   ; Off                         ; On            ; --          ; --             ;
-; ALM_REGISTER_PACKING_EFFORT                ; High                        ; Medium        ; --          ; --             ;
-; AUTO_LCELL_INSERTION                       ; Off                         ; On            ; --          ; --             ;
-; AUTO_PARALLEL_EXPANDERS                    ; Off                         ; On            ; --          ; --             ;
-; AUTO_RESOURCE_SHARING                      ; On                          ; Off           ; --          ; --             ;
-; AUTO_TURBO_BIT                             ; Off                         ; On            ; --          ; --             ;
-; COMPILER_SIGNATURE_ID                      ; 52243663262.158839170802520 ; --            ; --          ; --             ;
-; ECO_OPTIMIZE_TIMING                        ; On                          ; Off           ; --          ; --             ;
-; ECO_REGENERATE_REPORT                      ; On                          ; Off           ; --          ; --             ;
-; EDA_GENERATE_FUNCTIONAL_NETLIST            ; On                          ; --            ; --          ; eda_simulation ;
-; EDA_OUTPUT_DATA_FORMAT                     ; Verilog Hdl                 ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                        ; ModelSim-Altera (Verilog)   ; <None>        ; --          ; --             ;
-; EDA_TIME_SCALE                             ; 1 ps                        ; --            ; --          ; eda_simulation ;
-; ENABLE_BUS_HOLD_CIRCUITRY                  ; On                          ; Off           ; --          ; --             ;
-; FITTER_EFFORT                              ; Standard Fit                ; Auto Fit      ; --          ; --             ;
-; MAX7000_IGNORE_LCELL_BUFFERS               ; Off                         ; Auto          ; --          ; --             ;
-; MAXII_OPTIMIZATION_TECHNIQUE               ; Speed                       ; Balanced      ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP                     ; 85                          ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP                     ; 0                           ; --            ; --          ; --             ;
-; OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING ; Pack All IO Registers       ; Normal        ; --          ; --             ;
-; OPTIMIZE_MULTI_CORNER_TIMING               ; On                          ; Off           ; --          ; --             ;
-; PHYSICAL_SYNTHESIS_COMBO_LOGIC             ; On                          ; Off           ; --          ; --             ;
-; PHYSICAL_SYNTHESIS_EFFORT                  ; Extra                       ; Normal        ; --          ; --             ;
-; PHYSICAL_SYNTHESIS_REGISTER_DUPLICATION    ; On                          ; Off           ; --          ; --             ;
-; PHYSICAL_SYNTHESIS_REGISTER_RETIMING       ; On                          ; Off           ; --          ; --             ;
-; POWER_USE_PVA                              ; Off                         ; On            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY                   ; output_files                ; --            ; --          ; --             ;
-; SAFE_STATE_MACHINE                         ; On                          ; Off           ; --          ; --             ;
-; SLOW_SLEW_RATE                             ; On                          ; Off           ; --          ; --             ;
-; SYNTH_MESSAGE_LEVEL                        ; High                        ; Medium        ; --          ; --             ;
-; SYNTH_TIMING_DRIVEN_SYNTHESIS              ; Off                         ; --            ; --          ; --             ;
-+--------------------------------------------+-----------------------------+---------------+-------------+----------------+
++----------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                               ;
++---------------------------------------+-----------------------------+---------------+-------------+------------+
+; Assignment Name                       ; Value                       ; Default Value ; Entity Name ; Section Id ;
++---------------------------------------+-----------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID                 ; 52243663262.158873959703596 ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                          ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                           ; --            ; --          ; --         ;
+; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                        ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY              ; output_files                ; --            ; --          ; --         ;
++---------------------------------------+-----------------------------+---------------+-------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -109,12 +83,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 300 MB              ; 00:00:03                           ;
-; Fitter                    ; 00:00:06     ; 1.0                     ; 358 MB              ; 00:00:06                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 292 MB              ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 281 MB              ; 00:00:03                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 269 MB              ; 00:00:02                           ;
-; Total                     ; 00:00:16     ; --                      ; --                  ; 00:00:15                           ;
+; Analysis & Synthesis      ; 00:00:05     ; 1.0                     ; 303 MB              ; 00:00:04                           ;
+; Fitter                    ; 00:00:04     ; 1.0                     ; 360 MB              ; 00:00:05                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 294 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 273 MB              ; 00:00:03                           ;
+; Total                     ; 00:00:15     ; --                      ; --                  ; 00:00:14                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -127,7 +100,6 @@ applicable agreement for further details.
 ; Fitter                    ; zane-c8bbf8aef2  ; Windows XP ; 5.1        ; i686           ;
 ; Assembler                 ; zane-c8bbf8aef2  ; Windows XP ; 5.1        ; i686           ;
 ; TimeQuest Timing Analyzer ; zane-c8bbf8aef2  ; Windows XP ; 5.1        ; i686           ;
-; EDA Netlist Writer        ; zane-c8bbf8aef2  ; Windows XP ; 5.1        ; i686           ;
 +---------------------------+------------------+------------+------------+----------------+
 
 
@@ -138,7 +110,6 @@ quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 quartus_fit --read_settings_files=off --write_settings_files=off RAM2E -c RAM2E
 quartus_asm --read_settings_files=off --write_settings_files=off RAM2E -c RAM2E
 quartus_sta RAM2E -c RAM2E
-quartus_eda --read_settings_files=off --write_settings_files=off RAM2E -c RAM2E
 
 
 

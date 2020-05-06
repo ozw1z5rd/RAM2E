@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM2E
-Fri May 01 23:55:10 2020
+Wed May 06 00:33:21 2020
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -12,12 +12,11 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   4. Analysis & Synthesis Source Files Read
   5. Analysis & Synthesis Resource Usage Summary
   6. Analysis & Synthesis Resource Utilization by Entity
-  7. Registers Removed During Synthesis
-  8. General Register Statistics
-  9. Inverted Register Statistics
- 10. Multiplexer Restructuring Statistics (No Restructuring Performed)
- 11. Analysis & Synthesis Messages
- 12. Analysis & Synthesis Suppressed Messages
+  7. General Register Statistics
+  8. Inverted Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Analysis & Synthesis Messages
+ 11. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -43,13 +42,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Fri May 01 23:55:10 2020           ;
+; Analysis & Synthesis Status ; Successful - Wed May 06 00:33:21 2020           ;
 ; Quartus II 32-bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; RAM2E                                           ;
 ; Top-level Entity Name       ; RAM2E                                           ;
 ; Family                      ; MAX II                                          ;
-; Total logic elements        ; 83                                              ;
-; Total pins                  ; 71                                              ;
+; Total logic elements        ; 101                                             ;
+; Total pins                  ; 73                                              ;
 ; Total virtual pins          ; 0                                               ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                   ;
 +-----------------------------+-------------------------------------------------+
@@ -63,11 +62,6 @@ applicable agreement for further details.
 ; Device                                                                     ; EPM240T100C5       ;                    ;
 ; Top-level entity name                                                      ; RAM2E              ; RAM2E              ;
 ; Family name                                                                ; MAX II             ; Cyclone IV GX      ;
-; Safe State Machine                                                         ; On                 ; Off                ;
-; Power-Up Don't Care                                                        ; Off                ; On                 ;
-; Optimization Technique                                                     ; Speed              ; Balanced           ;
-; Auto Resource Sharing                                                      ; On                 ; Off                ;
-; Analysis & Synthesis Message Level                                         ; High               ; Medium             ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                                ; Off                ; Off                ;
@@ -78,6 +72,7 @@ applicable agreement for further details.
 ; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
 ; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
 ; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
 ; Extract Verilog State Machines                                             ; On                 ; On                 ;
 ; Extract VHDL State Machines                                                ; On                 ; On                 ;
 ; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
@@ -87,6 +82,7 @@ applicable agreement for further details.
 ; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
 ; Parallel Synthesis                                                         ; On                 ; On                 ;
 ; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
 ; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
 ; Remove Duplicate Registers                                                 ; On                 ; On                 ;
 ; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
@@ -96,6 +92,7 @@ applicable agreement for further details.
 ; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
 ; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
 ; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
 ; Carry Chain Length                                                         ; 70                 ; 70                 ;
 ; Auto Carry Chains                                                          ; On                 ; On                 ;
 ; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
@@ -105,6 +102,7 @@ applicable agreement for further details.
 ; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
 ; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
 ; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
 ; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
 ; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
 ; Report Parameter Settings                                                  ; On                 ; On                 ;
@@ -123,18 +121,19 @@ applicable agreement for further details.
 ; Synthesis Effort                                                           ; Auto               ; Auto               ;
 ; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
 ; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
 ; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
 ; Synthesis Seed                                                             ; 1                  ; 1                  ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                               ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path ; Library ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
-; RAM2E.v                          ; yes             ; User Verilog HDL File  ; Z:/Repos/RAM2E/cpld/RAM2E.v  ;         ;
-+----------------------------------+-----------------+------------------------+------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; RAM2E.v                          ; yes             ; User Verilog HDL File  ; //vmware-host/Shared Folders/Repos/RAM2E/cpld/RAM2E.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -142,32 +141,33 @@ applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 83    ;
-;     -- Combinational with no register       ; 30    ;
-;     -- Register only                        ; 25    ;
-;     -- Combinational with a register        ; 28    ;
+; Total logic elements                        ; 101   ;
+;     -- Combinational with no register       ; 39    ;
+;     -- Register only                        ; 17    ;
+;     -- Combinational with a register        ; 45    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 25    ;
+;     -- 4 input functions                    ; 36    ;
 ;     -- 3 input functions                    ; 19    ;
-;     -- 2 input functions                    ; 14    ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 2 input functions                    ; 28    ;
+;     -- 1 input functions                    ; 1     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 83    ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 91    ;
+;     -- arithmetic mode                      ; 10    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 2     ;
+;     -- synchronous clear/load mode          ; 0     ;
 ;     -- asynchronous clear/load mode         ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 53    ;
-; I/O pins                                    ; 71    ;
+; Total registers                             ; 62    ;
+; Total logic cells in carry chains           ; 11    ;
+; I/O pins                                    ; 73    ;
 ; Maximum fan-out node                        ; C14M  ;
-; Maximum fan-out                             ; 53    ;
-; Total fan-out                               ; 361   ;
-; Average fan-out                             ; 2.34  ;
+; Maximum fan-out                             ; 62    ;
+; Total fan-out                               ; 423   ;
+; Average fan-out                             ; 2.43  ;
 +---------------------------------------------+-------+
 
 
@@ -176,19 +176,9 @@ applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
-; |RAM2E                     ; 83 (83)     ; 53           ; 0          ; 71   ; 0            ; 30 (30)      ; 25 (25)           ; 28 (28)          ; 0 (0)           ; 0 (0)      ; |RAM2E              ; work         ;
+; |RAM2E                     ; 101 (101)   ; 62           ; 0          ; 73   ; 0            ; 39 (39)      ; 17 (17)           ; 45 (45)          ; 11 (11)         ; 0 (0)      ; |RAM2E              ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; CKE~reg0                              ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 1 ;                                        ;
-+---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -196,12 +186,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 53    ;
-; Number of registers using Synchronous Clear  ; 2     ;
+; Total registers                              ; 62    ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 41    ;
+; Number of registers using Clock Enable       ; 31    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -212,7 +202,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
 ; nCS~reg0                               ; 1       ;
-; nRAS~reg0                              ; 2       ;
+; nRAS~reg0                              ; 1       ;
 ; nCAS~reg0                              ; 1       ;
 ; nRWE~reg0                              ; 1       ;
 ; DQML~reg0                              ; 1       ;
@@ -222,16 +212,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (No Restructuring Performed)                                                                        ;
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |RAM2E|S[3]                ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 12 LEs               ; 28 LEs                 ; Yes        ; |RAM2E|RAH[11]             ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 2 LEs                ; 18 LEs                 ; Yes        ; |RAM2E|BA[0]~reg0          ;
-; 16:1               ; 8 bits    ; 80 LEs        ; 8 LEs                ; 72 LEs                 ; Yes        ; |RAM2E|RowA[6]             ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |RAM2E|nCAS~reg0           ;
-; 16:1               ; 2 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |RAM2E|DQML~reg0           ;
+; 16:1               ; 8 bits    ; 80 LEs        ; 8 LEs                ; 72 LEs                 ; Yes        ; |RAM2E|RA[0]~reg0          ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; Yes        ; |RAM2E|DQML~reg0           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -241,35 +228,33 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri May 01 23:55:06 2020
+    Info: Processing started: Wed May 06 00:33:16 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 Info (20029): Only one processor detected - disabling parallel compilation
 Info (12021): Found 1 design units, including 1 entities, in source file ram2e.v
     Info (12023): Found entity 1: RAM2E
 Info (12127): Elaborating entity "RAM2E" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(61): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(66): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(85): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(270): truncated value with size 8 to match size of target (7)
-Warning (14130): Reduced register "CKE~reg0" with stuck data_in port to stuck value VCC
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(57): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(63): truncated value with size 32 to match size of target (12)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(291): truncated value with size 32 to match size of target (8)
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "CKE" is stuck at VCC
-Info (21057): Implemented 154 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 23 input pins
+Info (21057): Implemented 174 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 25 input pins
     Info (21059): Implemented 40 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 83 logic cells
-Info (144001): Generated suppressed messages file Z:/Repos/RAM2E/cpld/output_files/RAM2E.map.smsg
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 300 megabytes
-    Info: Processing ended: Fri May 01 23:55:10 2020
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info (21061): Implemented 101 logic cells
+Info (144001): Generated suppressed messages file /Repos/RAM2E/cpld/output_files/RAM2E.map.smsg
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 303 megabytes
+    Info: Processing ended: Wed May 06 00:33:21 2020
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:05
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in Z:/Repos/RAM2E/cpld/output_files/RAM2E.map.smsg.
+The suppressed messages can be found in /Repos/RAM2E/cpld/output_files/RAM2E.map.smsg.
 
 
