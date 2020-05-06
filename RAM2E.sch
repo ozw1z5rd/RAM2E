@@ -4,8 +4,8 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 2
-Title "RAM2E"
-Date "2019-10-13"
+Title "RAM2E II"
+Date "2020-05-06"
 Rev "0.9"
 Comp "Garrett's Workshop"
 Comment1 ""
@@ -2419,8 +2419,6 @@ Text Label 7300 3950 2    50   ~ 0
 CFG0
 Text Label 7800 4050 0    50   ~ 0
 CFG1
-Wire Bus Line
-	8200 4250 8200 5350
 $Comp
 L power:GND #PWR0146
 U 1 1 5EAAE8A3
@@ -2443,4 +2441,62 @@ F 3 "" H 7800 3950 50  0001 C CNN
 	1    7800 3950
 	-1   0    0    1   
 $EndComp
+$Comp
+L Device:R_Small R9
+U 1 1 5EBE988D
+P 950 2000
+F 0 "R9" H 900 2050 50  0000 R CNN
+F 1 "1k2" H 900 1950 50  0000 R CNN
+F 2 "stdpads:R_0805" H 950 2000 50  0001 C CNN
+F 3 "~" H 950 2000 50  0001 C CNN
+	1    950  2000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R10
+U 1 1 5EBEA685
+P 1350 2000
+F 0 "R10" H 1300 2050 50  0000 R CNN
+F 1 "22k" H 1300 1950 50  0000 R CNN
+F 2 "stdpads:R_0805" H 1350 2000 50  0001 C CNN
+F 3 "~" H 1350 2000 50  0001 C CNN
+	1    1350 2000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EBEEA76
+P 950 2100
+F 0 "#PWR?" H 950 1850 50  0001 C CNN
+F 1 "GND" H 950 1950 50  0000 C CNN
+F 2 "" H 950 2100 50  0001 C CNN
+F 3 "" H 950 2100 50  0001 C CNN
+	1    950  2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5EBEF11E
+P 1350 1900
+F 0 "#PWR?" H 1350 1750 50  0001 C CNN
+F 1 "+3V3" H 1350 2050 50  0000 C CNN
+F 2 "" H 1350 1900 50  0001 C CNN
+F 3 "" H 1350 1900 50  0001 C CNN
+	1    1350 1900
+	1    0    0    -1  
+$EndComp
+Text Label 1250 2200 2    50   ~ 0
+TMS
+Wire Wire Line
+	1250 2200 1350 2200
+Wire Wire Line
+	1350 2200 1350 2100
+Wire Wire Line
+	950  1900 950  1800
+Wire Wire Line
+	950  1800 1050 1800
+Wire Bus Line
+	8200 4250 8200 5350
+Text Label 1050 1800 0    50   ~ 0
+TCK
 $EndSCHEMATC

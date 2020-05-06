@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 2
-Title "RAM2E"
-Date "2019-10-13"
+Title "RAM2E II"
+Date "2020-05-06"
 Rev "0.9"
 Comp "Garrett's Workshop"
 Comment1 ""
@@ -553,12 +553,10 @@ Wire Wire Line
 	8750 2300 8600 2300
 Wire Wire Line
 	8600 2400 8750 2400
-Text Notes 6800 2250 0    40   ~ 0
+Text Notes 7100 2250 0    40   ~ 0
 RD+AP
-Text Notes 6550 2250 0    40   ~ 0
+Text Notes 6850 2250 0    40   ~ 0
 ACT
-Text Notes 7150 2250 0    40   ~ 0
-NOP
 Text Notes 7450 2250 0    40   ~ 0
 NOP
 Text Notes 5300 2250 0    40   ~ 0
@@ -763,12 +761,8 @@ Wire Wire Line
 	5250 2300 5300 2400
 Text Notes 5300 2400 0    40   ~ 0
 RD+AP
-Text Notes 6550 2400 0    40   ~ 0
-ACT
-Text Notes 6800 2400 0    40   ~ 0
+Text Notes 7100 2400 0    40   ~ 0
 WR+AP
-Text Notes 7150 2400 0    40   ~ 0
-NOP
 Text Notes 7450 2400 0    40   ~ 0
 NOP
 Text Notes 7750 2400 0    40   ~ 0
@@ -987,4 +981,10 @@ Wire Wire Line
 	3650 1950 8750 1950
 Text Notes 4150 3100 0    100  ~ 0
 Information may be out of date. See ./cpld/RAM2E.v
+Text Notes 6850 2400 0    40   ~ 0
+ACT
+Text Notes 6550 2250 0    40   ~ 0
+NOP
+Text Notes 6550 2400 0    40   ~ 0
+NOP
 $EndSCHEMATC
