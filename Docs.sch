@@ -402,8 +402,6 @@ Wire Wire Line
 Wire Wire Line
 	8300 2600 8350 2650
 Wire Wire Line
-	7700 2700 8300 2700
-Wire Wire Line
 	8350 2650 8750 2650
 Wire Wire Line
 	8300 2450 8350 2500
@@ -791,16 +789,6 @@ Text Notes 3850 2400 0    40   ~ 0
 NOP
 Text Notes 3600 2100 2    50   ~ 0
 CKE
-Wire Wire Line
-	7700 2600 8300 2600
-Wire Wire Line
-	7650 2700 7700 2600
-Wire Wire Line
-	6250 2700 7650 2700
-Wire Wire Line
-	6250 2600 7650 2600
-Wire Wire Line
-	7650 2600 7700 2700
 Text Notes 3600 2700 2    50   ~ 0
 MD[7:0] (read)
 Wire Wire Line
@@ -827,8 +815,6 @@ Wire Wire Line
 	7700 2100 8750 2100
 Text Notes 3600 2850 2    50   ~ 0
 MD[7:0] (write)
-Text Notes 7800 2700 0    50   ~ 0
-read data
 Wire Wire Line
 	4150 2500 6200 2500
 Wire Wire Line
@@ -987,4 +973,18 @@ Text Notes 6550 2250 0    40   ~ 0
 NOP
 Text Notes 6550 2400 0    40   ~ 0
 NOP
+Wire Wire Line
+	6250 2700 7800 2700
+Wire Wire Line
+	6250 2600 7800 2600
+Text Notes 7850 2700 0    50   ~ 0
+read data
+Wire Wire Line
+	7850 2700 8300 2700
+Wire Wire Line
+	7850 2600 8300 2600
+Wire Wire Line
+	7800 2600 7850 2700
+Wire Wire Line
+	7800 2700 7850 2600
 $EndSCHEMATC

@@ -3,11 +3,11 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'C14M'
-Slack : 28.006
+Slack : 30.042
 TNS   : 0.000
 
 Type  : Hold 'C14M'
-Slack : 1.660
+Slack : 1.639
 TNS   : 0.000
 
 Type  : Minimum Pulse Width 'C14M'
