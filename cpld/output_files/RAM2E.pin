@@ -122,7 +122,7 @@ Vout[7]                      : 57        : output : 3.3-V LVCMOS      :         
 Vout[6]                      : 58        : output : 3.3-V LVCMOS      :         : 2         : Y              
 VCCIO2                       : 59        : power  :                   : 3.3V    : 2         :                
 GNDIO                        : 60        : gnd    :                   :         :           :                
-n8MEGEN                      : 61        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 61        :        :                   :         : 2         :                
 Vout[3]                      : 62        : output : 3.3-V LVCMOS      :         : 2         : Y              
 VCCINT                       : 63        : power  :                   : 2.5V/3.3V :           :                
 GND*                         : 64        :        :                   :         : 2         :                
@@ -147,7 +147,7 @@ DelayIn                      : 82        : input  : 3.3V Schmitt Trigger Input :
 DelayOut                     : 83        : output : 3.3-V LVTTL       :         : 2         : Y              
 Dout[6]                      : 84        : output : 3.3-V LVCMOS      :         : 2         : Y              
 Dout[7]                      : 85        : output : 3.3-V LVCMOS      :         : 2         : Y              
-nRWKSEN                      : 86        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 86        :        :                   :         : 2         :                
 GND*                         : 87        :        :                   :         : 2         :                
 GND*                         : 88        :        :                   :         : 2         :                
 RD[3]                        : 89        : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
