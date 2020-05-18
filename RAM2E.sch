@@ -1486,7 +1486,6 @@ Wire Wire Line
 	7500 5850 7700 5850
 Text Label 7700 5550 2    50   ~ 0
 RD3
-NoConn ~ 6600 5050
 $Comp
 L power:GND #PWR0108
 U 1 1 603045A0
@@ -2400,47 +2399,6 @@ F 3 "https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/
 	1    5600 4050
 	1    0    0    -1  
 $EndComp
-Text Label 6600 4850 0    50   ~ 0
-CFG1
-Text Label 6600 4950 0    50   ~ 0
-CFG0
-$Comp
-L Connector_Generic:Conn_02x02_Odd_Even J3
-U 1 1 5EA8BDCC
-P 7500 3950
-F 0 "J3" H 7550 4050 50  0000 C CNN
-F 1 "Config" H 7550 3750 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical_SMD" H 7500 3950 50  0001 C CNN
-F 3 "~" H 7500 3950 50  0001 C CNN
-	1    7500 3950
-	1    0    0    -1  
-$EndComp
-Text Label 7300 3950 2    50   ~ 0
-CFG0
-Text Label 7800 4050 0    50   ~ 0
-CFG1
-$Comp
-L power:GND #PWR0146
-U 1 1 5EAAE8A3
-P 7300 4050
-F 0 "#PWR0146" H 7300 3800 50  0001 C CNN
-F 1 "GND" H 7300 3900 50  0000 C CNN
-F 2 "" H 7300 4050 50  0001 C CNN
-F 3 "" H 7300 4050 50  0001 C CNN
-	1    7300 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0147
-U 1 1 5EAAEC35
-P 7800 3950
-F 0 "#PWR0147" H 7800 3700 50  0001 C CNN
-F 1 "GND" H 7800 3800 50  0000 C CNN
-F 2 "" H 7800 3950 50  0001 C CNN
-F 3 "" H 7800 3950 50  0001 C CNN
-	1    7800 3950
-	-1   0    0    1   
-$EndComp
 $Comp
 L Device:R_Small R9
 U 1 1 5EBE988D
@@ -2464,10 +2422,10 @@ F 3 "~" H 1350 2000 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L power:GND #PWR0148
 U 1 1 5EBEEA76
 P 950 2100
-F 0 "#PWR?" H 950 1850 50  0001 C CNN
+F 0 "#PWR0148" H 950 1850 50  0001 C CNN
 F 1 "GND" H 950 1950 50  0000 C CNN
 F 2 "" H 950 2100 50  0001 C CNN
 F 3 "" H 950 2100 50  0001 C CNN
@@ -2475,10 +2433,10 @@ F 3 "" H 950 2100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3V3 #PWR?
+L power:+3V3 #PWR0149
 U 1 1 5EBEF11E
 P 1350 1900
-F 0 "#PWR?" H 1350 1750 50  0001 C CNN
+F 0 "#PWR0149" H 1350 1750 50  0001 C CNN
 F 1 "+3V3" H 1350 2050 50  0000 C CNN
 F 2 "" H 1350 1900 50  0001 C CNN
 F 3 "" H 1350 1900 50  0001 C CNN
@@ -2497,6 +2455,46 @@ Wire Wire Line
 	950  1800 1050 1800
 Text Label 1050 1800 0    50   ~ 0
 TCK
+Text Label 6600 4850 0    50   ~ 0
+CFG1
+Text Label 6600 4950 0    50   ~ 0
+CFG0
+$Comp
+L Switch:SW_DIP_x03 SW1
+U 1 1 5EEC6E47
+P 12100 3750
+F 0 "SW1" H 12100 4100 50  0000 C CNN
+F 1 "Config" H 12100 3600 50  0000 C CNN
+F 2 "Button_Switch_SMD:SW_DIP_SPSTx03_Slide_6.7x9.18mm_W8.61mm_P2.54mm_LowProfile" H 12100 3750 50  0001 C CNN
+F 3 "~" H 12100 3750 50  0001 C CNN
+	1    12100 3750
+	1    0    0    -1  
+$EndComp
+Text Label 11800 3550 2    50   ~ 0
+CFG0
+Text Label 11800 3650 2    50   ~ 0
+CFG1
+Text Label 11800 3750 2    50   ~ 0
+CFG2
+$Comp
+L power:GND #PWR0146
+U 1 1 5EEE8F32
+P 12400 3750
+F 0 "#PWR0146" H 12400 3500 50  0001 C CNN
+F 1 "GND" H 12400 3600 50  0000 C CNN
+F 2 "" H 12400 3750 50  0001 C CNN
+F 3 "" H 12400 3750 50  0001 C CNN
+	1    12400 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12400 3750 12400 3650
 Wire Bus Line
 	8200 4250 8200 5350
+Connection ~ 12400 3750
+Connection ~ 12400 3650
+Wire Wire Line
+	12400 3650 12400 3550
+Text Label 6600 5050 0    50   ~ 0
+CFG2
 $EndSCHEMATC
