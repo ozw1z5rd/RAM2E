@@ -33,7 +33,7 @@
 //applicable agreement for further details.
 
 
-//altufm_none CBX_AUTO_BLACKBOX="ALL" DEVICE_FAMILY="MAX II" ERASE_TIME=500000000 OSC_FREQUENCY=180000 PORT_ARCLKENA="PORT_UNUSED" PORT_DRCLKENA="PORT_UNUSED" PROGRAM_TIME=1600000 WIDTH_UFM_ADDRESS=9 arclk ardin arshft busy drclk drdin drdout drshft erase osc oscena program rtpbusy
+//altufm_none CBX_AUTO_BLACKBOX="ALL" DEVICE_FAMILY="MAX II" ERASE_TIME=500000000 LPM_FILE="RAM2E.mif" OSC_FREQUENCY=180000 PORT_ARCLKENA="PORT_UNUSED" PORT_DRCLKENA="PORT_UNUSED" PROGRAM_TIME=1600000 WIDTH_UFM_ADDRESS=9 arclk ardin arshft busy drclk drdin drdout drshft erase osc oscena program rtpbusy
 //VERSION_BEGIN 13.0 cbx_a_gray2bin 2013:06:12:18:03:39:SJ cbx_a_graycounter 2013:06:12:18:03:39:SJ cbx_altufm_none 2013:06:12:18:03:40:SJ cbx_cycloneii 2013:06:12:18:03:40:SJ cbx_lpm_add_sub 2013:06:12:18:03:40:SJ cbx_lpm_compare 2013:06:12:18:03:40:SJ cbx_lpm_counter 2013:06:12:18:03:40:SJ cbx_lpm_decode 2013:06:12:18:03:40:SJ cbx_lpm_mux 2013:06:12:18:03:40:SJ cbx_maxii 2013:06:12:18:03:40:SJ cbx_mgl 2013:06:12:18:04:42:SJ cbx_stratix 2013:06:12:18:03:40:SJ cbx_stratixii 2013:06:12:18:03:40:SJ cbx_util_mgl 2013:06:12:18:03:40:SJ  VERSION_END
 // synthesis VERILOG_INPUT_VERSION VERILOG_2001
 // altera message_off 10463
@@ -43,7 +43,7 @@
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
-module  UFM_altufm_none_0ep
+module  UFM_altufm_none_a7r
 	( 
 	arclk,
 	ardin,
@@ -117,8 +117,8 @@ module  UFM_altufm_none_0ep
 	defparam
 		maxii_ufm_block1.address_width = 9,
 		maxii_ufm_block1.erase_time = 500000000,
-		maxii_ufm_block1.init_file = "none",
-		maxii_ufm_block1.mem1 = 512'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,
+		maxii_ufm_block1.init_file = "RAM2E.mif",
+		maxii_ufm_block1.mem1 = 512'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8080,
 		maxii_ufm_block1.mem10 = 512'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,
 		maxii_ufm_block1.mem11 = 512'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,
 		maxii_ufm_block1.mem12 = 512'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF,
@@ -155,7 +155,7 @@ module  UFM_altufm_none_0ep
 		ufm_osc = wire_maxii_ufm_block1_osc,
 		ufm_oscena = oscena,
 		ufm_program = program;
-endmodule //UFM_altufm_none_0ep
+endmodule //UFM_altufm_none_a7r
 //VALID FILE
 
 
@@ -200,7 +200,7 @@ module UFM (
 	wire  drdout = sub_wire2;
 	wire  busy = sub_wire3;
 
-	UFM_altufm_none_0ep	UFM_altufm_none_0ep_component (
+	UFM_altufm_none_a7r	UFM_altufm_none_a7r_component (
 				.arshft (arshft),
 				.drclk (drclk),
 				.erase (erase),
@@ -224,7 +224,7 @@ endmodule
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "MAX II"
 // Retrieval info: CONSTANT: ERASE_TIME NUMERIC "500000000"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "MAX II"
-// Retrieval info: CONSTANT: LPM_FILE STRING "UNUSED"
+// Retrieval info: CONSTANT: LPM_FILE STRING "RAM2E.mif"
 // Retrieval info: CONSTANT: LPM_HINT STRING "UNUSED"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altufm_none"
 // Retrieval info: CONSTANT: OSC_FREQUENCY NUMERIC "180000"

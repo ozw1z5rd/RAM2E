@@ -11,69 +11,73 @@ module RAM2E(C14M, PHI1,
 	/* Control inputs */
 	input nWE, nWE80, nEN80, nC07X;
 	
- 	/* Delay */
+ 	/* Delay for EN80 signal */
 	output DelayOut = ~nEN80;
 	input DelayIn;
 	wire EN80 = DelayIn;
 	
 	/* Address Bus */
-	input [7:0] Ain; // Multuplexed address input
-	reg RWSel = 0;
+	input [7:0] Ain; // Multiplexed DRAM address input
 	
 	/* 6502 Data Bus */
-	input [7:0] Din;
-	output nDOE = ~(EN80 & nWE);
-	output reg [7:0] Dout;
+	input [7:0] Din; // 6502 data bus inputs
+	output nDOE = ~(EN80 & nWE); // 6502 data bus output enable
+	output reg [7:0] Dout; // 6502 data Bus output
 	
 	/* Video Data Bus */
-	output nVOE = PHI1 | ~Ready;
-	output reg [7:0] Vout;
+	output nVOE = ~(~PHI1 & Ready); /// Video data bus output enable
+	output reg [7:0] Vout; // Video data bus
 	
-	/* RAMWorks Bank Register and Capacity Limit */
-	reg [7:0] RWBank = 0;
-	reg [7:0] RWMask = 0;
-	reg RWMaskSet = 0;
+	/* RAMWorks Bank Register and Capacity Mask */
+	reg [7:0] RWBank = 0; // RAMWorks bank register
+	reg [7:0] RWMask = 0; // RAMWorks bank register capacity mask
+	reg RWSel = 0; // RAMWorks bank register select
+	reg RWMaskSet = 0; // RAMWorks Mask register set flag
+	reg ResetRWBankNext = 0; // Causes RWBank to be zeroed next RWSel access
 	
 	/* Command Sequence Detector */
-	reg [2:0] CmdSeqS = 0;
-	reg [3:0] CmdTimeout = 0;
+	reg [2:0] CS = 0; // Command sequence state
+	reg [2:0] CmdTimeout = 0; // Command sequence timeout
 
-	/* UFM Interface Registers */
-	reg [7:0] UFMA = 0;
-	reg [7:0] UFMD = 0;
-	reg ARCLK = 0;
-	reg ARDIn = 0;
-	reg ARShift = 0;
-	reg DRCLK = 0;
-	reg DRDIn = 0;
-	reg DRShift = 0;
-	reg UFMErase = 0;
-	reg UFMProgram = 0;
-	wire UFMBusy;
-	wire DRDOut;
-	wire RTPBusy;
-	UFM UFM_inst (
+	/* UFM Interface */
+	reg [15:8] UFMD = 0; // *Parallel* UFM data register
+	reg ARCLK = 0; // UFM address register clock
+	// UFM address register data input tied to 0
+	reg ARShift = 0; // 1 to Shift UFM address in, 0 to increment
+	reg DRCLK = 0; // UFM data register clock
+	reg DRDIn = 0; // UFM data register input
+	reg DRShift = 0; // 1 to shift UFM out, 0 to load from current address
+	reg UFMErase = 0; // Rising edge starts erase. UFM+RTP must not be busy
+	reg UFMProgram = 0; // Rising edge starts program. UFM+RTP must not be busy
+	wire UFMBusy; // 1 if UFM is doing user operation. Asynchronous
+	wire RTPBusy; // 1 if real-time programming in progress. Asynchronous
+	wire DRDOut; // UFM data output
+	// UFM oscillator always enabled
+	wire UFMOsc; // UFM oscillator output (3.3-5.5 MHz)
+	UFM UFM_inst ( // UFM IP block (for Altera MAX II and MAX V)
 		.arclk (ARCLK),
-		.ardin (ARDIn),
+		.ardin (1'b0),
 		.arshft (ARShift),
 		.drclk (DRCLK),
 		.drdin (DRDIn),
 		.drshft (DRShift),
 		.erase (UFMErase),
-		.oscena (1'b0),
+		.oscena (1'b1),
 		.program (UFMProgram),
 		.busy (UFMBusy),
 		.drdout (DRDOut),
 		.osc (UFMOsc),
 		.rtpbusy (RTPBusy));
-	reg UFMBusyReg = 0;
-	reg RTPBusyReg = 0;
-	reg DRDOutReg = 0;
-	reg UFMInitDone = 0;
-	reg UFMReqErase = 0;
-	reg UFMBitbang = 0;
-	reg UFMPrgmEN = 0;
-	reg DoutSubstUFM = 0;
+	reg UFMBusyReg = 0; // UFMBusy registered to sync with C14M
+	reg RTPBusyReg = 0; // RTPBusy registered to sync with C14M
+
+	/* UFM State & User Command Triggers */
+	reg UFMInitDone = 0; // 1 if UFM initialization finished
+	reg UFMReqErase = 0; // 1 if UFM requires erase
+	reg UFMBitbang = 0; // Set by user command. Loads UFM outputs next RWSel
+	reg UFMPrgmEN = 0; // Set by user command. Programs UFM
+	reg UFMEraseEN = 0; // Set by user command. Erases UFM
+	reg DRCLKPulse = 0; // Set by user command. Causes DRCLK pulse next C14M
 
 	/* SDRAM */
 	output reg CKE = 0;
@@ -86,210 +90,140 @@ module RAM2E(C14M, PHI1,
 
 	/* State Counters */
 	reg PHI1reg = 0; // Saved PHI1 at last rising clock edge
-	reg Ready = 0;
-	reg [3:0] S = 0; // State counter
-	reg [16:0] InitS = 0; // Init state counter
+	reg Ready = 0; // 1 if done with init sequence (S0) and enter S1-S15
+	reg [15:0] FS = 0; // Fast state counter
+	reg [3:0] S = 0; // IIe State counter
 
+	/* State Counters */
 	always @(posedge C14M) begin
-		// Synchronize state counter to S1 when just entering PHI1
+		// Increment fast state counter
+		FS <= FS+1;
+		// Synchronize Apple state counter to S1 when just entering PHI1
 		PHI1reg <= PHI1; // Save old PHI1
 		S <= (PHI1 & ~PHI1reg & Ready) ? 4'h1 : 
 			S==4'h0 ? 4'h0 :
 			S==4'hF ? 4'hF : S+1;
 	end
 
+	/* UFM Control */
 	always @(posedge C14M) begin
 		// Synchronize asynchronous UFM signals
 		UFMBusyReg <= UFMBusy;
 		RTPBusyReg <= RTPBusy;
-		DRDOutReg <= DRDOut;
 
 		if (S==4'h0) begin
-			// Read UFM to figure out capacity mask
-			// UFM is read at 64 C14M cycles per 16-bit word
-			// UFM clock at 7 MHz
-			ARCLK <= InitS[0];
-			DRCLK <= InitS[0];
-			if (~InitS[0] & ~UFMInitDone) begin
-				if (InitS[5:1]==5'h00) begin // Shift in A0
-					ARDIn <= UFMA[0];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h01) begin // Shift in A1
-					ARDIn <= UFMA[1];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h02) begin // Shift in A2
-					ARDIn <= UFMA[2];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h03) begin // Shift in A3
-					ARDIn <= UFMA[3];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h04) begin // Shift in A4
-					ARDIn <= UFMA[4];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h05) begin // Shift in A5
-					ARDIn <= UFMA[5];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h06) begin // Shift in A6
-					ARDIn <= UFMA[6];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h07) begin // Shift in A7
-					ARDIn <= UFMA[7];
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h08) begin // Shift in A8 (0)
-					ARDIn <= 1'b0;
-					ARShift <= 1'b1;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h09) begin // Read into UFM DR
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end else if (InitS[5:1]==5'h10) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h11) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h12) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h13) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h14) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h15) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h16) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b1;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h17) begin // Shift into our UFMD
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-					UFMD[7:0] <= {UFMD[6:0], DRDOut};
-				end else if (InitS[5:1]==5'h1F) begin // Store and increment
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-					if (UFMD[7:0] == 8'hFF) begin // if byte is erased
-						// Address currently in UFMA is where we want to store
+			if ((FS[15:13]==3'b101) | (FS[15:13]==3'b111 & UFMReqErase)) begin
+				// In states AXXX-BXXX and also EXXX-FXXX if erase/wrap req'd
+				// shift in 0's to address register
+				ARCLK <= FS[0]; // Clock address register
+				DRCLK <= 1'b0; // Don't clock data register
+				ARShift <= 1'b1; // Shift address registers
+				DRDIn <= 1'b0; // Don't care DRDIn
+				DRShift <= 1'b0; // Don't care DRDShift
+			end else if (~UFMInitDone & FS[15:13]==3'b110 & FS[4:1]==4'h4) begin
+				// In states CXXX-DXXX (substep 4)
+				// Xfer to data reg (repeat 256x 1x)
+				ARCLK <= 1'b0; // Don't clock address register
+				DRCLK <= FS[0]; // Clock data register
+				ARShift <= 1'b0; // Don't care ARShift
+				DRDIn <= 1'b0; // Don't care DRDIn
+				DRShift <= 1'b0; // Don't care DRShift
+			end else if (~UFMInitDone & FS[15:13]==3'b110 & FS[4]==1'b1) begin
+				// In states CXXX-DXXX (substeps 8-F)
+				// Save UFM D15-8, shift out D14-7 (repeat 256x 8x)
+				DRCLK <= FS[0]; // Clock data register
+				ARShift <= 1'b0; // ARShift is 0 because we want to increment
+				DRDIn <= 1'b0; // Don't care what to shift into data register
+				DRShift <= 1'b1; // Shift data register
+				// Shift into UFMD
+				if (FS[0]) UFMD[15:8] <= {UFMD[14:8], DRDOut};
+
+				// Compare and store mask
+				if (FS[4:1]==4'hF) begin
+					ARCLK <= FS[0]; // Clock address register to increment
+					// If byte is erased (0xFF, i.e. all 1's, is erased)...
+					if (UFMD[14:8]==7'b1111111 & DRDOut==1'b1) begin
+						// Current UFM address is where we want to store
 						UFMInitDone <= 1'b1; // Quit iterating
-					end else begin // if byte is valid
-						// Set RAMWorks mask
-						if (UFMD[7:0]==8'h80) RWMask[7:0] <= 8'hFF;
-						else RWMask[7:0] <= UFMD[7:0];
+					// Otherwise byte is valid setting (i.e. some bit is 0)...
+					end else begin
+						// Set RWMask, but if saved mask is 0x80, store ~0xFF
+						if (UFMD[14:8]==7'b1000000 & DRDOut==1'b0) begin
+							RWMask[7:0] <= ~8'hFF;
+						end else RWMask[7:0] <= ~{UFMD[14:8], DRDOut};
 						// If last byte in sector...
-						UFMInitDone <= UFMA==8'hFF; // Quit iterating
-						UFMReqErase <= UFMA==8'hFF; // Mark need to erase
-						// Increment UFMA
-						UFMA[7:0] <= UFMA+1;
+						if (FS[12:5]==8'hFF) begin
+							UFMReqErase <= 1'b1; // Mark need to erase
+						end
 					end
-				end else begin
-					ARDIn <= 1'b0;
-					ARShift <= 1'b0;
-					DRDIn <= 1'b0;
-					DRShift <= 1'b0;
-				end
+				end else ARCLK <= 1'b0; // Don't clock address register
+			end else begin
+				ARCLK <= 1'b0;
+				DRCLK <= 1'b0;
+				ARShift <= 1'b0;
+				DRDIn <= 1'b0;
+				DRShift <= 1'b0;
 			end
 
 			// Don't erase or program UFM during initialization 
 			UFMErase <= 1'b0;
 			UFMProgram <= 1'b0;
+			// Keep DRCLK pulse control disabled during init
+			DRCLKPulse <= 1'b0;
 		end else begin
+			DRShift <= 1'b1; // Can only shift UFM data register now
+
 			// UFM bitbang control
-			if (UFMBitbang & CmdSeqS==3'h7 & RWSel & S==4'hC) begin
-				ARCLK <= Din[0];
-				ARDIn <= Din[1];
-				ARShift <= Din[2];
-				DRCLK <= Din[3];
-				DRDIn <= Din[4];
-				DRShift <= Din[5];
+			if (UFMBitbang & CS==3'h7 & RWSel & S==4'hC) begin
+				DRDIn <= Din[6];
+				DRCLKPulse <= Din[7];
 			end
+
+			// Data register clock pulse
+			if (DRCLKPulse) begin
+				DRCLKPulse <= 1'b0;
+				DRCLK <= 1'b1;
+			end else DRCLK <= 1'b0;
 
 			// Set capacity mask
-			if (RWMaskSet & CmdSeqS==3'h7 & RWSel & S==4'hC) begin
-				RWMask[7:0] <= Din[7:0];
-			end
+			if (RWMaskSet & RWSel & S==4'hC) RWMask[7:0] <= ~Din[7:0];
 
 			// UFM programming sequence
-			if (UFMPrgmEN) begin
+			if (UFMPrgmEN | UFMEraseEN) begin
 				if (~UFMBusyReg & ~RTPBusyReg) begin
-					if (UFMReqErase) UFMErase <= 1'b1;
-					else UFMProgram <= 1'b1;
+					if (UFMReqErase | UFMEraseEN) UFMErase <= 1'b1;
+					else if (UFMPrgmEN) UFMProgram <= 1'b1;
 				end else if (UFMBusyReg) UFMReqErase <= 1'b0;
 			end
 		end
 	end
 
+	/* SDRAM Control */
 	always @(posedge C14M) begin
-		InitS <= InitS+1;
 		if (S==4'h0) begin 
 			// SDRAM initialization
-			if (InitS==17'h1FFC8) begin
+			if (FS[15:0]==16'hFFC0) begin
 				// Precharge All
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
 				nCAS <= 1'b1;
 				nRWE <= 1'b0;
-				RA[10] <= 1'b1; // "precharge all"
-			end else if (InitS[16:4]==13'h1FFD & ~InitS[0]) begin // Repeat 8x
+				RA[10] <= 1'b1; // "all"
+			end else if (FS[15:4]==16'hFFD & FS[0]==1'b1) begin // Repeat 8x
 				// Auto-refresh
-				nCS <= 1'b0;
+				nCS <= 1'b0;	
 				nRAS <= 1'b0;
 				nCAS <= 1'b0;
 				nRWE <= 1'b1;
 				RA[10] <= 1'b0;
-			end else if (InitS==17'h1FFE8) begin
+			end else if (FS[15:0]==16'hFFE8) begin
 				// Set Mode Register
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
 				nCAS <= 1'b0;
 				nRWE <= 1'b0;
 				RA[10] <= 1'b0; // Reserved in mode register
-			end else if (InitS[16:4]==13'h1FFF & ~InitS[0]) begin // Repeat 8x
+			end else if (FS[15:4]==12'hFFD & FS[0]==1'b1) begin // Repeat 8x
 				// Auto-refresh
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
@@ -304,8 +238,8 @@ module RAM2E(C14M, PHI1,
 				nRWE <= 1'b1;
 				RA[10] <= 1'b0;
 			end
-			// Enable SDRAM clock after 130,816 cycles (~9.15ms)
-			CKE <= InitS >= 17'h1FF00;
+			// Enable SDRAM clock after 65,280 cycles (~4.56ms)
+			CKE <= FS[15:8] == 8'hFF;
 
 			// Mode register contents
 			BA[1:0] <= 2'b00;		// Reserved
@@ -323,7 +257,7 @@ module RAM2E(C14M, PHI1,
 			DQMH <= 1'b1;
 
 			// Begin normal operation after 128k init cycles (~9.15ms)
-			if (InitS == 17'h1FFFF) Ready <= 1'b1;
+			if (FS == 16'hFFFF) Ready <= 1'b1;
 		end else if (S==4'h1) begin
 			// Enable clock
 			CKE <= 1'b1;
@@ -351,7 +285,7 @@ module RAM2E(C14M, PHI1,
 			nCAS <= 1'b1;
 			nRWE <= 1'b1;
 
-			// SDRAM bank 0, don't care RA[11:8]
+			// SDRAM bank 0, high-order row address is 0
 			BA <= 2'b00;
 			RA[11:8] <= 4'b0000;
 			// Row address is as previously latched
@@ -395,8 +329,8 @@ module RAM2E(C14M, PHI1,
 			BA <= 2'b00;
 			RA[11:8] <= 4'b0000;
 
-			// Read low byte (high byte is +4MB in ramworks)
-			DQML <= 1'b0;
+			// Mask everything
+			DQML <= 1'b1;
 			DQMH <= 1'b1;
 		end else if (S==4'h5) begin
 			// Enable clock
@@ -410,7 +344,7 @@ module RAM2E(C14M, PHI1,
 
 			// Don't care bank, RA[11:8]
 			BA <= 2'b00;
-			RA[11:8] <= 4'b000;
+			RA[11:8] <= 4'b0000;
 
 			// Mask everything
 			DQML <= 1'b1;
@@ -419,7 +353,7 @@ module RAM2E(C14M, PHI1,
 			// Enable clock
 			CKE <= 1'b1;
 			
-			if (InitS[6:4]==0) begin
+			if (FS[6:4]==0) begin
 				// Auto-refresh
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
@@ -499,9 +433,6 @@ module RAM2E(C14M, PHI1,
 			// Latch RAMWorks low nybble write select using old row address
 			RWSel <= RA[0] & ~RA[3] & ~nWE & ~nC07X;
 
-			// If command sequence times out, reset command sequence state
-			if (CmdTimeout <= 4'hF) CmdSeqS <= 0;
-
 			// Mask according to RAMWorks bank (high byte is +4MB)
 			DQML <= RWBank[6];
 			DQMH <= ~RWBank[6];
@@ -519,9 +450,9 @@ module RAM2E(C14M, PHI1,
 			BA <= 2'b00;
 			RA[11:8] <= 4'b0000;
 
-			// Mask according to RAMWorks bank (high byte is +4MB)
-			DQML <= RWBank[6];
-			DQMH <= ~RWBank[6];
+			// Mask everything
+			DQML <= 1'b1;
+			DQMH <= 1'b1;
 		end else if (S==4'hB) begin
 			// Disable clock
 			CKE <= 1'b0;
@@ -560,36 +491,38 @@ module RAM2E(C14M, PHI1,
 			// RAMWorks Bank Register Select
 			if (RWSel) begin
 				// Latch RAMWorks bank if accessed
-				RWBank <= Din[7:0] & ~RWMask[7:0];
-				
-				// Recognize command sequence
-				if ((Din[7:0]==8'h00 & CmdSeqS==3'h0) |
-					 (Din[7:0]==8'hFF & CmdSeqS==3'h1) |
-					 (Din[7:0]==8'h55 & CmdSeqS==3'h2) |
-					 (Din[7:0]==8'hAA & CmdSeqS==3'h3) |
-					 (Din[7:0]==8'hC1 & CmdSeqS==3'h4) |
-					 (Din[7:0]==8'hAD & CmdSeqS==3'h5) |
-					 CmdSeqS==3'h6 | CmdSeqS==3'h7) begin
-					CmdSeqS <= CmdSeqS+1;
-					CmdTimeout <= 0;
-				end else CmdTimeout <= CmdTimeout+1;
-				
-				// Recognize and submit command byte
-				if (CmdSeqS==3'h6) begin
-					UFMPrgmEN <= Din[7:0]==8'h57;
-					DoutSubstUFM <= Din[7:0]==8'hA3;
-					UFMBitbang <= Din[7:0]==8'hA8;
-					RWMaskSet <= Din[7:0]==8'hA0;
-				end else begin
-					DoutSubstUFM <= 1'b0;
+				if (ResetRWBankNext) RWBank <= 8'h00;
+				else begin
+					RWBank <= Din[7:0] & ~RWMask[7:0];
+					ResetRWBankNext <= 1'b0;
 				end
 
-				// Reset command thingy
-				if (CmdSeqS==3'h7) begin
+				// Recognize command sequence and advance CS state
+				if ((CS==3'h0 & Din[7:0]==8'hFF) |
+					(CS==3'h1 & Din[7:0]==8'h00) |
+					(CS==3'h2 & Din[7:0]==8'h55) |
+					(CS==3'h3 & Din[7:0]==8'hAA) |
+					(CS==3'h4 & Din[7:0]==8'hC1) |
+					(CS==3'h5 & Din[7:0]==8'hAD) |
+					 CS==3'h6 | CS==3'h7) CS <= CS+1;
+				else CS <= 0; // Back to beginning if it's not right
+				
+				if (CS==3'h6) begin // Recognize and submit command in CS6
+					if (Din[7:0]==8'hEF) UFMPrgmEN <= 1'b1;
+					if (Din[7:0]==8'hEE) UFMEraseEN <= 1'b1;
+					ResetRWBankNext <= Din[7:0]==8'hFF;
+					UFMBitbang <= Din[7:0]==8'hEA;
+					RWMaskSet <= Din[7:0]==8'hE0;
+				end else begin
+					// Reset command triggers for commands with arguments
 					UFMBitbang <= 1'b0;
 					RWMaskSet <= 1'b0;
 				end
-			end
+
+				CmdTimeout <= 0; // Reset command timeout if RWSel accessed
+			end else CmdTimeout <= CmdTimeout+1; // Increment command timeout
+			// If command sequence times out, reset command sequence state
+			if (CmdTimeout==3'h7) CS <= 0;
 		end else if (S==4'hD) begin
 			// Disable clock
 			CKE <= 1'b0;
@@ -647,13 +580,9 @@ module RAM2E(C14M, PHI1,
 			DQMH <= 1'b1;
 		end 
 	end
-
 	always @(negedge C14M) begin
 		// Latch video and read data outputs
 		if (S==4'h6) Vout[7:0] <= RD[7:0];
-		if (S==4'hC) begin 
-			Dout[7] <= DoutSubstUFM ? DRDOutReg : RD[7];
-			Dout[6:0] <= RD[6:0];
-		end
+		if (S==4'hC) Dout[7:0] <= RD[7:0];
 	end
 endmodule
