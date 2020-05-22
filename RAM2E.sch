@@ -2240,8 +2240,6 @@ Wire Wire Line
 	6600 4550 6850 4550
 Wire Wire Line
 	6600 4450 7100 4450
-NoConn ~ 6600 4250
-NoConn ~ 6600 4350
 NoConn ~ 6600 2750
 NoConn ~ 6600 2950
 NoConn ~ 6600 3050
@@ -2459,42 +2457,12 @@ Text Label 6600 4850 0    50   ~ 0
 CFG1
 Text Label 6600 4950 0    50   ~ 0
 CFG0
-$Comp
-L Switch:SW_DIP_x03 SW1
-U 1 1 5EEC6E47
-P 12100 3750
-F 0 "SW1" H 12100 4100 50  0000 C CNN
-F 1 "Config" H 12100 3600 50  0000 C CNN
-F 2 "Button_Switch_SMD:SW_DIP_SPSTx03_Slide_6.7x9.18mm_W8.61mm_P2.54mm_LowProfile" H 12100 3750 50  0001 C CNN
-F 3 "~" H 12100 3750 50  0001 C CNN
-	1    12100 3750
-	1    0    0    -1  
-$EndComp
-Text Label 11800 3550 2    50   ~ 0
-CFG0
-Text Label 11800 3650 2    50   ~ 0
-CFG1
-Text Label 11800 3750 2    50   ~ 0
-CFG2
-$Comp
-L power:GND #PWR0146
-U 1 1 5EEE8F32
-P 12400 3750
-F 0 "#PWR0146" H 12400 3500 50  0001 C CNN
-F 1 "GND" H 12400 3600 50  0000 C CNN
-F 2 "" H 12400 3750 50  0001 C CNN
-F 3 "" H 12400 3750 50  0001 C CNN
-	1    12400 3750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	12400 3750 12400 3650
-Wire Bus Line
-	8200 4250 8200 5350
-Connection ~ 12400 3750
-Connection ~ 12400 3650
-Wire Wire Line
-	12400 3650 12400 3550
 Text Label 6600 5050 0    50   ~ 0
 CFG2
+Text Label 6600 4250 0    50   ~ 0
+UFMPrgmEN
+Text Label 6600 4350 0    50   ~ 0
+UFMEraseEN
+Wire Bus Line
+	8200 4250 8200 5350
 $EndSCHEMATC
