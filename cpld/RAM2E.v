@@ -2,8 +2,7 @@ module RAM2E(C14M, PHI1,
 			 nWE, nWE80, nEN80, nC07X,
 			 Ain, Din, Dout, nDOE, Vout, nVOE,
 			 CKE, nCS, nRAS, nCAS, nRWE,
-			 BA, RA, RD, DQML, DQMH,
-			 DelayOut, DelayIn);
+			 BA, RA, RD, DQML, DQMH);
 
 	/* Clocks */
 	input C14M, PHI1;
@@ -12,9 +11,9 @@ module RAM2E(C14M, PHI1,
 	input nWE, nWE80, nEN80, nC07X;
 	
  	/* Delay for EN80 signal */
-	output DelayOut = ~nEN80;
-	input DelayIn;
-	wire EN80 = DelayIn;
+	//output DelayOut = 1'b0;
+	//input DelayIn;
+	wire EN80 = ~nEN80;
 	
 	/* Address Bus */
 	input [7:0] Ain; // Multiplexed DRAM address input
@@ -27,17 +26,26 @@ module RAM2E(C14M, PHI1,
 	/* Video Data Bus */
 	output nVOE = ~(~PHI1 & Ready); /// Video data bus output enable
 	output reg [7:0] Vout; // Video data bus
+
+	/* SDRAM */
+	output reg CKE = 0;
+	output reg nCS = 1, nRAS = 1, nCAS = 1, nRWE = 1;
+	output reg [1:0] BA;
+	output reg [11:0] RA;
+	output reg DQML = 1, DQMH = 1;
+	wire RDOE = EN80 & ~nWE80;
+	inout [7:0] RD = RDOE ? Din[7:0] : 8'bZ;
 	
 	/* RAMWorks Bank Register and Capacity Mask */
 	reg [7:0] RWBank = 0; // RAMWorks bank register
-	reg [7:0] RWMask = 0; // RAMWorks bank register capacity mask
+	reg [7:0] RWMask = 0; // RAMWorks bank reg. capacity mask
 	reg RWSel = 0; // RAMWorks bank register select
 	reg RWMaskSet = 0; // RAMWorks Mask register set flag
-	reg ResetRWBankNext = 0; // Causes RWBank to be zeroed next RWSel access
+	reg ZeroRWBank = 0; // Causes RWBank to be zeroed next RWSel access
 	
 	/* Command Sequence Detector */
 	reg [2:0] CS = 0; // Command sequence state
-	reg [2:0] CmdTimeout = 0; // Command sequence timeout
+	reg [2:0] CmdTout = 0; // Command sequence timeout
 
 	/* UFM Interface */
 	reg [15:8] UFMD = 0; // *Parallel* UFM data register
@@ -78,15 +86,6 @@ module RAM2E(C14M, PHI1,
 	reg UFMPrgmEN = 0; // Set by user command. Programs UFM
 	reg UFMEraseEN = 0; // Set by user command. Erases UFM
 	reg DRCLKPulse = 0; // Set by user command. Causes DRCLK pulse next C14M
-
-	/* SDRAM */
-	output reg CKE = 0;
-	output reg nCS = 1, nRAS = 1, nCAS = 1, nRWE = 1;
-	output reg [1:0] BA;
-	output reg [11:0] RA;
-	output reg DQML = 1, DQMH = 1;
-	wire RDOE = EN80 & ~nWE80;
-	inout [7:0] RD = RDOE ? Din[7:0] : 8'bZ;
 
 	/* State Counters */
 	reg PHI1reg = 0; // Saved PHI1 at last rising clock edge
@@ -177,14 +176,12 @@ module RAM2E(C14M, PHI1,
 			if (UFMBitbang & CS==3'h7 & RWSel & S==4'hC) begin
 				DRDIn <= Din[6];
 				DRCLKPulse <= Din[7];
-			end
-
-			// Data register clock pulse
-			if (DRCLKPulse) begin
+				DRCLK <= 1'b0;
+			end else begin
 				DRCLKPulse <= 1'b0;
-				DRCLK <= 1'b1;
-			end else DRCLK <= 1'b0;
-
+				DRCLK <= DRCLKPulse;
+			end
+			
 			// Set capacity mask
 			if (RWMaskSet & RWSel & S==4'hC) RWMask[7:0] <= ~Din[7:0];
 
@@ -209,7 +206,7 @@ module RAM2E(C14M, PHI1,
 				nCAS <= 1'b1;
 				nRWE <= 1'b0;
 				RA[10] <= 1'b1; // "all"
-			end else if (FS[15:4]==16'hFFD & FS[0]==1'b1) begin // Repeat 8x
+			end else if (FS[15:4]==16'hFFD & FS[0]==1'b0) begin // Repeat 8x
 				// Auto-refresh
 				nCS <= 1'b0;	
 				nRAS <= 1'b0;
@@ -223,7 +220,7 @@ module RAM2E(C14M, PHI1,
 				nCAS <= 1'b0;
 				nRWE <= 1'b0;
 				RA[10] <= 1'b0; // Reserved in mode register
-			end else if (FS[15:4]==12'hFFD & FS[0]==1'b1) begin // Repeat 8x
+			end else if (FS[15:4]==12'hFFF & FS[0]==1'b0) begin // Repeat 8x
 				// Auto-refresh
 				nCS <= 1'b0;
 				nRAS <= 1'b0;
@@ -491,11 +488,8 @@ module RAM2E(C14M, PHI1,
 			// RAMWorks Bank Register Select
 			if (RWSel) begin
 				// Latch RAMWorks bank if accessed
-				if (ResetRWBankNext) RWBank <= 8'h00;
-				else begin
-					RWBank <= Din[7:0] & ~RWMask[7:0];
-					ResetRWBankNext <= 1'b0;
-				end
+				if (ZeroRWBank) RWBank <= 8'h00;
+				else RWBank <= Din[7:0] & ~RWMask[7:0];
 
 				// Recognize command sequence and advance CS state
 				if ((CS==3'h0 & Din[7:0]==8'hFF) |
@@ -508,21 +502,23 @@ module RAM2E(C14M, PHI1,
 				else CS <= 0; // Back to beginning if it's not right
 				
 				if (CS==3'h6) begin // Recognize and submit command in CS6
+					ZeroRWBank <= Din[7:0]==8'hFF;
 					if (Din[7:0]==8'hEF) UFMPrgmEN <= 1'b1;
 					if (Din[7:0]==8'hEE) UFMEraseEN <= 1'b1;
-					ResetRWBankNext <= Din[7:0]==8'hFF;
 					UFMBitbang <= Din[7:0]==8'hEA;
 					RWMaskSet <= Din[7:0]==8'hE0;
-				end else begin
-					// Reset command triggers for commands with arguments
+				end else begin // Reset command triggers
+					ZeroRWBank <= 1b0;
 					UFMBitbang <= 1'b0;
 					RWMaskSet <= 1'b0;
 				end
 
-				CmdTimeout <= 0; // Reset command timeout if RWSel accessed
-			end else CmdTimeout <= CmdTimeout+1; // Increment command timeout
-			// If command sequence times out, reset command sequence state
-			if (CmdTimeout==3'h7) CS <= 0;
+				CmdTout <= 0; // Reset command timeout if RWSel accessed
+			end else begin 
+				CmdTout <= CmdTout+1; // Increment command timeout
+				// If command sequence times out, reset sequence state
+				if (CmdTout==3'h7) CS <= 0;
+			end
 		end else if (S==4'hD) begin
 			// Disable clock
 			CKE <= 1'b0;

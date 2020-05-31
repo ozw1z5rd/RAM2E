@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM2E
-Fri May 22 18:36:40 2020
+Sun May 31 18:05:35 2020
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -44,13 +44,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Fri May 22 18:36:40 2020           ;
+; Analysis & Synthesis Status ; Successful - Sun May 31 18:05:35 2020           ;
 ; Quartus II 32-bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; RAM2E                                           ;
 ; Top-level Entity Name       ; RAM2E                                           ;
 ; Family                      ; MAX II                                          ;
-; Total logic elements        ; 195                                             ;
-; Total pins                  ; 71                                              ;
+; Total logic elements        ; 194                                             ;
+; Total pins                  ; 69                                              ;
 ; Total virtual pins          ; 0                                               ;
 ; UFM blocks                  ; 1 / 1 ( 100 % )                                 ;
 +-----------------------------+-------------------------------------------------+
@@ -129,15 +129,15 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                          ;
-+----------------------------------+-----------------+----------------------------------+-------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path  ; Library ;
-+----------------------------------+-----------------+----------------------------------+-------------------------------+---------+
-; RAM2E.v                          ; yes             ; User Verilog HDL File            ; Z:/Repos/RAM2E/cpld/RAM2E.v   ;         ;
-; UFM.v                            ; yes             ; User Wizard-Generated File       ; Z:/Repos/RAM2E/cpld/UFM.v     ;         ;
-; RAM2E.mif                        ; yes             ; User Memory Initialization File  ; Z:/Repos/RAM2E/cpld/RAM2E.mif ;         ;
-+----------------------------------+-----------------+----------------------------------+-------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                    ;
++----------------------------------+-----------------+----------------------------------+---------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                            ; Library ;
++----------------------------------+-----------------+----------------------------------+---------------------------------------------------------+---------+
+; RAM2E.v                          ; yes             ; User Verilog HDL File            ; //vmware-host/Shared Folders/Repos/RAM2E/cpld/RAM2E.v   ;         ;
+; UFM.v                            ; yes             ; User Wizard-Generated File       ; //vmware-host/Shared Folders/Repos/RAM2E/cpld/UFM.v     ;         ;
+; RAM2E.mif                        ; yes             ; User Memory Initialization File  ; //vmware-host/Shared Folders/Repos/RAM2E/cpld/RAM2E.mif ;         ;
++----------------------------------+-----------------+----------------------------------+---------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -145,20 +145,20 @@ applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 195   ;
-;     -- Combinational with no register       ; 89    ;
+; Total logic elements                        ; 194   ;
+;     -- Combinational with no register       ; 88    ;
 ;     -- Register only                        ; 27    ;
 ;     -- Combinational with a register        ; 79    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 88    ;
-;     -- 3 input functions                    ; 44    ;
+;     -- 4 input functions                    ; 89    ;
+;     -- 3 input functions                    ; 42    ;
 ;     -- 2 input functions                    ; 32    ;
 ;     -- 1 input functions                    ; 3     ;
 ;     -- 0 input functions                    ; 1     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 181   ;
+;     -- normal mode                          ; 180   ;
 ;     -- arithmetic mode                      ; 14    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
@@ -167,12 +167,12 @@ applicable agreement for further details.
 ;                                             ;       ;
 ; Total registers                             ; 106   ;
 ; Total logic cells in carry chains           ; 15    ;
-; I/O pins                                    ; 71    ;
+; I/O pins                                    ; 69    ;
 ; UFM blocks                                  ; 1     ;
 ; Maximum fan-out node                        ; C14M  ;
 ; Maximum fan-out                             ; 106   ;
-; Total fan-out                               ; 806   ;
-; Average fan-out                             ; 3.02  ;
+; Total fan-out                               ; 803   ;
+; Average fan-out                             ; 3.04  ;
 +---------------------------------------------+-------+
 
 
@@ -181,20 +181,20 @@ applicable agreement for further details.
 +-----------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                   ; Library Name ;
 +-----------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
-; |RAM2E                                                    ; 195 (195)   ; 106          ; 1          ; 71   ; 0            ; 89 (89)      ; 27 (27)           ; 79 (79)          ; 15 (15)         ; 0 (0)      ; |RAM2E                                                                ; work         ;
+; |RAM2E                                                    ; 194 (194)   ; 106          ; 1          ; 69   ; 0            ; 88 (88)      ; 27 (27)           ; 79 (79)          ; 15 (15)         ; 0 (0)      ; |RAM2E                                                                ; work         ;
 ;    |UFM:UFM_inst|                                         ; 0 (0)       ; 0            ; 1          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RAM2E|UFM:UFM_inst                                                   ; work         ;
 ;       |UFM_altufm_none_a7r:UFM_altufm_none_a7r_component| ; 0 (0)       ; 0            ; 1          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RAM2E|UFM:UFM_inst|UFM_altufm_none_a7r:UFM_altufm_none_a7r_component ; work         ;
 +-----------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                           ;
-+--------+--------------+---------+--------------+--------------+---------------------+---------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance     ; IP Include File           ;
-+--------+--------------+---------+--------------+--------------+---------------------+---------------------------+
-; Altera ; ALTUFM_NONE  ; 13.0    ; N/A          ; N/A          ; |RAM2E|UFM:UFM_inst ; Z:/Repos/RAM2E/cpld/UFM.v ;
-+--------+--------------+---------+--------------+--------------+---------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                     ;
++--------+--------------+---------+--------------+--------------+---------------------+-----------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance     ; IP Include File                                     ;
++--------+--------------+---------+--------------+--------------+---------------------+-----------------------------------------------------+
+; Altera ; ALTUFM_NONE  ; 13.0    ; N/A          ; N/A          ; |RAM2E|UFM:UFM_inst ; //vmware-host/Shared Folders/Repos/RAM2E/cpld/UFM.v ;
++--------+--------------+---------+--------------+--------------+---------------------+-----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -256,7 +256,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri May 22 18:36:33 2020
+    Info: Processing started: Sun May 31 18:05:29 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 Info (20029): Only one processor detected - disabling parallel compilation
 Info (12021): Found 1 design units, including 1 entities, in source file ram2e.v
@@ -265,29 +265,29 @@ Info (12021): Found 2 design units, including 2 entities, in source file ufm.v
     Info (12023): Found entity 1: UFM_altufm_none_a7r
     Info (12023): Found entity 2: UFM
 Info (12127): Elaborating entity "RAM2E" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(100): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(103): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(507): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at RAM2E.v(523): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(99): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(102): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(501): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at RAM2E.v(518): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "UFM" for hierarchy "UFM:UFM_inst"
 Info (12128): Elaborating entity "UFM_altufm_none_a7r" for hierarchy "UFM:UFM_inst|UFM_altufm_none_a7r:UFM_altufm_none_a7r_component"
-Info (21057): Implemented 267 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 23 input pins
-    Info (21059): Implemented 40 output pins
+Info (21057): Implemented 264 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 22 input pins
+    Info (21059): Implemented 39 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 195 logic cells
+    Info (21061): Implemented 194 logic cells
     Info (21070): Implemented 1 User Flash Memory blocks
-Info (144001): Generated suppressed messages file Z:/Repos/RAM2E/cpld/output_files/RAM2E.map.smsg
+Info (144001): Generated suppressed messages file /Repos/RAM2E/cpld/output_files/RAM2E.map.smsg
 Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 300 megabytes
-    Info: Processing ended: Fri May 22 18:36:40 2020
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Peak virtual memory: 303 megabytes
+    Info: Processing ended: Sun May 31 18:05:35 2020
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in Z:/Repos/RAM2E/cpld/output_files/RAM2E.map.smsg.
+The suppressed messages can be found in /Repos/RAM2E/cpld/output_files/RAM2E.map.smsg.
 
 
