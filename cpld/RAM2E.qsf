@@ -141,7 +141,7 @@ set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to Dout
 set_location_assignment PIN_50 -to nVOE
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to nVOE
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MINIMUM CURRENT" -to nVOE
-set_instance_assignment -name SLOW_SLEW_RATE ON -to nVOE
+set_instance_assignment -name SLOW_SLEW_RATE OFF -to nVOE
 
 set_location_assignment PIN_70 -to Vout[0]
 set_location_assignment PIN_67 -to Vout[1]
