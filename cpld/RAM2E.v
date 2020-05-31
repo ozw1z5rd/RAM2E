@@ -148,8 +148,8 @@ module RAM2E(C14M, PHI1,
 					end else begin
 						// Set RWMask, but if saved mask is 0x80, store ~0xFF
 						if (UFMD[14:8]==7'b1000000 & DRDOut==1'b0) begin
-							RWMask[7:0] <= ~8'hFF;
-						end else RWMask[7:0] <= ~{UFMD[14:8], DRDOut};
+							RWMask[7:0] <= {1'b1, ~7'h7F};
+						end else RWMask[7:0] <= {UFMD[14], ~UFMD[13:8], ~DRDOut};
 						// If last byte in sector...
 						if (FS[12:5]==8'hFF) begin
 							UFMReqErase <= 1'b1; // Mark need to erase
@@ -183,7 +183,7 @@ module RAM2E(C14M, PHI1,
 			end
 			
 			// Set capacity mask
-			if (RWMaskSet & RWSel & S==4'hC) RWMask[7:0] <= ~Din[7:0];
+			if (RWMaskSet & RWSel & S==4'hC) RWMask[7:0] <= {Din[7], ~Din[6:0]};
 
 			// UFM programming sequence
 			if (UFMPrgmEN | UFMEraseEN) begin
@@ -489,7 +489,7 @@ module RAM2E(C14M, PHI1,
 			if (RWSel) begin
 				// Latch RAMWorks bank if accessed
 				if (ZeroRWBank) RWBank <= 8'h00;
-				else RWBank <= Din[7:0] & ~RWMask[7:0];
+				else RWBank <= Din[7:0] & {RWMask[7], ~RWMask[6:0]};
 
 				// Recognize command sequence and advance CS state
 				if ((CS==3'h0 & Din[7:0]==8'hFF) |
