@@ -24,7 +24,7 @@ module RAM2E(C14M, PHI1,
 	output reg [7:0] Dout; // 6502 data Bus output
 	
 	/* Video Data Bus */
-	output nVOE = ~(~PHI1 & Ready); /// Video data bus output enable
+	output nVOE = ~(~PHI1); /// Video data bus output enable
 	output reg [7:0] Vout; // Video data bus
 
 	/* SDRAM */
@@ -170,7 +170,10 @@ module RAM2E(C14M, PHI1,
 			// Keep DRCLK pulse control disabled during init
 			DRCLKPulse <= 1'b0;
 		end else begin
-			DRShift <= 1'b1; // Can only shift UFM data register now
+			// Can only shift UFM data register now
+			ARCLK <= 1'b0;
+			ARShift <= 1'b0;
+			DRShift <= 1'b1;
 
 			// UFM bitbang control
 			if (UFMBitbang & CS==3'h7 & RWSel & S==4'hC) begin
@@ -508,7 +511,7 @@ module RAM2E(C14M, PHI1,
 					UFMBitbang <= Din[7:0]==8'hEA;
 					RWMaskSet <= Din[7:0]==8'hE0;
 				end else begin // Reset command triggers
-					ZeroRWBank <= 1b0;
+					ZeroRWBank <= 1'b0;
 					UFMBitbang <= 1'b0;
 					RWMaskSet <= 1'b0;
 				end
