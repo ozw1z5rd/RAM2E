@@ -65,7 +65,7 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 GND*                         : 1         :        :                   :         : 2         :                
 nRWE                         : 2         : output : 3.3-V LVCMOS      :         : 1         : Y              
 nCAS                         : 3         : output : 3.3-V LVCMOS      :         : 1         : Y              
-CKE                          : 4         : output : 3.3-V LVTTL       :         : 1         : Y              
+CKE                          : 4         : output : 3.3-V LVCMOS      :         : 1         : Y              
 nRAS                         : 5         : output : 3.3-V LVCMOS      :         : 1         : Y              
 BA[0]                        : 6         : output : 3.3-V LVCMOS      :         : 1         : Y              
 RA[11]                       : 7         : output : 3.3-V LVCMOS      :         : 1         : Y              
@@ -112,7 +112,7 @@ Ain[3]                       : 47        : input  : 3.3-V LVCMOS      :         
 Din[4]                       : 48        : input  : 3.3-V LVCMOS      :         : 1         : Y              
 Din[5]                       : 49        : input  : 3.3-V LVCMOS      :         : 1         : Y              
 nVOE                         : 50        : output : 3.3-V LVCMOS      :         : 1         : Y              
-nWE                          : 51        : input  : 3.3-V LVTTL       :         : 1         : Y              
+nWE                          : 51        : input  : 3.3-V LVCMOS      :         : 1         : Y              
 nC07X                        : 52        : input  : 3.3-V LVCMOS      :         : 2         : Y              
 Ain[7]                       : 53        : input  : 3.3-V LVCMOS      :         : 2         : Y              
 Ain[1]                       : 54        : input  : 3.3-V LVCMOS      :         : 2         : Y              
@@ -143,8 +143,8 @@ GND*                         : 78        :        :                   :         
 GNDIO                        : 79        : gnd    :                   :         :           :                
 VCCIO2                       : 80        : power  :                   : 3.3V    : 2         :                
 GND*                         : 81        :        :                   :         : 2         :                
-DelayIn                      : 82        : input  : 3.3V Schmitt Trigger Input :         : 2         : Y              
-DelayOut                     : 83        : output : 3.3-V LVTTL       :         : 2         : Y              
+GND*                         : 82        :        :                   :         : 2         :                
+GND*                         : 83        :        :                   :         : 2         :                
 Dout[6]                      : 84        : output : 3.3-V LVCMOS      :         : 2         : Y              
 Dout[7]                      : 85        : output : 3.3-V LVCMOS      :         : 2         : Y              
 GND*                         : 86        :        :                   :         : 2         :                
