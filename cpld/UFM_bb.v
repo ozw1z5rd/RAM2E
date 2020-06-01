@@ -106,7 +106,7 @@ endmodule
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM.v TRUE FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM.qip TRUE FALSE
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM.bsf TRUE TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL UFM_inst.v TRUE TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL UFM_inst.v FALSE TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM_bb.v TRUE TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM.inc FALSE TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL UFM.cmp FALSE TRUE
