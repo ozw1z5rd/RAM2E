@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM2E
-Sun May 31 18:48:33 2020
+Sun May 31 21:36:56 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -45,7 +45,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sun May 31 18:48:33 2020           ;
+; Analysis & Synthesis Status ; Successful - Sun May 31 21:36:56 2020           ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; RAM2E                                           ;
 ; Top-level Entity Name       ; RAM2E                                           ;
@@ -164,8 +164,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
 ;     -- 4 input functions                    ; 87    ;
-;     -- 3 input functions                    ; 43    ;
-;     -- 2 input functions                    ; 33    ;
+;     -- 3 input functions                    ; 42    ;
+;     -- 2 input functions                    ; 34    ;
 ;     -- 1 input functions                    ; 3     ;
 ;     -- 0 input functions                    ; 1     ;
 ;                                             ;       ;
@@ -183,7 +183,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; UFM blocks                                  ; 1     ;
 ; Maximum fan-out node                        ; C14M  ;
 ; Maximum fan-out                             ; 106   ;
-; Total fan-out                               ; 798   ;
+; Total fan-out                               ; 797   ;
 ; Average fan-out                             ; 3.03  ;
 +---------------------------------------------+-------+
 
@@ -268,7 +268,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun May 31 18:48:32 2020
+    Info: Processing started: Sun May 31 21:36:55 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file ram2e.v
@@ -292,7 +292,7 @@ Info (21057): Implemented 263 device resources after synthesis - the final resou
 Info (144001): Generated suppressed messages file C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.map.smsg
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4574 megabytes
-    Info: Processing ended: Sun May 31 18:48:33 2020
+    Info: Processing ended: Sun May 31 21:36:56 2020
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
