@@ -41,7 +41,7 @@ module RAM2E(C14M, PHI1,
 	reg [7:0] RWMask = 0; // RAMWorks bank reg. capacity mask
 	reg RWSel = 0; // RAMWorks bank register select
 	reg RWMaskSet = 0; // RAMWorks Mask register set flag
-	reg ZeroRWBank = 0; // Causes RWBank to be zeroed next RWSel access
+	reg SetRWBankFF = 0; // Causes RWBank to be zeroed next RWSel access
 	
 	/* Command Sequence Detector */
 	reg [2:0] CS = 0; // Command sequence state
@@ -491,7 +491,7 @@ module RAM2E(C14M, PHI1,
 			// RAMWorks Bank Register Select
 			if (RWSel) begin
 				// Latch RAMWorks bank if accessed
-				if (ZeroRWBank) RWBank <= 8'h00;
+				if (SetRWBankFF) RWBank <= 8'hFF;
 				else RWBank <= Din[7:0] & {RWMask[7], ~RWMask[6:0]};
 
 				// Recognize command sequence and advance CS state
@@ -505,13 +505,13 @@ module RAM2E(C14M, PHI1,
 				else CS <= 0; // Back to beginning if it's not right
 				
 				if (CS==3'h6) begin // Recognize and submit command in CS6
-					ZeroRWBank <= Din[7:0]==8'hFF;
+					SetRWBankFF <= Din[7:0]==8'hFF;
 					if (Din[7:0]==8'hEF) UFMPrgmEN <= 1'b1;
 					if (Din[7:0]==8'hEE) UFMEraseEN <= 1'b1;
 					UFMBitbang <= Din[7:0]==8'hEA;
 					RWMaskSet <= Din[7:0]==8'hE0;
 				end else begin // Reset command triggers
-					ZeroRWBank <= 1'b0;
+					SetRWBankFF <= 1'b0;
 					UFMBitbang <= 1'b0;
 					RWMaskSet <= 1'b0;
 				end
