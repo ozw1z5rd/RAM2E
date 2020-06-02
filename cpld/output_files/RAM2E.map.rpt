@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM2E
-Sun May 31 21:36:56 2020
+Tue Jun 02 17:01:02 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -45,7 +45,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sun May 31 21:36:56 2020           ;
+; Analysis & Synthesis Status ; Successful - Tue Jun 02 17:01:02 2020           ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; RAM2E                                           ;
 ; Top-level Entity Name       ; RAM2E                                           ;
@@ -268,7 +268,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun May 31 21:36:55 2020
+    Info: Processing started: Tue Jun 02 17:01:01 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM2E -c RAM2E
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file ram2e.v
@@ -292,7 +292,7 @@ Info (21057): Implemented 263 device resources after synthesis - the final resou
 Info (144001): Generated suppressed messages file C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/RAM2E.map.smsg
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4574 megabytes
-    Info: Processing ended: Sun May 31 21:36:56 2020
+    Info: Processing ended: Tue Jun 02 17:01:02 2020
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

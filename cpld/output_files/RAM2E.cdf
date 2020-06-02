@@ -3,8 +3,8 @@ JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
-	P ActionCode(Ign)
-		Device PartName(EPM240T100) MfrSpec(OpMask(0) SEC_Device(EPM240T100) Child_OpMask(2 0 0) FullPath("C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/untitled2.pof"));
+	P ActionCode(Cfg)
+		Device PartName(EPM240T100) Path("C:/Users/Zane/Documents/GitHub/RAM2E/cpld/output_files/") File("RAM2E.pof") MfrSpec(OpMask(3) SEC_Device(EPM240T100) Child_OpMask(2 3 3));
 
 ChainEnd;
 
