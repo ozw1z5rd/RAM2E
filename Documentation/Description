@@ -1,0 +1,58 @@
+RAM2E II (GW4203B) expands the Apple IIe's memory by 8 MB, 
+as well as enabling double-high-resolution graphics 
+and 80-column text display modes.
+
+
+Low-Power, SDRAM-Based Design
+----------------------------------------
+Thanks to a modern, low-power design, 
+RAM2E II uses a maximum of 0.2 watts when idle
+(40 mA @ 5V) and 0.3W in active use (60 mA @ 5V). 
+Unlike other IIe auxilliary memory cards, which are 
+built with vintage asynchronous DRAM chips, 
+RAM2E II uses modern SDRAM. This design allows for 
+low power consumption and improved reliability 
+over other memory cards using 15+ year old chips. 
+
+
+Small Size, Low-Profile
+----------------------------------------
+RAM2E II features a small board outline and is the 
+thinnest Apple IIe auxilliary memory card ever produced, 
+at under 4mm thin. Small and thin dimensions improve 
+the mechanical compatibility between RAM2E II and 
+peripheral cards installed into the IIe's Slot 1.
+
+
+Adjustable Capacity, Highly Compatible
+----------------------------------------
+RAM2E II is highly compatible with existing software. 
+An adjustable capacity feature allows the memory size 
+to be set to 64 kB, 512 kB, 1 MB, 4 MB, or 8 MB, 
+improving compatibility with software which expecting 
+a particular memory capacity. 
+Capacity settings can be set temporarily 
+or saved in nonvolatile memory. 
+The capacity adjustment utility is available on 
+_RAM2E II's support page_.
+
+
+Ecologically Friendly, Gold-Plated PCB
+----------------------------------------
+RAM2E II features a lead-free, ENIG gold-plated,
+4-layer PCB and is fully EU RoHS-compliant. 
+All units are tested extensively before shipment. 
+Only new parts are used to build RAM2E II, 
+and all RAM2E II cards are manufactured in our 
+semi-automated facility in Columbus, Ohio, 
+in the United States. 
+
+
+Open-Source Design
+----------------------------------------
+RAM2E II's design is fully open-source. 
+The schematics, board layouts, CPLD firmware, 
+and utility software are all freely available 
+for commercial and noncommercial use. 
+To download the design files, visit the 
+_Garrett's Workshop GitHub page_. 
