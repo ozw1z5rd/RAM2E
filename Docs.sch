@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 2
 Title "RAM2E II"
-Date "2020-05-06"
-Rev "0.9"
+Date "2020-07-25"
+Rev "1.0"
 Comp "Garrett's Workshop"
 Comment1 ""
 Comment2 ""
@@ -875,10 +875,6 @@ Wire Wire Line
 	7100 2100 7350 2100
 Wire Wire Line
 	7350 2100 7400 2000
-Wire Wire Line
-	5600 2000 7050 2000
-Wire Wire Line
-	7400 2000 8750 2000
 Connection ~ 8350 2950
 Connection ~ 8350 2800
 Connection ~ 8350 2650
@@ -984,4 +980,6 @@ Text Notes 7050 3000 0    50   ~ 0
 write data
 Text Notes 6900 2700 0    50   ~ 0
 80-col video data
+Wire Wire Line
+	5600 2000 8750 2000
 $EndSCHEMATC
